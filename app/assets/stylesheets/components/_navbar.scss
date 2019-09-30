@@ -8,7 +8,18 @@
 }
 
 .navbar-lewagon .navbar-brand img{
-  width: 80px;
+  width: 100px;
 }
 
+.navbar-lewagon .navbar-brand {
+  display: flex;
+  align-items: center;
+}
 
+.navbar-lewagon .navbar-brand h2 {
+  margin-bottom: 0;
+}
+
+.nav-item {
+  margin-left: 4px;
+}
