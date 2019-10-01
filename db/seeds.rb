@@ -68,3 +68,4 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     puts "Unable to parse #{row[1]}"
   end
 end
+
