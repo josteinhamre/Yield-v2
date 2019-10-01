@@ -42,7 +42,7 @@
           <% if current_user.photo.present? %>
             <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-          <div class ="initials">
+          <div class ="initials dropdown-toggle", id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.first_name[0] %>
             <%= current_user.last_name[0] %>
           </div>

@@ -1,6 +1,7 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 // Define fonts for body and headers
 $body-font: "Open Sans", "Montserrat", "sans-serif";
 $headers-font: "Raleway", "Montserrat", "sans-serif";
@@ -15,3 +16,69 @@ $headers-font: "Raleway", "Montserrat", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+//add fonts styling
+
+h1 {
+color: #4f4f4f;
+font-size: 3rem;
+font-weight: 600;
+line-height: 1.5;
+font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+color: #3f3c3e;
+font-size: 2rem;
+text-align: 1.5;
+line-height: 1.5;
+font-family: "Montserrat", sans-serif;
+letter-spacing: .4px;
+}
+
+h3 {
+color: #3f3c3e;
+font-size: 1.5rem;
+text-align: 1.5;
+line-height: 1.5;
+font-family: "Montserrat", sans-serif;
+letter-spacing: .4px;
+}
+
+h4{
+color: #3f3c3e;
+font-size: 1.25rem;
+text-align: 1.5;
+line-height: 1.5;
+font-family: "Montserrat", sans-serif;
+letter-spacing: .4px;
+
+}
+
+h5 {
+color: #706D6F;
+font-size: 1rem;
+text-align: 1.5;
+line-height: 1.5;
+font-family: "Montserrat", sans-serif;
+letter-spacing: .4px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
