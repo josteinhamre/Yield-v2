@@ -1,0 +1,33 @@
+.category-list {
+  margin: 50px;
+}
+
+.category-list-div {
+  // margin: 20px 0px;
+  display: grid;
+  grid-template-columns: 20% 16% 16% 16% 16% 6%;
+  align-items: center;
+  grid-gap: 2%;
+  border-bottom: 1px solid #83BED3;
+  padding: 15px;
+}
+
+.category-list .progress-view {
+  width: 100%;
+  background: none;
+  display: flex;
+}
+
+.category-list .progress-bar-container {
+  width: 90%;
+}
+
+.category-list .progress-bar {
+  border-radius: 8px;
+  height: 100%;
+}
+
+.category-list .category-arrow {
+  display: flex;
+  justify-content: center;
+}
