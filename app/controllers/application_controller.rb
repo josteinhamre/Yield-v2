@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
-  private
-
-  # def after_sign_out_path_for(resource_or_scope)
-  #   transactions_path
-  # end
+ 
+  def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
+
+ 
