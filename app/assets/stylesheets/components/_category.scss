@@ -1,0 +1,29 @@
+.category {
+  width: 150px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 17px;
+}
+
+.category .icon-container {
+  background-color: black;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: -2px;
+}
+
+.category .icon-container img {
+  width: 80%;
+}
+
+.category p {
+  margin: 0px 10px;
+  font-size: 16px;
+}
