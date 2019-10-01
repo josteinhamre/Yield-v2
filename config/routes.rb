@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :categories, only: [ :index ]
   get '/profile', to: 'pages#profile', as: 'profile'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
+  get '/inbox', to: 'transactions#inbox', as: 'inbox'
 end
