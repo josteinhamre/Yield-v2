@@ -1,1 +1,5 @@
-<h1>This is the budget of <%= current_user.first_name %> <%= current_user.last_name %>.</h1>
+<div class="container budget-container">
+  <% current_user.categories.each do |category| %>
+    <%= render 'components/category', category: category %>
+  <% end %>
+</div>
