@@ -1,0 +1,17 @@
+.month-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column-start: 5;
+  grid-column-end: 7;
+  place-self: stretch;
+}
+
+.month-selector h4 {
+  white-space: nowrap;
+}
+
+.month-selector .fas {
+  font-size: 1.3rem;
+}
+
