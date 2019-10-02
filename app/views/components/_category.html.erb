@@ -1,6 +1,6 @@
-<div class="category" style="border-color: #97C05C">
-  <div class="icon-container" style="background-color: #97C05C">
-    <%= cl_image_tag 'yield-resources/icons/groceries_u6b5hp.png' %>
+<div class="category" style="border-color: <%= category.color %>">
+  <div class="icon-container" style="background-color: <%= category.color %>">
+    <%= cl_image_tag category.icon.photo %>
   </div>
-  <p>Groceries</p>
+  <p><%= category.name %></p>
 </div>

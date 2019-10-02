@@ -3,13 +3,12 @@
 }
 
 .transaction-list-div {
-  // margin: 20px 0px;
   display: grid;
-  grid-template-columns: 20% 16% 42% 16% 6%;
+  grid-template-columns: 20% 16% 32% 16% 6%;
   align-items: center;
   grid-gap: 2%;
   border-bottom: 1px solid #83BED3;
-  padding: 15px;
+  padding: 0px;
 }
 
 .transaction-list .transaction-arrow {

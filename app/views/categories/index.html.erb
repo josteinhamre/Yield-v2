@@ -1,1 +1,15 @@
-<h1>This is the budget of <%= current_user.first_name %> <%= current_user.last_name %>.</h1>
+<div class="container budget-container">
+  <div class="category-list-div">
+    <h4>Category</h4>
+    <h4>Budgeted</h4>
+    <h4>Spent</h4>
+    <h4>Remaining</h4>
+    <h4>Status</h4>
+    <div class="month-selector">
+      <h4>Show</h4>
+    </div>
+  </div>
+  <% current_user.categories.each do |category| %>
+  <%= render 'components/category_list', category: category %>
+  <% end %>
+</div>

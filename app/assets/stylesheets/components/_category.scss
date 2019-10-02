@@ -1,11 +1,12 @@
 .category {
-  width: 150px;
+  width: 190px;
   display: flex;
   justify-content: flex-start;
   text-align: center;
   align-items: center;
   border: 2px solid black;
   border-radius: 17px;
+  margin: .5rem 1rem;
 }
 
 .category .icon-container {
@@ -20,10 +21,14 @@
 }
 
 .category .icon-container img {
-  width: 80%;
+  width: 75%;
+  object-fit: contain;
 }
 
 .category p {
   margin: 0px 10px;
   font-size: 16px;
+  overflow: hidden;
+  max-width: 74%;
+  white-space: nowrap;
 }
