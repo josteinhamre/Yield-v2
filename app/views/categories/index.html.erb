@@ -1,5 +1,5 @@
 <div class="container budget-container">
   <% current_user.categories.each do |category| %>
-    <%= render 'components/category', category: category %>
+    <%= render 'components/category_list', category: category %>
   <% end %>
 </div>
