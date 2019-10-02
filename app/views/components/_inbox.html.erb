@@ -1,11 +1,11 @@
- <div class="inbox-list-div">
-  <%= link_to confirm_path(transaction: { id: inbox.id }), method: :patch, remote: true do %>
+ <div class="inbox-list-div" id="transaction-<%= trans.id %>">
+  <%= link_to confirm_path(trans), method: :patch, remote: true do %>
     <%= icon('fas', 'check-circle', class: "confirm-trans") %>
   <% end %>
-  <%= render 'components/category', category: inbox.category %>
-  <h6><%= inbox.datetime.strftime("%d %b %y:%d") %></h6>
-  <h6><%= inbox.store %></h6>
-  <h6><%= inbox.amount %></h6>
+  <%= render 'components/category', category: trans.category %>
+  <h6><%= trans.datetime.strftime("%d %b %y:%d") %></h6>
+  <h6><%= trans.store %></h6>
+  <h6><%= trans.amount %></h6>
   <div class="inbox-arrow">
     <%= icon('fas', 'chevron-down') %>
   </div>

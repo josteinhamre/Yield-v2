@@ -1,5 +1,5 @@
 <div class="inbox-list">
-  <div class="inbox-list-div">
+  <div class="inbox-list-div header">
     <h4></h4>
     <h4>Category</h4>
     <h4>Date</h4>
@@ -10,8 +10,8 @@
     </div>
   </div>
   <%= current_user.accounts.each do |account| %>
-    <% account.transactions.each do |inbox| %>
-      <%= render 'components/inbox', inbox: inbox %>
+    <% account.transactions.each do |trans| %>
+      <%= render 'components/inbox', trans: trans %>
     <% end %>
   <% end %>
 </div>
