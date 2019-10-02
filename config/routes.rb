@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile', as: 'profile'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get '/inbox', to: 'transactions#inbox', as: 'inbox'
+  patch '/confirm/:id', to: 'transactions#confirm', as: 'confirm'
 end
