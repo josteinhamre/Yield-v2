@@ -1,8 +1,8 @@
  <div class="transaction-list-div">
-  <%= render 'components/category', category: category %>
-  <h6>Tue 1 Oct 14:00</h6>
-  <h6>Circle k Livold Livold Sør-audnedal</h6>
-  <h6>-2400kr</h6>
+  <%= render 'components/category', category: trans.category %>
+  <h6><%= trans.datetime %></h6>
+  <h6><%= trans.store %></h6>
+  <h6><%= trans.amount %></h6>
   <div class="transaction-arrow">
     <%= icon('fas', 'chevron-down') %>
   </div>

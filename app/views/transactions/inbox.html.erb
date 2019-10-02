@@ -1,1 +1,17 @@
-<h1>This is the inbox of <%= current_user.first_name %> <%= current_user.last_name %>.</h1>
+<div class="inbox-list">
+  <div class="inbox-list-div">
+    <h4></h4>
+    <h4>Category</h4>
+    <h4>Date</h4>
+    <h4>Info</h4>
+    <h4>Spent</h4>
+    <div class="month-selector">
+      <h4>October</h4>
+    </div>
+  </div>
+  <%= current_user.accounts.each do |account| %>
+    <% account.transactions.each do |inbox| %>
+      <%= render 'components/inbox', inbox: inbox %>
+    <% end %>
+  <% end %>
+</div>
