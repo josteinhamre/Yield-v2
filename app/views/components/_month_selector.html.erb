@@ -1,0 +1,5 @@
+<div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= session[:selected_month] ? session[:selected_month] : Time.now.strftime('%B %y') %>" >
+  <%= icon('fas', 'chevron-left', id: "prevMonth") %>
+  <h4 id="monthSelector"></h4>
+  <%= icon('fas', 'chevron-right', id: "nextMonth") %>
+</div>

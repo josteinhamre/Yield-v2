@@ -4,11 +4,7 @@
     <h4>Budgeted</h4>
     <h4>Spent</h4>
     <h4>Remaining</h4>
-    <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= Time.now.strftime('%B %y') %>" >
-       <%= icon('fas', 'chevron-left', id: "prevMonth") %>
-      <h4 id="monthSelector"><%= Time.now.strftime('%B %y') %></h4>
-       <%= icon('fas', 'chevron-right', id: "nextMonth") %>
-    </div>
+    <%= render 'components/month_selector' %>
   </div>
   <% current_user.categories.each do |category| %>
   <%= render 'components/category_list', category: category %>
