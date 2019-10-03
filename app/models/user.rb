@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :accounts
   has_many :categories
+  has_many :transactions, through: :accounts
   after_save :create_categories
-
 
   private
 

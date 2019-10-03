@@ -4,8 +4,7 @@
   <% end %>
 
   <%= render 'components/category', category: trans.category %>
-
-  <h6><%= trans.datetime.strftime("%d %b %y:%d") %></h6>
+  <h6><%= trans.datetime.strftime("%a %-d %b %y:%-d") %></h6>
   <h6><%= trans.store %></h6>
   <h6><%= trans.amount %></h6>
 
