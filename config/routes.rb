@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get '/inbox', to: 'transactions#inbox', as: 'inbox'
   patch '/confirm/:id', to: 'transactions#confirm', as: 'confirm'
+  patch '/set_category/:id/:category_id', to: 'transactions#set_category', as: 'set_category'
   get '/testpage', to: 'pages#testpage', as: 'testpage'
 end
