@@ -48,6 +48,8 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     else
       trans.amount = "-#{row[3]}"
     end
+    trans.approved_at = Time.now if (1..10).to_a.sample < 8
+    p trans.approved_at
     trans.save!
   elsif row[1].match?(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
     match = row[1].match(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
@@ -61,6 +63,8 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     else
       trans.amount = "-#{row[3]}"
     end
+    trans.approved_at = Time.now if (1..10).to_a.sample < 8
+    p trans.approved_at
     trans.save!
   elsif row[1].match?(/Reservert/)
     puts "Waiting to parse #{row[1]}, missing full information"

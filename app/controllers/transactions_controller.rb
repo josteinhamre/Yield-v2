@@ -4,4 +4,8 @@ class TransactionsController < ApplicationController
     @transaction.approved_at = Time.now
     @transaction.save
   end
+
+  def inbox
+    @transactions = current_user.transactions.where(approved_at: nil)
+  end
 end

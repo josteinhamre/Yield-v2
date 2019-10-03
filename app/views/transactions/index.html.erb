@@ -8,7 +8,7 @@
       <h4>October</h4>
     </div>
   </div>
-  <%= current_user.accounts.each do |account| %>
+  <% current_user.accounts.each do |account| %>
     <% account.transactions.each do |trans| %>
       <%= render 'components/transaction_list', trans: trans %>
     <% end %>
