@@ -10,6 +10,6 @@
     </div>
   </div>
   <% current_user.categories.each_with_index do |category, index| %>
-  <%= render 'components/category_list', category: category, index: index %>
+    <%= render 'components/category_list', category: category, index: index %>
   <% end %>
 </div>

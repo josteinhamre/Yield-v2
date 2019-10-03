@@ -11,7 +11,7 @@
   </div>
   <%= current_user.accounts.each do |account| %>
     <% account.transactions.each do |trans| %>
-      <%= render 'components/inbox', trans: trans %>
+      <%= render 'components/inbox', trans: trans, index: trans.id %>
     <% end %>
   <% end %>
 </div>
