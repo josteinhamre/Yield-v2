@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="category-selector-div" id="row-selector-<%= index %>">
-<% current_user.categories.each do |category| %>
-<%= render 'components/category', category: category %>
-<% end %>
+  <% current_user.categories.each do |category| %>
+    <%= render 'components/category', category: category %>
+  <% end %>
 </div>

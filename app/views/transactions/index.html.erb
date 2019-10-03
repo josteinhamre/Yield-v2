@@ -10,7 +10,7 @@
   </div>
   <%= current_user.accounts.each do |account| %>
     <% account.transactions.each do |trans| %>
-      <%= render 'components/transaction_list', trans: trans %>
+      <%= render 'components/transaction_list', trans: trans, index: trans.id %>
     <% end %>
   <% end %>
 </div>
