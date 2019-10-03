@@ -1,27 +1,3 @@
-<div class="category-list-div">
-  <%= render 'components/category', category: category %>
-  <% bud = category.budgets.where('extract(month from month_from) = ?', 10) %>
-  <% bud2 = bud.where('extract(year from month_from) = ?', 2019) %>
-  <% if bud2.count.zero? %>
-    <input type="text" class="budget-blank bud-field" placeholder="0">
-  <% else %>
-    <input type="text" class="budget-present bud-field" placeholder="<%= bud2.first.amount %>">
-  <% end %>
-  <h6>-36000kr</h6>
-  <h6>2400kr</h6>
-  <div class="progress-view">
-    <div class="progress-bar-container">
-      <div class="progress-bar" style="width: 50%; background-color: yellow;">
-      </div>
-    </div>
-    <h6>50%</h6>
-  </div>
-  <div class="category-arrow row-arrow" data-row-id="row-selector-<%= index %>">
-    <%= icon('fas', 'chevron-down') %>
-  </div>
-</div>
-<div class="category-selector-div" id="row-selector-<%= index %>">
 <% current_user.categories.each do |category| %>
-<%= render 'components/category', category: category %>
+      <%= render 'components/category_listitem', category: category, index: category.id, budgets: budgets, selected_month: selected_month %>
 <% end %>
-</div>

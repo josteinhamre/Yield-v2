@@ -34,8 +34,13 @@
 .category-list-div .bud-field {
   border: 1px solid transparent;
   border-radius: 5px;
+  background-color: transparent;
 }
 
-.category-list-div .bud-field:hover {
+.category-list-div .bud-field:hover,
+.category-list-div .bud-field:focus {
   border: 1px solid black;
+  background-color: white;
+  outline: none;
 }
+

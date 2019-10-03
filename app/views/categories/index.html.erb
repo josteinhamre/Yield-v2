@@ -6,7 +6,7 @@
     <h4>Remaining</h4>
     <%= render 'components/month_selector' %>
   </div>
-  <% current_user.categories.each_with_index do |category, index| %>
-  <%= render 'components/category_list', category: category, index: index %>
-  <% end %>
+  <div id="categoryListContainer">
+    <%= render 'components/category_list', budgets: @budgets, selected_month: @selected_month %>
+  </div>
 </div>

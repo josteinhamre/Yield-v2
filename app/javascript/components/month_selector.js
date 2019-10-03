@@ -1,37 +1,19 @@
-// const getMonth = () => {
-//   let monthSelector = document.getElementById("monthSelector");
-//   let monthSelectorGroup = document.getElementById("monthSelectorGroup");
-//   let selectedMonth = monthSelectorGroup.dataset.selectedMonth);
-//   monthSelector.innerHTML = selectedMonth.toLocaleString('no-NO', { month: 'long', year: 'numeric' });
-// };
+// import { listOpen } from './chevron_menu';
 
-// const pMonth = () => {
-//   // let prevMonth = document.getElementById("prevMonth");
+// const changeMonth = () => {
+//   let prevMonth = document.getElementById("prevMonth");
+//   let nextMonth = document.getElementById("nextMonth");
+//   console.log(prevMonth)
+//   console.log(nextMonth)
 
-//   // prevMonth.addEventListener("click", (event) => {
-//     let monthSelector = document.getElementById("monthSelector");
-//     let monthSelectorGroup = document.getElementById("monthSelectorGroup");
-//     let selectedMonth = new Date(monthSelectorGroup.dataset.selectedMonth);
-//     let decremented = selectedMonth.getMonth() - 1;
-//     selectedMonth.setMonth(decremented);
-//     monthSelectorGroup.dataset.selectedMonth = selectedMonth.toLocaleString('no-NO', { month: 'long', year: 'numeric' });
-//     monthSelector.innerHTML = selectedMonth.toLocaleString('no-NO', { month: 'long', year: 'numeric' });
-//   // });
+//   prevMonth.addEventListener("click", (event) => {
+//     setTimeout(listOpen(), 5000);
+//   });
+//   nextMonth.addEventListener("click", (event) => {
+//     setTimeout(listOpen(), 5000);
+//   });
+
 // };
 
 
-// const nMonth = () => {
-//   // let nextMonth = document.getElementById("nextMonth");
-
-//   // nextMonth.addEventListener("click", (event) => {
-//     let monthSelector = document.getElementById("monthSelector");
-//     let monthSelectorGroup = document.getElementById("monthSelectorGroup");
-//     let selectedMonth = new Date(monthSelectorGroup.dataset.selectedMonth);
-//     let incremented = selectedMonth.getMonth() + 1;
-//     selectedMonth.setMonth(incremented);
-//     monthSelectorGroup.dataset.selectedMonth = selectedMonth.toLocaleString('no-NO', { month: 'long', year: 'numeric' });
-//     monthSelector.innerHTML = selectedMonth.toLocaleString('no-NO', { month: 'long', year: 'numeric' });
-//   // });
-// };
-
-// export { getMonth };
+// export { changeMonth };

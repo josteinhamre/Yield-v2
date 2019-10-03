@@ -1,6 +1,8 @@
 import "bootstrap";
 import { listOpen } from '../components/chevron_menu';
-// import { getMonth } from '../components/month_selector';
+import { submitOn } from '../components/submit_on';
+// import { changeMonth } from '../components/month_selector';
 
-// getMonth()
+// changeMonth()
+submitOn()
 listOpen()

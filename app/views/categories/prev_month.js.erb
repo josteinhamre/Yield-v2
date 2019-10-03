@@ -1,1 +1,22 @@
-document.getElementById("monthSelector").innerHTML = "<%= @selected_month %>"
+document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>"
+
+
+function replaceCategories(innerHTML) {
+  const categories = document.getElementById('categoryListContainer');
+  categories.innerHTML = innerHTML;
+}
+
+replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month %>')
+
+
+function listOpen() {
+  const categoryArrows = document.querySelectorAll(".row-arrow");
+  categoryArrows.forEach((categoryArrow) => {
+    categoryArrow.addEventListener("click", (event) => {
+    const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
+    categoryDropdown.classList.toggle("display")
+    });
+  })
+};
+
+listOpen()
