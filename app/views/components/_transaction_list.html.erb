@@ -1,0 +1,9 @@
+ <div class="transaction-list-div">
+  <%= render 'components/category', category: trans.category %>
+  <h6><%= trans.datetime %></h6>
+  <h6><%= trans.store %></h6>
+  <h6><%= trans.amount %></h6>
+  <div class="transaction-arrow">
+    <%= icon('fas', 'chevron-down') %>
+  </div>
+</div>

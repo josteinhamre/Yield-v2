@@ -1,0 +1,23 @@
+.inbox-list {
+  margin: 60px 100px;
+}
+
+.inbox-list-div {
+  display: grid;
+  grid-template-columns: 6% 16% 17% 31% 10% 10%;
+  align-items: center;
+  grid-gap: 2%;
+  border-bottom: 1px solid #83BED3;
+  padding: 0px;
+}
+
+.inbox-list .inbox-arrow {
+  display: flex;
+  justify-content: center;
+}
+
+.inbox-list-div .confirm-trans {
+  color: #15B515;
+  font-size: 2rem;
+  place-self: center;
+}

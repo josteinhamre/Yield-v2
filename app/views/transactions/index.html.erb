@@ -1,1 +1,16 @@
-<h1>This is the transactions of <%= current_user.first_name %> <%= current_user.last_name %>.</h1>
+<div class="transaction-list">
+  <div class="transaction-list-div">
+    <h4>Category</h4>
+    <h4>Date</h4>
+    <h4>Info</h4>
+    <h4>Spent</h4>
+    <div class="month-selector">
+      <h4>October</h4>
+    </div>
+  </div>
+  <%= current_user.accounts.each do |account| %>
+    <% account.transactions.each do |trans| %>
+      <%= render 'components/transaction_list', trans: trans %>
+    <% end %>
+  <% end %>
+</div>
