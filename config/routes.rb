@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   get '/inbox', to: 'transactions#inbox', as: 'inbox'
   patch '/confirm/:id', to: 'transactions#confirm', as: 'confirm'
+  get '/testpage', to: 'pages#testpage', as: 'testpage'
 end
