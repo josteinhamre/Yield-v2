@@ -1,7 +1,5 @@
 import "bootstrap";
-import { getMonth, nMonth, pMonth } from '../components/month_selector';
+// import { getMonth } from '../components/month_selector';
 
 
-getMonth()
-nMonth()
-pMonth()
+// getMonth()

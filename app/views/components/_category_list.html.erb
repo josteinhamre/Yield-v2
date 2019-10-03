@@ -1,6 +1,12 @@
 <div class="category-list-div">
   <%= render 'components/category', category: category %>
-  <input type="text" placeholder="hello">
+  <% bud = category.budgets.where('extract(month from month_from) = ?', 10) %>
+  <% bud2 = bud.where('extract(year from month_from) = ?', 2019) %>
+  <% if bud2.count.zero? %>
+    <input type="text" class="budget-blank bud-field" placeholder="0">
+  <% else %>
+    <input type="text" class="budget-present bud-field" placeholder="<%= bud2.first.amount %>">
+  <% end %>
   <h6>-36000kr</h6>
   <h6>2400kr</h6>
   <div class="progress-view">

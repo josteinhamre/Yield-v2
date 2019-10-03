@@ -31,3 +31,12 @@
   display: flex;
   justify-content: center;
 }
+
+.category-list-div .bud-field {
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.category-list-div .bud-field:hover {
+  border: 1px solid black;
+}

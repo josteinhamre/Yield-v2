@@ -1,5 +1,10 @@
-<div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= session[:selected_month] ? session[:selected_month] : Time.now.strftime('%B %y') %>" >
+<div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
+  <%= link_to prev_month_path, method: :patch, remote: true do %>
   <%= icon('fas', 'chevron-left', id: "prevMonth") %>
-  <h4 id="monthSelector"></h4>
+  <% end %>
+  <h4 id="monthSelector"><%= @selected_month %></h4>
+  <%= link_to next_month_path, method: :patch, remote: true do %>
   <%= icon('fas', 'chevron-right', id: "nextMonth") %>
+  <% end %>
 </div>
+
