@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-
+  authenticated :user do
+    root to: "pages#dashboard"
+  end
   root to: 'pages#home'
   resources :transactions, only: [ :index ]
   resources :categories, only: [ :index ]

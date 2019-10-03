@@ -1,8 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-  <%= image_tag "https://res.cloudinary.com/lightglance/image/upload/v1569848358/yield-resources/logo-v1_kpyze4.png" %>
-
-
+  <%= link_to dashboard_path, class: "navbar-brand" do %>
+  <% unless action_name == "home" %>
+    <%= image_tag "https://res.cloudinary.com/lightglance/image/upload/v1569848358/yield-resources/logo-v1_kpyze4.png" %>
+    <% end %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
