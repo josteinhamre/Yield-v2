@@ -1,9 +1,6 @@
 
-
-
 .category-selector-div {
   display: flex;
-
   flex-wrap: wrap;
   transition-duration: 1s;
   overflow: hidden;
@@ -17,4 +14,9 @@
   max-height: 300px;
   padding: 40px 30px 80px;
   border-bottom: 1px solid #83BED3;
+}
+
+.category-selector-div .category {
+  margin-right: 5px;
+  margin-left: 5px
 }
