@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :accounts
   has_many :categories
   has_many :budgets, through: :categories
+  has_many :transactions, through: :accounts
   after_save :create_categories
-
 
   private
 

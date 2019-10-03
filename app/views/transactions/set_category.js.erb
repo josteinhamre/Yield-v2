@@ -1,0 +1,6 @@
+function updateCategory() {
+  const transaction = document.getElementById("category-<%= @transaction.id %>");
+  transaction.innerHTML = '<%= j render "components/category", category: @transaction.category %>';
+}
+
+updateCategory();
