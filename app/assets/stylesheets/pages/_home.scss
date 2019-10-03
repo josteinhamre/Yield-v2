@@ -1,1 +1,24 @@
+img {
+  width: 90%;
+}
+
 // Specific CSS for your home-page
+.home-container {
+  display: flex;
+  background-color: white;
+  height: calc(100vh - 80px);
+  padding: 0 0 100px 0;
+}
+.home-left {
+  .home-logo {
+    padding: 40px;
+    margin-left: 20px;
+  }
+  .home-text {
+    text-align: left;
+    margin: 40px 60px 0;
+  }
+}
+.home-right {
+  align-self: center;
+}
