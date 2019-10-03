@@ -3,7 +3,9 @@
     <%= icon('fas', 'check-circle', class: "confirm-trans") %>
   <% end %>
 
-  <%= render 'components/category', category: trans.category %>
+  <div id="category-<%= index %>">
+    <%= render 'components/category', category: trans.category %>
+  </div>
   <h6><%= trans.datetime.strftime("%a %-d %b %y:%-d") %></h6>
   <h6><%= trans.store %></h6>
   <h6><%= trans.amount %></h6>
@@ -15,6 +17,8 @@
 
 <div class="category-selector-div" id="row-selector-<%= index %>">
   <% current_user.categories.each do |category| %>
-    <%= render 'components/category', category: category %>
+    <%= link_to set_category_path(trans, category), method: :patch, remote: true do %>
+      <%= render 'components/category', category: category %>
+    <% end %>
   <% end %>
 </div>

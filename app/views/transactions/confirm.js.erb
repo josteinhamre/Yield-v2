@@ -1,3 +1,6 @@
-// console.log("AJAX? AJAX!");
-document.getElementById("transaction-<%= @transaction.id %>")
-  .remove();
+function confirmTrans() {
+  document.getElementById("transaction-<%= @transaction.id %>").remove();
+  document.getElementById("row-selector-<%= @transaction.id %>").remove();
+}
+
+confirmTrans();

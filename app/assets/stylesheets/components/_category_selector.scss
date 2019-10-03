@@ -1,16 +1,11 @@
-
-
-
 .category-selector-div {
   display: flex;
-
   flex-wrap: wrap;
   transition-duration: 1s;
   overflow: hidden;
   max-height: 0px;
   padding: 0 30px;
   margin: 0px 0;
-
 }
 
 .category-selector-div.display {

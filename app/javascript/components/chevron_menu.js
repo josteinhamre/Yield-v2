@@ -1,8 +1,3 @@
-// element.addEventListener(eventType, (event) => {
-//   // Do something (callback)
-// });
-
-
 const listOpen = () => {
   const categoryArrows = document.querySelectorAll(".row-arrow");
   categoryArrows.forEach((categoryArrow) => {
