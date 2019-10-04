@@ -11,30 +11,30 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <% if user_signed_in? %>
-        <%= link_to "Inbox", inbox_path, class: "nav-link" %>
+        <%= active_link_to "Inbox", inbox_path, class: "nav-link" %>
         <% else %>
-        <%= link_to "Learn more", root_path, class: "nav-link" %>
+        <%= active_link_to "Learn more", root_path, class: "nav-link" %>
          <% end %>
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
-        <%= link_to "Budget", categories_path, class: "nav-link" %>
+        <%= active_link_to "Budget", categories_path, class: "nav-link" %>
         <% else %>
-        <%= link_to "Help", root_path, class: "nav-link" %>
+        <%= active_link_to "Help", root_path, class: "nav-link" %>
         <% end %>
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
-        <%= link_to "Overview", dashboard_path, class: "nav-link" %>
+        <%= active_link_to "Overview", dashboard_path, class: "nav-link" %>
         <% else %>
-        <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+        <%= active_link_to "Log in", new_user_session_path, class: "nav-link" %>
          <% end %>
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
-        <%= link_to "Transactions", transactions_path, class: "nav-link" %>
+        <%= active_link_to "Transactions", transactions_path, class: "nav-link" %>
        <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: "form-buttons btn" %>
+        <%= active_link_to "Sign up", new_user_registration_path, class: "form-buttons btn" %>
         <% end %>
       </li>
       <li class="nav-item dropdown">
