@@ -4,7 +4,7 @@
 
 .inbox-list-div {
   display: grid;
-  grid-template-columns: 6% 16% 17% 31% 10% 10%;
+  grid-template-columns: 16% 17% 31% 10% 10% 6% ;
   align-items: center;
   grid-gap: 2%;
   border-bottom: 1px solid #83BED3;
@@ -17,7 +17,16 @@
 }
 
 .inbox-list-div .confirm-trans {
-  color: #15B515;
+  color: gray;
   font-size: 2rem;
   place-self: center;
+ transition-duration: 1;
+
+}
+
+.confirm-trans:hover {
+  color: #15B515;
+  border-radius: 50%;
+  transform: scale(1.3);
+
 }
