@@ -1,10 +1,11 @@
-<div class="category-list-div">
   <%= render 'components/category', category: category %>
-  <% budget = budgets.find_by(category: category) %>
+  <% if defined? budgets %>
+    <% budget = budgets.find_by(category: category) %>
+  <% end %>
   <% unless budget %>
     <% budget = Budget.new %>
   <% end %>
-    <%= simple_form_for budget, html: { class: "budgetForm"} do |f| %>
+    <%= simple_form_for budget, remote: true, html: { class: "budgetForm"} do |f| %>
       <%= f.input_field :amount, class: "bud-field" %>
       <%= f.input_field :month_from, as: 'hidden', value: selected_month %>
       <%= f.input_field :category, as: 'hidden', value: category.id %>
@@ -26,4 +27,3 @@
 <% current_user.categories.each do |cat| %>
 <%= render 'components/category', category: cat %>
 <% end %>
-</div>
