@@ -1,12 +1,10 @@
-<div class="inbox-list">
-  <div class="inbox-list-div header">
+<div class="inbox-list container">
+  <div class="inbox-list-div list-header">
     <h4>Category</h4>
     <h4>Date</h4>
     <h4>Info</h4>
     <h4>Spent</h4>
-    <div class="month-selector">
-      <h4>October</h4>
-    </div>
+    <%= render 'components/month_selector' %>
   </div>
   <div class="inbox-list-elements">
   <% @transactions.each do |trans| %>

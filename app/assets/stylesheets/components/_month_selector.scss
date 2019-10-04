@@ -5,6 +5,8 @@
   grid-column-start: 5;
   grid-column-end: 7;
   place-self: stretch;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .month-selector h4 {
@@ -14,5 +16,5 @@
 .month-selector .fas {
   font-size: 1.3rem;
   cursor: pointer;
+  color: #8FBDD1;
 }
-
