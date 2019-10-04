@@ -1,4 +1,11 @@
+<div class="container">
+  <div class="chart-header">
+    <h4>Account balance</h4>
+  </div>
+  <canvas id="line-chart" width="500" height="250"></canvas>
+</div>
 
-<h1>This is the dashboard of <%= current_user.first_name %> <%= current_user.last_name %>.</h1>
 
-<!-- IMPORTANT: remember to put 140px margin on the element that will go on the top of the page (because of the fixed navabar) -->
+
+<%= javascript_pack_tag 'chart' %>
+
