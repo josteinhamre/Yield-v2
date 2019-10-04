@@ -1,4 +1,4 @@
-<div class="transaction-list">
+<div class="transaction-list container">
   <div class="transaction-list-div">
     <h4>Category</h4>
     <h4>Date</h4>
@@ -8,7 +8,7 @@
   </div>
   <% current_user.accounts.each do |account| %>
     <% account.transactions.each do |trans| %>
-      <%= render 'components/transaction_list', trans: trans, index: trans.id %>
+     <%= render 'components/inbox', trans: trans, index: trans.id %>
     <% end %>
   <% end %>
 </div>
