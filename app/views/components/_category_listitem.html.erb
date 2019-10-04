@@ -1,0 +1,29 @@
+<div class="category-list-div">
+  <%= render 'components/category', category: category %>
+  <% budget = budgets.find_by(category: category) %>
+  <% unless budget %>
+    <% budget = Budget.new %>
+  <% end %>
+    <%= simple_form_for budget, html: { class: "budgetForm"} do |f| %>
+      <%= f.input_field :amount, class: "bud-field" %>
+      <%= f.input_field :month_from, as: 'hidden', value: selected_month %>
+      <%= f.input_field :category, as: 'hidden', value: category.id %>
+    <% end %>
+  <h6>-36000kr</h6>
+  <h6>2400kr</h6>
+  <div class="progress-view">
+    <div class="progress-bar-container">
+      <div class="progress-bar" style="width: 50%; background-color: yellow;">
+      </div>
+    </div>
+    <h6>50%</h6>
+  </div>
+  <div class="category-arrow row-arrow" data-row-id="row-selector-<%= index %>">
+    <%= icon('fas', 'chevron-down') %>
+  </div>
+</div>
+<div class="category-selector-div" id="row-selector-<%= index %>">
+<% current_user.categories.each do |cat| %>
+<%= render 'components/category', category: cat %>
+<% end %>
+</div>

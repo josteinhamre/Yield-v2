@@ -9,7 +9,9 @@
       <h4>October</h4>
     </div>
   </div>
+  <div class="inbox-list-elements">
   <% @transactions.each do |trans| %>
     <%= render 'components/inbox', trans: trans, index: trans.id %>
   <% end %>
+  </div>
 </div>
