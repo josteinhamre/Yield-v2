@@ -34,8 +34,47 @@ account.bank = 'DNB'
 account.balance = "35000"
 account.save!
 
+CATEGORIES = ['Groceries', 'Food & Drinks', 'Travel', 'Rent & Loans', 'Sports & Activities', 'Transport', 'Savings', 'Clothing', 'Bills & Fees', 'Gifts', 'Entertainment', 'Hygiene & Beauty', 'Home & Interior', 'Gadgets',]
+
 file = 'db/seed_helper.csv'
 csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
+  if row[1].match?(/(Varekjøp)(.*)(Dato .*)/)
+    match = row[1].match(/(Varekjøp)(.*)(Dato .*)/)
+    trans = Transaction.new
+    trans.store = match[2].strip
+    trans.datetime = Time.strptime(row[0][6, 9] + '.' + match[3][5, 15], "%Y.%d.%m kl. %H.%M")
+    trans.account = account
+    trans.category = user.categories.find_by(name: CATEGORIES.sample)
+    if row[3] == ""
+      trans.amount = row[4]
+    else
+      trans.amount = "-#{row[3]}"
+    end
+    trans.approved_at = Time.now
+    trans.save!
+  elsif row[1].match?(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
+    match = row[1].match(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
+    trans = Transaction.new
+    trans.store = "#{match[1].strip} - #{match[3].strip}"
+    trans.datetime = Time.strptime("#{row[0]}.12.00", "%d.%m.%Y.%H.%M")
+    trans.account = account
+    trans.category = user.categories.find_by(name: CATEGORIES.sample)
+    if row[3] == ""
+      trans.amount = row[4]
+    else
+      trans.amount = "-#{row[3]}"
+    end
+    trans.approved_at = Time.now
+    trans.save!
+  elsif row[1].match?(/Reservert/)
+    puts "Waiting to parse #{row[1]}, missing full information"
+  else
+    puts "Unable to parse #{row[1]}"
+  end
+end
+
+file2 = 'db/custom_seed.csv'
+csv = CSV.foreach(file2, headers: true, col_sep: ';') do |row|
   if row[1].match?(/(Varekjøp)(.*)(Dato .*)/)
     match = row[1].match(/(Varekjøp)(.*)(Dato .*)/)
     trans = Transaction.new
@@ -48,28 +87,7 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     else
       trans.amount = "-#{row[3]}"
     end
-    trans.approved_at = Time.now if (1..10).to_a.sample < 8
-    p trans.approved_at
+    p trans
     trans.save!
-  elsif row[1].match?(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
-    match = row[1].match(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
-    trans = Transaction.new
-    trans.store = "#{match[1].strip} - #{match[3].strip}"
-    trans.datetime = Time.strptime("#{row[0]}.12.00", "%d.%m.%Y.%H.%M")
-    trans.account = account
-    trans.category = user.categories.find_by(name: 'No Category')
-    if row[3] == ""
-      trans.amount = row[4]
-    else
-      trans.amount = "-#{row[3]}"
-    end
-    trans.approved_at = Time.now if (1..10).to_a.sample < 8
-    p trans.approved_at
-    trans.save!
-  elsif row[1].match?(/Reservert/)
-    puts "Waiting to parse #{row[1]}, missing full information"
-  else
-    puts "Unable to parse #{row[1]}"
   end
 end
-
