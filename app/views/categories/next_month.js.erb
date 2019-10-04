@@ -5,7 +5,7 @@ function replaceCategories(innerHTML) {
   categories.innerHTML = innerHTML;
 }
 
-replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month %>')
+replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>')
 
 
 function listOpen() {

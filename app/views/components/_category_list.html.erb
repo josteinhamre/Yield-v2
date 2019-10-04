@@ -1,5 +1,5 @@
 <% current_user.categories.each do |category| %>
   <div class="category-list-div" id="category-<%= category.id %>">
-      <%= render 'components/category_listitem', category: category, index: category.id, budgets: budgets, selected_month: selected_month %>
+      <%= render 'components/category_listitem', category: category, index: category.id, budgets: budgets, selected_month: selected_month, transactions: transactions %>
   </div>
 <% end %>

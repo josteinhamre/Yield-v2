@@ -1,4 +1,5 @@
   <%= render 'components/category', category: category %>
+  <!-- budget start -->
   <% if defined? budgets %>
     <% budget = budgets.find_by(category: category) %>
   <% end %>
@@ -10,20 +11,43 @@
       <%= f.input_field :month_from, as: 'hidden', value: selected_month %>
       <%= f.input_field :category, as: 'hidden', value: category.id %>
     <% end %>
-  <h6>-36000kr</h6>
-  <h6>2400kr</h6>
+  <!-- budget end -->
+  <!-- transactions start -->
+  <% if transactions %>
+  <% cat_trans = transactions.where(category: category) %>
+  <% cat_trans_sum = cat_trans.sum(:amount_cents) %>
+  <% else %>
+  <% cat_trans_sum = 0 %>
+  <% end %>
+  <h6><%= cat_trans_sum / 100.00 %></h6>
+  <!-- transactions end -->
+  <!-- remaining end -->
+  <% remaining = cat_trans_sum > 0 ? budget.amount_cents + cat_trans_sum : budget.amount_cents - cat_trans_sum.abs  %>
+  <h6><%= remaining / 100.00 %></h6>
+  <!-- remaining end -->
+  <!-- progress end -->
+  <%
+  if budget.amount_cents = 0
+
+  else
+
+  end
+   %>
   <div class="progress-view">
     <div class="progress-bar-container">
       <div class="progress-bar" style="width: 50%; background-color: yellow;">
       </div>
     </div>
-    <h6>50%</h6>
+    <h6></h6>
   </div>
   <div class="category-arrow row-arrow" data-row-id="row-selector-<%= index %>">
     <%= icon('fas', 'chevron-down') %>
   </div>
 </div>
-<div class="category-selector-div" id="row-selector-<%= index %>">
-<% current_user.categories.each do |cat| %>
-<%= render 'components/category', category: cat %>
+  <!-- progress end -->
+<div class="category-transaction-view" id="row-selector-<%= index %>">
+<% if transactions %>
+<% cat_trans.each do |trans| %>
+<%= render 'components/inbox', trans: trans, index: trans.id %>
+<% end %>
 <% end %>

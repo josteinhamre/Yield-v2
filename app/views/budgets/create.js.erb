@@ -2,4 +2,4 @@ function replaceBudget(innerHTML, id) {
   const BudgetCategory = document.getElementById(`category-${id}`);
   BudgetCategory.innerHTML = innerHTML;
 }
-replaceBudget('<%= j render "components/category_listitem",category: @budget.category, index: @budget.category.id, budget: @budget, selected_month: @selected_month %>', <%= @budget.category.id %>)
+replaceBudget('<%= j render "components/category_listitem",category: @budget.category, index: @budget.category.id, budget: @budget, selected_month: @selected_month, transactions: @transactions %>', <%= @budget.category.id %>)
