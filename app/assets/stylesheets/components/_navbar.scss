@@ -1,7 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-  height: 80px;
+  height: 100px;
+  position: fixed;
+
+  top: 0;
+  width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -46,5 +50,11 @@
   display: none;
 }
 
+.active {
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
 
+
+}
 

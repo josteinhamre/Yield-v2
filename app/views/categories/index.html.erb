@@ -1,5 +1,5 @@
 <div class="container budget-container">
-  <div class="category-list-div">
+  <div class="category-list-div list-header">
     <h4>Category</h4>
     <h4>Budgeted</h4>
     <h4>Spent</h4>
@@ -7,6 +7,6 @@
     <%= render 'components/month_selector' %>
   </div>
   <div id="categoryListContainer">
-    <%= render 'components/category_list', budgets: @budgets, selected_month: @selected_month %>
+    <%= render 'components/category_list', budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>
   </div>
 </div>

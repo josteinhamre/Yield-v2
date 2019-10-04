@@ -7,11 +7,13 @@ class Budget < ApplicationRecord
   private
 
   def unique_budget
-    sql_query = " \
+    if new_record?
+      sql_query = " \
         extract(month from month_from) = ? \
         AND extract(year from month_from) = ? \
       "
-    @budgets = category.budgets.where(sql_query, month_from.month, month_from.year)
-    return @budgets.empty?
+      @budgets = category.budgets.where(sql_query, month_from.month, month_from.year)
+      errors.add(:budget, "excists") unless @budgets.empty?
+    end
   end
 end

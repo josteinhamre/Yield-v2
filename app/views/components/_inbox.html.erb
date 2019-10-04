@@ -1,20 +1,25 @@
 <div class="inbox-list-div" id="transaction-<%= trans.id %>">
-  <%= link_to confirm_path(trans), method: :patch, remote: true do %>
-    <%= icon('fas', 'check-circle', class: "confirm-trans") %>
-  <% end %>
-
   <div id="category-<%= index %>">
     <%= render 'components/category', category: trans.category %>
   </div>
+
   <h6><%= trans.datetime.strftime("%a %-d %b %y:%-d") %></h6>
+
   <h6><%= trans.store %></h6>
+
   <h6><%= trans.amount %></h6>
 
+  <div>
+    <%= link_to confirm_path(trans), method: :patch, remote: true do %>
+      <%= icon('fas', 'check-circle', class: "confirm-trans") %>
+    <% end %>
+  </div>
+
   <div class="category-arrow row-arrow" data-row-id="row-selector-<%= index %>">
-    <%= icon('fas', 'chevron-down') %>
+        <%= icon('fas', 'chevron-down') %>
   </div>
 </div>
-
+<!-- below this is hidden by default -->
 <div class="category-selector-div" id="row-selector-<%= index %>">
   <% current_user.categories.each do |category| %>
     <%= link_to set_category_path(trans, category), method: :patch, remote: true do %>
