@@ -48,6 +48,6 @@
 <div class="category-transaction-view" id="row-selector-<%= index %>">
 <% if transactions %>
 <% cat_trans.each do |trans| %>
-<%= render 'components/inbox', trans: trans, index: trans.id %>
+<%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
 <% end %>
 <% end %>

@@ -27,7 +27,7 @@ class User < ApplicationRecord
       Category.create(user: self, name: 'Gifts', icon: (Icon.find_by(name: 'Gifts')), color: '#657C89')
       Category.create(user: self, name: 'Savings', icon: (Icon.find_by(name: 'Savings')), color: '#419388')
       Category.create(user: self, name: 'Travel', icon: (Icon.find_by(name: 'Travel')), color: '#ED6237')
-      Category.create(user: self, name: 'No Category', icon: (Icon.find_by(name: 'No Category')), color: '#DA2121')
+      Category.create(user: self, name: 'No Category', icon: (Icon.find_by(name: 'No Category')), color: 'transparent')
     end
   end
 end
