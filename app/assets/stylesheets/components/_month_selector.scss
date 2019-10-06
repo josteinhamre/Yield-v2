@@ -16,3 +16,11 @@
   cursor: pointer;
   color: #8FBDD1;
 }
+
+.category-list-div .month-selector {
+  grid-column: span 2;
+}
+
+.transaction-list .month-selector {
+  grid-column: span 2;
+}

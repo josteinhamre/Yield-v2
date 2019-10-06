@@ -3,4 +3,15 @@ function updateCategory() {
   transaction.innerHTML = '<%= j render "components/category", category: @transaction.category %>';
 }
 
+function updateCurrent() {
+  document.querySelector(".current").classList.remove('current');
+  document.getElementById("cat-<%= @transaction.id %>-<%= @transaction.category.id %>").classList.add('current');
+}
+
+function closeSelector() {
+  document.getElementById("row-selector-<%= @transaction.id %>").classList.remove('display');
+}
+
 updateCategory();
+updateCurrent();
+closeSelector()

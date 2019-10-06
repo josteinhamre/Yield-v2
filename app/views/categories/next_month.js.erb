@@ -7,7 +7,6 @@ function replaceCategories(innerHTML) {
 
 replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>')
 
-
 function listOpen() {
   const categoryArrows = document.querySelectorAll(".row-arrow");
   categoryArrows.forEach((categoryArrow) => {

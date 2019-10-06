@@ -1,10 +1,10 @@
 <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
   <%= link_to prev_month_path, method: :patch, remote: true do %>
-  <%= icon('fas', 'chevron-left', id: "prevMonth") %>
+    <%= icon('fas', 'chevron-left', id: "prevMonth") %>
   <% end %>
   <h4 id="monthSelector"><%= @selected_month %></h4>
   <%= link_to next_month_path, method: :patch, remote: true do %>
-  <%= icon('fas', 'chevron-right', id: "nextMonth") %>
+    <%= icon('fas', 'chevron-right', id: "nextMonth") %>
   <% end %>
 </div>
 
