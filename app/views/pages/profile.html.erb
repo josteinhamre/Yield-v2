@@ -1,1 +1,28 @@
-<h1>This is the profile of <%= current_user.first_name %> <%= current_user.last_name %>.</h1>
+<!-- shouldn't inbox be called alerts?
+get an alert when you hit the budget
+while editing budget: are you sure you want?
+visual representation of rebudgeting gifts -> travel etc -->
+<div class="profile-container">
+  <h1> Hello <%= current_user.first_name %> </h1>
+  <h2> Things requiring your attention:</h2>
+  <h3> You have 5 new notifications.
+  <h3>Define a category</h3>
+  <h3>Set the goal: I am saving for a holidays in Rome.</h3>
+  <h3>Goal 10000 NOK</h3>
+  <h4> Saved so far: 1500 NOK <h4> <!-- chart pie -->
+  <h4> Accounts: </h4>
+  <h4> Budgeted this month: </h4>
+  <h4> Savings this month: </h4>
+
+</div>
+
+<input type="checkbox">
+<p class="to-be-changed">I'm going to be red! It's gonna be legen... Wait for it...</p>
+
+<input type="checkbox" id="toggle">
+<label for="toggle">Click me!</label>
+<p class="to-be-changed">I'm going to be red! It's gonna be legen... Wait for it...</p>
+
+
+<a href="#id">Click me!</a>
+<p id="id" class="to-be-changed">I'm going to be red! It's gonna be legen... Wait for it...</p>

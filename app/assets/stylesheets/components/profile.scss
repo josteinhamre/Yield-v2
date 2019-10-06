@@ -1,0 +1,31 @@
+.profile-container {
+  margin-top: 140px;
+}
+
+.to-be-changed {
+  color: black;
+}
+
+input[type=checkbox]:checked ~ .to-be-changed {
+  color: red;
+}
+
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+label {
+  display: block;
+  background: #08C;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+}
+
+
+
