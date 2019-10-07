@@ -1,30 +1,57 @@
 .profile-container {
   margin-top: 140px;
-}
-
-.to-be-changed {
-  color: black;
-}
-
-input[type=checkbox]:checked ~ .to-be-changed {
-  color: red;
+  display: flex;
 }
 
 
-input[type=checkbox] {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
+.profile-img {
+  width: 200px;
+}
+.nav {
+  list-style: none;
+  padding: 0;
+
+  .tabs {
+
+    display: inline-flex;
+    padding: 10px 20px;
+    background-color: #83bed3;
+    &:hover {
+      color: white;
+    }
 }
 
-label {
-  display: block;
-  background: #08C;
-  padding: 5px;
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: 2px;
+    .tab {
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      transition: all .3s ease-in-out;
+      border-bottom: 1px solid transparent;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+
+.tabs .active a {
   color: white;
-  font-weight: bold;
+  border-bottom: 1px solid #83BED3;
+  &:hover {
+    border-color: transparent;
+    background: #83BED3;
+    color: white;
+    font-weight: lighter;
+  }
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane .active {
+  display: block;
+
 }
 
 

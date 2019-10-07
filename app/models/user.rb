@@ -13,10 +13,10 @@ class User < ApplicationRecord
 
   def create_categories
     if categories.count.zero?
-      Category.create(user: self, name: 'Groceries', icon: (Icon.find_by(name: 'Groceries')), color: '#97C05C')
+      Category.create(user: self, name: 'Groceries', icon: (Icon.find_by(name: 'Groceries')), color: '#9E7BFF')
       Category.create(user: self, name: 'Food & Drinks', icon: (Icon.find_by(name: 'Food & Drinks')), color: '#4054AF')
-      Category.create(user: self, name: 'Clothing', icon: (Icon.find_by(name: 'Clothing')), color: '#9E9E9E')
-      Category.create(user: self, name: 'Home & Interior', icon: (Icon.find_by(name: 'Home & Interior')), color: '#F19B38')
+      Category.create(user: self, name: 'Clothing', icon: (Icon.find_by(name: 'Clothing')), color: '#FFCBA4')
+      Category.create(user: self, name: 'Home & Interior', icon: (Icon.find_by(name: 'Home & Interior')), color: '#FFCBA4')
       Category.create(user: self, name: 'Sports & Activities', icon: (Icon.find_by(name: 'Sports & Activities')), color: '#414141')
       Category.create(user: self, name: 'Hygiene & Beauty', icon: (Icon.find_by(name: 'Hygiene & Beauty')), color: '#735549')
       Category.create(user: self, name: 'Gadgets', icon: (Icon.find_by(name: 'Gadgets')), color: '#DA5079')
@@ -26,8 +26,8 @@ class User < ApplicationRecord
       Category.create(user: self, name: 'Transport', icon: (Icon.find_by(name: 'Transport')), color: '#37818D')
       Category.create(user: self, name: 'Gifts', icon: (Icon.find_by(name: 'Gifts')), color: '#657C89')
       Category.create(user: self, name: 'Savings', icon: (Icon.find_by(name: 'Savings')), color: '#419388')
-      Category.create(user: self, name: 'Travel', icon: (Icon.find_by(name: 'Travel')), color: '#ED6237')
-      Category.create(user: self, name: 'Income', icon: (Icon.find_by(name: 'Income')), color: '#7bbf16')
+      Category.create(user: self, name: 'Travel', icon: (Icon.find_by(name: 'Travel')), color: '#F75D59')
+      Category.create(user: self, name: 'Income', icon: (Icon.find_by(name: 'Income')), color: '#C6A3FF')
       Category.create(user: self, name: 'No Category', icon: (Icon.find_by(name: 'No Category')), color: 'transparent')
     end
   end

@@ -1,28 +1,60 @@
 <!-- shouldn't inbox be called alerts?
 get an alert when you hit the budget
 while editing budget: are you sure you want?
-visual representation of rebudgeting gifts -> travel etc -->
-<div class="profile-container">
-  <h1> Hello <%= current_user.first_name %> </h1>
+visual representation of rebudgeting gifts -> travel etc  -->
+
+  <!-- <h1> Hello <%= current_user.first_name %> </h1>
   <h2> Things requiring your attention:</h2>
   <h3> You have 5 new notifications.
   <h3>Define a category</h3>
   <h3>Set the goal: I am saving for a holidays in Rome.</h3>
   <h3>Goal 10000 NOK</h3>
-  <h4> Saved so far: 1500 NOK <h4> <!-- chart pie -->
-  <h4> Accounts: </h4>
+  <h4> Saved so far: 1500 NOK <h4> <!- chart pie -->
+  <!-- <h4> Accounts: </h4>
   <h4> Budgeted this month: </h4>
   <h4> Savings this month: </h4>
 
+</div> -->
+
+<div class="profile-container">
+  <div class="profile-information">
+  <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt="">
+  </div>
+
+<!-- <div class="navheader">
+<ul class="tabbar">
+</div>
+<div class="tab">
+  <h3 class="tablinks" data-tab="categories-tab" title="Categories">Categories</h3>
+  <h3 class="tablinks" data-tab="goals-tab" title="Goals">Goals</h3>
+  <h3 class="tablinks" data-tab="accounts" title="Accounts">Accounts</h3>
+</div>
+<div class="tabcontent">fhuwfghwufh</div>
+</ul>
+</div>
+ -->
+ <!-- Tabs -->
+<div class="tabs-container">
+  <div id="profile-tab" class="nav">
+    <h3 class="tabs" class="active" data-id="categories">Categories</h3>
+    <h3 class="tabs" data-id="accounts">Accounts</h3>
+    <h3 class="tabs" data-id="goals">Goals</h3>
+  </div>
+<!-- Tab panels -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="categories">
+
+      <p>Hey.Here you can define your categories</p>
+    </div>
+    <div class="tab-pane" id="goals">
+
+      <p>Hey. Here you can define your goals</p>
+    </div>
+    <div class="tab-pane" id="accounts">
+      <p>Hey. Here you can edit your accounts</p>
+
+    </div>
+  </div>
 </div>
 
-<input type="checkbox">
-<p class="to-be-changed">I'm going to be red! It's gonna be legen... Wait for it...</p>
-
-<input type="checkbox" id="toggle">
-<label for="toggle">Click me!</label>
-<p class="to-be-changed">I'm going to be red! It's gonna be legen... Wait for it...</p>
-
-
-<a href="#id">Click me!</a>
-<p id="id" class="to-be-changed">I'm going to be red! It's gonna be legen... Wait for it...</p>
+<%= javascript_pack_tag "profile" %>

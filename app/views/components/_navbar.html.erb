@@ -34,7 +34,7 @@
         <% if user_signed_in? %>
         <%= active_link_to "Transactions", transactions_path, class: "nav-link" %>
        <% else %>
-        <%= active_link_to "Sign up", new_user_registration_path, class: "form-buttons btn" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "form-buttons btn" %>
         <% end %>
       </li>
       <li class="nav-item dropdown">
