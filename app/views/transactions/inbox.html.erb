@@ -1,14 +1,15 @@
 <div class="inbox-list container">
+  <h2>Your Inbox</h2>
   <div class="inbox-list-div list-header">
     <h4>Category</h4>
     <h4>Date</h4>
     <h4>Info</h4>
-    <h4>Spent</h4>
-    <%= render 'components/month_selector' %>
+    <h4>Amount</h4>
+    <h4></h4>
   </div>
   <div class="inbox-list-elements">
   <% @transactions.each do |trans| %>
-    <%= render 'components/inbox', trans: trans, index: trans.id %>
+    <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
   <% end %>
   </div>
 </div>

@@ -1,12 +1,7 @@
-document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>"
-
 function replaceCategories(innerHTML) {
   const categories = document.getElementById('categoryListContainer');
   categories.innerHTML = innerHTML;
 }
-
-replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>')
-
 
 function listOpen() {
   const categoryArrows = document.querySelectorAll(".row-arrow");
@@ -18,5 +13,50 @@ function listOpen() {
   })
 };
 
+function submitOn() {
+  const budgetForm = document.querySelectorAll(".budgetForm");
+  budgetForm.forEach((form) => {
+    form.budget_amount.addEventListener("blur", (event) => {
+     console.log('Hello from blur')
+      Rails.fire(event.target.parentElement, 'submit');
+      // event.target.parentElement.submit()
+    });
+     form.budget_amount.addEventListener("keydown", (event) => {
+      if (event.keyCode == 13) {
+     console.log('Hello from enter')
+        event.preventDefault()
+        // event.target.parentElement.submit()
+      Rails.fire(event.target.parentElement, 'submit');
+      }
+    });
+  })
+};
+
+function getColor(value) {
+    //value from 0 to 1
+    const hue=((1-value)*120).toString(10);
+    return ["hsl(",hue,",100%,50%)"].join("");
+}
+
+function setColors(value) {
+  progressViews = document.querySelectorAll('.progress-view');
+  progressViews.forEach((progress) => {
+    value = progress.dataset.percentage/100
+    if (value > 1) {
+      color = getColor(1)
+    } else {
+      color = getColor(value)
+    }
+    progress.querySelector('.progress-grow').style.backgroundColor = color;
+  })
+}
+
+document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>"
+
+replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>')
+
+
 listOpen()
 
+submitOn()
+setColors()

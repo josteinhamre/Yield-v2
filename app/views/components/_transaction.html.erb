@@ -1,0 +1,52 @@
+<div class="inbox-list-div" id="transaction-<%= trans.id %>">
+  <div class="trans-cat" id="category-<%= index %>" data-row-id="row-selector-<%= index %>">
+    <%= render 'components/category', category: trans.category %>
+  </div>
+
+  <h6><%= trans.datetime.strftime("%a %-d %b %H:%M") %></h6>
+
+  <h6><%= trans.store %></h6>
+
+  <h6><%= trans.amount %></h6>
+
+  <div>
+    <% unless trans.approved_at %>
+      <%= link_to confirm_path(trans), method: :patch, remote: true do %>
+        <%= icon('fas', 'check-circle', class: "confirm-trans") %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="transaction-arrow row-arrow" data-row-id="row-selector-<%= index %>">
+        <%= icon('fas', 'chevron-down') %>
+  </div>
+</div>
+<!-- below this is hidden by default -->
+<style>
+  .category-selector-div.display {
+    max-height: <%= ((current_user.categories.count / 5) * 50) + 120  %>px;
+  }
+  @media screen and (max-width: 1100px) {
+    .category-selector-div.display {
+      max-height: <%= ((current_user.categories.count / 3) * 50) + 120  %>px;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .category-selector-div.display {
+      max-height: <%= ((current_user.categories.count / 2) * 50) + 120  %>px;
+    }
+  }
+</style>
+<div class="category-selector-div" id="row-selector-<%= index %>">
+  <% current_user.categories.each do |category| %>
+    <% if category == trans.category %>
+      <%= link_to set_category_path(trans, category), method: :patch, remote: true, class: "current", id: "cat-#{trans.id}-#{category.id}" do %>
+        <%= render 'components/category', category: category %>
+      <% end %>
+    <% else %>
+      <%= link_to set_category_path(trans, category), method: :patch, remote: true, id: "cat-#{trans.id}-#{category.id}" do %>
+        <%= render 'components/category', category: category %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

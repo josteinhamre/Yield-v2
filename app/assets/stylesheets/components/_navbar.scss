@@ -3,7 +3,7 @@
   background: white;
   height: 100px;
   position: fixed;
-
+  z-index: 1000;
   top: 0;
   width: 100%;
 }
@@ -51,9 +51,9 @@
 }
 
 .active {
-  color: black;
+  // color: black;
   font-weight: bold;
-  text-transform: uppercase;
+  // text-transform: uppercase;
 
 
 }

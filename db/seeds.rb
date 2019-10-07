@@ -16,7 +16,8 @@ if Icon.count.zero?
   Icon.create(name: 'Hygiene & Beauty', photo: 'yield-resources/icons/beauty_gxftvd.png')
   Icon.create(name: 'Home & Interior', photo: 'yield-resources/icons/home_gzvxtt.png')
   Icon.create(name: 'Gadgets', photo: 'yield-resources/icons/gadgets_c2c9yg.png')
-  Icon.create(name: 'No Category', photo: 'yield-resources/icons/no-cat_uw0jzy.png')
+  Icon.create(name: 'Income', photo: 'yield-resources/icons/income_iuru1x.png')
+  Icon.create(name: 'No Category', photo: 'yield-resources/icons/no-cat-red_qaea5q.png')
 end
 
 user = User.new
@@ -38,19 +39,21 @@ CATEGORIES = ['Groceries', 'Food & Drinks', 'Travel', 'Rent & Loans', 'Sports & 
 
 file = 'db/seed_helper.csv'
 csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
+  p row
   if row[1].match?(/(Varekjøp)(.*)(Dato .*)/)
     match = row[1].match(/(Varekjøp)(.*)(Dato .*)/)
     trans = Transaction.new
     trans.store = match[2].strip
     trans.datetime = Time.strptime(row[0][6, 9] + '.' + match[3][5, 15], "%Y.%d.%m kl. %H.%M")
     trans.account = account
-    trans.category = user.categories.find_by(name: CATEGORIES.sample)
+    trans.category = user.categories.find_by(name: row[5])
     if row[3] == ""
       trans.amount = row[4]
     else
       trans.amount = "-#{row[3]}"
     end
     trans.approved_at = Time.now
+    p trans
     trans.save!
   elsif row[1].match?(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
     match = row[1].match(/(Visa|Lån|Kontoregulering|Overføring)\s*(\d*)(.*)/)
@@ -58,13 +61,14 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     trans.store = "#{match[1].strip} - #{match[3].strip}"
     trans.datetime = Time.strptime("#{row[0]}.12.00", "%d.%m.%Y.%H.%M")
     trans.account = account
-    trans.category = user.categories.find_by(name: CATEGORIES.sample)
+    trans.category = user.categories.find_by(name: row[5])
     if row[3] == ""
       trans.amount = row[4]
     else
       trans.amount = "-#{row[3]}"
     end
     trans.approved_at = Time.now
+    p trans
     trans.save!
   elsif row[1].match?(/Reservert/)
     puts "Waiting to parse #{row[1]}, missing full information"

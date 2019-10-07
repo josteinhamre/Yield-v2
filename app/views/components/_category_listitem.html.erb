@@ -6,18 +6,19 @@
   <% unless budget %>
     <% budget = Budget.new %>
   <% end %>
-    <%= simple_form_for budget, remote: true, html: { class: "budgetForm"} do |f| %>
-      <%= f.input_field :amount, class: "bud-field" %>
-      <%= f.input_field :month_from, as: 'hidden', value: selected_month %>
-      <%= f.input_field :category, as: 'hidden', value: category.id %>
-    <% end %>
+  <%= simple_form_for budget, remote: true, html: { class: "budgetForm"} do |f| %>
+    <%= f.input_field :amount, class: "bud-field", tabindex: "#{category.id}" %>
+    <%= f.input_field :month_from, as: 'hidden', value: selected_month %>
+    <%= f.input_field :category, as: 'hidden', value: category.id %>
+  <% end %>
   <!-- budget end -->
   <!-- transactions start -->
   <% if transactions %>
-  <% cat_trans = transactions.where(category: category) %>
-  <% cat_trans_sum = cat_trans.sum(:amount_cents) %>
+    <% cat_trans = transactions.where(category: category) %>
+    <% cat_trans_sum = cat_trans.sum(:amount_cents) %>
   <% else %>
-  <% cat_trans_sum = 0 %>
+    <% cat_trans = [] %>
+    <% cat_trans_sum = 0 %>
   <% end %>
   <h6><%= cat_trans_sum / 100.00 %></h6>
   <!-- transactions end -->
@@ -27,27 +28,36 @@
   <!-- remaining end -->
   <!-- progress end -->
   <%
-  if budget.amount_cents = 0
-
-  else
-
-  end
+    if budget.amount_cents <= 0
+      percentage = 0
+    elsif cat_trans_sum >= 0
+      percentage = 0
+    else
+      percentage = ((cat_trans_sum.to_f / budget.amount_cents) * 100).abs.to_i
+    end
    %>
-  <div class="progress-view">
+  <div class="progress-view" data-percentage="<%= percentage %>">
     <div class="progress-bar-container">
-      <div class="progress-bar" style="width: 50%; background-color: yellow;">
+      <div class="progress-grow" style="width: <%= percentage %>%;">
       </div>
     </div>
-    <h6></h6>
+    <h6><%= percentage %>%</h6>
   </div>
   <div class="category-arrow row-arrow" data-row-id="row-selector-<%= index %>">
     <%= icon('fas', 'chevron-down') %>
   </div>
 </div>
   <!-- progress end -->
+<style>
+  #row-selector-<%= index %>.display {
+    max-height: <%= ((cat_trans.count) * 65) + 120  %>px;
+    padding: <%= cat_trans.count > 0 ? "10px 0 50px" : "0" %>;
+  }
+</style>
 <div class="category-transaction-view" id="row-selector-<%= index %>">
-<% if transactions %>
-<% cat_trans.each do |trans| %>
-<%= render 'components/inbox', trans: trans, index: trans.id %>
-<% end %>
-<% end %>
+  <% if transactions %>
+    <% cat_trans.each do |trans| %>
+      <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
+    <% end %>
+  <% end %>
+

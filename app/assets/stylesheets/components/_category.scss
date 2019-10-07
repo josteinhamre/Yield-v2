@@ -4,9 +4,9 @@
   justify-content: flex-start;
   text-align: center;
   align-items: center;
-  border: 2px solid black;
+  border: 0px solid black;
   border-radius: 17px;
-  margin: 1.5rem 0rem;
+  margin: .5rem 0rem;
 
 }
 
@@ -32,4 +32,13 @@
   overflow: hidden;
   max-width: 74%;
   white-space: nowrap;
+  text-decoration: none;
+  color: #4f4f4f;
 }
+
+.category-selector-div a:hover {
+  text-decoration: none;
+  transform: scale(1.03);
+}
+
+
