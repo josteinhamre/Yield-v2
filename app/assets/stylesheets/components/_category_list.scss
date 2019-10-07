@@ -1,3 +1,16 @@
+#categoryListContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+  margin-top: 150px;
+  height: 85%;
+  width: 100%;
+}
+
+#categoryListContainer::-webkit-scrollbar {
+    display: none;
+}
+
 .category-list {
   margin: 50px;
 }
@@ -8,7 +21,7 @@
   align-items: center;
   grid-gap: 2%;
   border-bottom: 1px solid #83BED3;
-  padding: .5rem 0px;
+  padding: .5rem 5px;
 }
 
 .category-list-div .progress-view {
@@ -40,6 +53,11 @@
   border-radius: 5px;
   background-color: transparent;
   width: 80%;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: .4px;
+  margin-bottom: 0;
+  color: #4f4f4f;
+  font-size: 1rem;
 }
 
 .category-list-div .bud-field:hover,

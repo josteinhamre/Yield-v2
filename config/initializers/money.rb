@@ -80,7 +80,7 @@ MoneyRails.configure do |config|
   # Example:
   #
   # config.default_format = {
-  #   no_cents_if_whole: nil,
+    no_cents_if_whole: true,
   #   symbol: nil,
   #   sign_before_symbol: nil
   # }

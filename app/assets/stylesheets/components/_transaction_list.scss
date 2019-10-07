@@ -4,14 +4,33 @@ margin-top: 140px;
 
 .transaction-list-div {
   display: grid;
-  grid-template-columns: 20% 16% 32% 16% 6%;
+  grid-template-columns: 20% 16% 42% 10% 6%;
   align-items: center;
   grid-gap: 2%;
   border-bottom: 1px solid #83BED3;
-  padding: 0px;
+  padding: 0px 5px;
 }
 
 .transaction-list .transaction-arrow {
   display: flex;
   justify-content: center;
+}
+
+#transactionsListContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: inline-block;
+  margin-top: 70px;
+  height: 95%;
+  width: 100%;
+}
+
+#transactionsListContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.trans-info {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 90%
 }

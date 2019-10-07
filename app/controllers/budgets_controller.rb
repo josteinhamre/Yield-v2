@@ -6,6 +6,7 @@ class BudgetsController < ApplicationController
     @budget.category = Category.find(params['budget']['category'])
     @budget.save!
     get_transactions
+    get_budgets
   end
 
   def update
@@ -13,14 +14,6 @@ class BudgetsController < ApplicationController
     @budget.amount = params['budget']['amount']
     @budget.save!
     get_transactions
-  end
-
-  def get_transactions
-    sql_query = " \
-        extract(month from datetime) = ? \
-        AND extract(year from datetime) = ? \
-      "
-    date = Date.parse("1 #{@selected_month}")
-    @transactions = current_user.transactions.where(sql_query, date.month, date.year)
+    get_budgets
   end
 end

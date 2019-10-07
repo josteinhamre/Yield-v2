@@ -7,7 +7,7 @@
   <% budget = Budget.new %>
 <% end %>
 <%= simple_form_for budget, remote: true, html: { class: "budgetForm"} do |f| %>
-  <%= f.input_field :amount, class: "bud-field", tabindex: "#{category.id}" %>
+  <%= f.input_field :amount, class: "bud-field", tabindex: "#{category.id}", value: f.object.amount_cents / 100 %>
   <%= f.input_field :month_from, as: 'hidden', value: selected_month %>
   <%= f.input_field :category, as: 'hidden', value: category.id %>
 <% end %>

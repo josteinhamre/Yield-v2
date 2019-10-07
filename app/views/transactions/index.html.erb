@@ -1,11 +1,21 @@
-<div class="transaction-list container">
-  <div class="transaction-list-div">
-    <h4>Category</h4>
-    <h4>Date</h4>
-    <h4>Info</h4>
-    <%= render 'components/month_selector' %>
+<div class="container transaction-container list-container">
+  <div class="fixed-header">
+    <div class="transaction-list-div list-header">
+      <h4>Category</h4>
+      <h4>Date</h4>
+      <h4>Info</h4>
+      <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
+        <%= link_to trans_prev_month_path, method: :patch, remote: true do %>
+          <%= icon('fas', 'chevron-left', id: "prevMonth") %>
+        <% end %>
+        <h4 id="monthSelector"><%= @selected_month %></h4>
+        <%= link_to trans_next_month_path, method: :patch, remote: true do %>
+          <%= icon('fas', 'chevron-right', id: "nextMonth") %>
+        <% end %>
+      </div>
+    </div>
   </div>
-    <% @transactions.each do |trans| %>
-     <%= render 'components/transaction', trans: trans, index: trans.id %>
-    <% end %>
+  <div id="transactionsListContainer">
+      <%= render 'components/transaction_list', transactions: @transactions %>
+  </div>
 </div>
