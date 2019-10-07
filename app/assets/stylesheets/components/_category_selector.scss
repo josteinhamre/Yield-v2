@@ -22,10 +22,11 @@
 }
 
 .category-selector-div .current .category {
-  box-shadow: 0px 0px 10px rgba(0,0,0,.2);
-  background-color: rgba(0,0,0,.2);
+  // box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+  // background-color: rgba(0,0,0,.2);
 }
 
 .category-selector-div .current .category p {
-  color: white;
+  font-weight: bold;
+  // font-size: 1rem;
 }
