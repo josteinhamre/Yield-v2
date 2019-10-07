@@ -2,4 +2,54 @@ function replaceBudget(innerHTML, id) {
   const BudgetCategory = document.getElementById(`category-${id}`);
   BudgetCategory.innerHTML = innerHTML;
 }
-replaceBudget('<%= j render "components/category_listitem",category: @budget.category, index: @budget.category.id, budget: @budget, selected_month: @selected_month, transactions: @transactions %>', <%= @budget.category.id %>)
+
+function listOpen(id) {
+  const BudgetCategory = document.getElementById(`category-${id}`);
+  const categoryArrow = BudgetCategory.querySelector(".row-arrow");
+    categoryArrow.addEventListener("click", (event) => {
+    const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
+    categoryDropdown.classList.toggle("display")
+    });
+};
+
+function submitOn(id) {
+  const BudgetCategory = document.getElementById(`category-${id}`);
+  const budgetForm = BudgetCategory.querySelector(".budgetForm");
+    budgetForm.budget_amount.addEventListener("blur", (event) => {
+     console.log('Hello from blur')
+      Rails.fire(event.target.parentElement, 'submit');
+      // event.target.parentElement.submit()
+    });
+     budgetForm.budget_amount.addEventListener("keydown", (event) => {
+      if (event.keyCode == 13) {
+     console.log('Hello from enter')
+        event.preventDefault()
+        // event.target.parentElement.submit()
+      Rails.fire(event.target.parentElement, 'submit');
+      }
+    });
+};
+
+function getColor(value) {
+    //value from 0 to 1
+    const hue=((1-value)*120).toString(10);
+    return ["hsl(",hue,",100%,50%)"].join("");
+}
+
+function setColors(id) {
+  const BudgetCategory = document.getElementById(`category-${id}`);
+  progressView = BudgetCategory.querySelector('.progress-view');
+    value = progressView.dataset.percentage/100
+    if (value > 1) {
+      color = getColor(1)
+    } else {
+      color = getColor(value)
+    }
+    progressView.querySelector('.progress-grow').style.backgroundColor = color;
+}
+
+replaceBudget('<%= j render "components/category_listitem",category: @budget.category, budget: @budget, selected_month: @selected_month, transactions: @transactions %>', <%= @budget.category.id %>)
+listOpen(<%= @budget.category.id %>)
+submitOn(<%= @budget.category.id %>)
+setColors(<%= @budget.category.id %>)
+

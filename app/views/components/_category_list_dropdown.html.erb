@@ -1,0 +1,12 @@
+<% if transactions %>
+  <% cat_trans = transactions.where(category: category) %>
+  <style>
+    #row-selector-<%= category.id %>.display {
+      max-height: <%= ((cat_trans.count) * 65) + 120  %>px;
+      padding: <%= cat_trans.count > 0 ? "10px 15% 50px" : "0" %>;
+    }
+  </style>
+  <% cat_trans.each do |trans| %>
+    <%= render 'components/transaction_budget', trans: trans, index: trans.id %>
+  <% end %>
+<% end %>
