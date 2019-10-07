@@ -20,20 +20,8 @@ visual representation of rebudgeting gifts -> travel etc  -->
   <div class="profile-information">
   <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt="">
   </div>
+<div class="info-card-month"><h5> blblblb</h5></div>
 
-<!-- <div class="navheader">
-<ul class="tabbar">
-</div>
-<div class="tab">
-  <h3 class="tablinks" data-tab="categories-tab" title="Categories">Categories</h3>
-  <h3 class="tablinks" data-tab="goals-tab" title="Goals">Goals</h3>
-  <h3 class="tablinks" data-tab="accounts" title="Accounts">Accounts</h3>
-</div>
-<div class="tabcontent">fhuwfghwufh</div>
-</ul>
-</div>
- -->
- <!-- Tabs -->
 <div class="tabs-container">
   <div id="profile-tab" class="nav">
     <h3 class="tabs" class="active" data-id="categories">Categories</h3>
@@ -44,7 +32,22 @@ visual representation of rebudgeting gifts -> travel etc  -->
   <div class="tab-content">
     <div class="tab-pane active" id="categories">
 
-      <p>Hey.Here you can define your categories</p>
+      <p class="define-category">My categories:</p>
+
+      <% current_user.categories.each do |category| %>
+      <div class="category" style="border-color: <%= category.color %>">
+  <div class="icon-container" style="background-color: <%= category.color %>">
+    <%= cl_image_tag category.icon.photo %>
+  </div>
+  <p><%= category.name %></p>
+</div>
+    <% end %>
+  </div>
+
+
+
+  </div>
+
     </div>
     <div class="tab-pane" id="goals">
 
@@ -58,3 +61,4 @@ visual representation of rebudgeting gifts -> travel etc  -->
 </div>
 
 <%= javascript_pack_tag "profile" %>
+

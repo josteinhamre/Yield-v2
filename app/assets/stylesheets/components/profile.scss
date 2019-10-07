@@ -1,8 +1,16 @@
-.profile-container {
-  margin-top: 140px;
-  display: flex;
+.profile-img {
+  margin-left: 70px;
+  border-radius: 50%;
 }
 
+
+.profile-container {
+  margin-top: 140px;
+}
+.tabs-container {
+  margin-left: 70px;
+  margin-top: 35px;
+}
 
 .profile-img {
   width: 200px;
@@ -10,49 +18,51 @@
 .nav {
   list-style: none;
   padding: 0;
+}
 
-  .tabs {
+.tabs {
 
-    display: inline-flex;
-    padding: 10px 20px;
-    background-color: #83bed3;
-    &:hover {
-      color: white;
+  display: inline-flex;
+  padding: 10px 20px;
+  background-color: inherit;
+  &:hover {
+    color: #83bed3;
+    border-bottom: solid 4px;
     }
 }
 
-    .tab {
-      text-decoration: none;
-      color: white;
-      padding: 10px;
-      transition: all .3s ease-in-out;
-      border-bottom: 1px solid transparent;
-      &:hover {
-        color: white;
-      }
-    }
-  }
-
-
-.tabs .active a {
-  color: white;
-  border-bottom: 1px solid #83BED3;
-  &:hover {
-    border-color: transparent;
-    background: #83BED3;
+  .tab {
+    text-decoration: none;
     color: white;
-    font-weight: lighter;
-  }
+    padding: 10px;
+    transition: all .3s ease-in-out;
+    border-bottom: 1px solid transparent;
+}
+
+
+.tabs.active {
+  color: #83bed3;
+  border-bottom: solid 4px;
+  font-weight: 500;
+  // border-bottom: 1px solid #83BED3;
+
 }
 
 .tab-pane {
-  display: none;
+   display: none;
 }
 
 .tab-pane .active {
-  display: block;
+   display: block;
 
 }
 
+.define-category {
+   padding-top: 25px;
+   padding-left: 20px;
+   margin-bottom: 25px;
+}
+.category-profile {
 
 
+}

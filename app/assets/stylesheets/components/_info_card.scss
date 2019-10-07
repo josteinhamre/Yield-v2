@@ -11,18 +11,6 @@
 
 }
 
-.info-card h5 {
-  font-size: 16px;
-  margin: 0px;
-}
-
-.info-card p {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0px;
-}
-
-
 .info-card-month {
   display: flex;
   justify-content: center;
@@ -36,7 +24,7 @@
 
 }
 
-.info-card-month p {
+.info-card-month {
   padding: 15px;
   font-size: 18px;
 }
@@ -52,7 +40,3 @@
   border-radius: 8px;
 }
 
-.account-card p {
-  font-size: 16px;
-  margin: 10px;
-}
