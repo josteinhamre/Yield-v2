@@ -29,6 +29,10 @@
   margin-left: 4px;
 }
 
+.nav-item.dropdown {
+  cursor: pointer;
+}
+
 .navbar-light .navbar-nav .nav-link {
   justify-content: space-between;
 

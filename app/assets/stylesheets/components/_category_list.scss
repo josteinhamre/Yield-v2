@@ -24,6 +24,10 @@
   padding: .5rem 5px;
 }
 
+.category-list-div.list-header {
+  grid-template-columns: 20% 13% 13% 13% 5% 27%;
+}
+
 .category-list-div .progress-view {
   width: 100%;
   background: none;
