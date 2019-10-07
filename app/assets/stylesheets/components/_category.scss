@@ -1,5 +1,5 @@
 .category {
-  width: 175px;
+  width: 250px;
   display: flex;
   justify-content: flex-start;
   text-align: center;
@@ -26,9 +26,8 @@
   object-fit: contain;
 }
 
-.category p {
+.category h6 {
   margin: 0px 10px;
-  font-size: 14px;
   overflow: hidden;
   max-width: 74%;
   white-space: nowrap;
