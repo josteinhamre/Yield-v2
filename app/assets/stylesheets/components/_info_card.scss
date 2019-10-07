@@ -56,3 +56,25 @@
   font-size: 16px;
   margin: 10px;
 }
+
+.budget-info-cards {
+  display: grid;
+   grid-template-columns: 30% 30% 30%;
+   grid-gap: 5%;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+
+.budget-info-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(0,0,0,.3);
+}
+
+.budget-info-card.negative {
+  border: 2px solid rgba(255,0,0,.6);
+}

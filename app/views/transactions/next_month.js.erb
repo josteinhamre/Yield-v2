@@ -1,0 +1,20 @@
+function replaceCategories(innerHTML) {
+  const transactions = document.getElementById('transactionsListContainer');
+  transactions.innerHTML = innerHTML;
+}
+
+function listOpen() {
+  const categoryArrows = document.querySelectorAll(".row-arrow");
+  categoryArrows.forEach((categoryArrow) => {
+    categoryArrow.addEventListener("click", (event) => {
+    const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
+    categoryDropdown.classList.toggle("display")
+    });
+  })
+};
+
+
+
+document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>";
+replaceCategories('<%= j render 'components/transaction_list', transactions: @transactions %>');
+listOpen();

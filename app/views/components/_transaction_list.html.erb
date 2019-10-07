@@ -1,0 +1,3 @@
+<% transactions.each do |trans| %>
+  <%= render 'components/transaction', trans: trans, index: trans.id %>
+<% end %>
