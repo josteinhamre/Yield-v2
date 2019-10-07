@@ -23,9 +23,8 @@
   </div>
 
 <!-- Tabs -->
-<div class="container">
-  <div class="info-card-div">
-    <ul id="dashboard-tab" class="nav">
+<div class="-chart-container">
+    <ul id="dashboard-tab" class="nav info-card-div">
       <div class="info-card-graph active">
         <canvas id="tab-balance-chart" width="200%" height="50%" data-id="balance"></canvas>
       </div>
@@ -36,14 +35,13 @@
         <canvas id="tab-budgeted-chart" width="200%" height="50%" data-id="budgeted"></canvas>
       </div>
     </ul>
-  </div>
 <!-- Tab panels -->
   <div class="tab-content">
     <div class="tab-pane active" id="balance">
       <h4>Balance Panel Content</h4>
       <canvas id="balance-chart" width="500" height="250"></canvas>
     </div>
-    <div class="tab-pane active" id="spent">
+    <div class="tab-pane" id="spent">
       <h4>Spent Panel</h4>
       <canvas id="spent-chart" width="500" height="250"></canvas>
     </div>
