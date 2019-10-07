@@ -2,8 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  grid-column-start: 5;
-  grid-column-end: 7;
   place-self: stretch;
   padding-left: 10px;
   padding-right: 10px;
@@ -17,4 +15,12 @@
   font-size: 1.3rem;
   cursor: pointer;
   color: #8FBDD1;
+}
+
+.category-list-div .month-selector {
+  grid-column: span 2;
+}
+
+.transaction-list .month-selector {
+  grid-column: span 2;
 }

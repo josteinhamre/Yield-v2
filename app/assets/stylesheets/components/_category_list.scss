@@ -4,26 +4,30 @@
 
 .category-list-div {
   display: grid;
-  grid-template-columns: 20% 16% 16% 16% 16% 6%;
+  grid-template-columns: 20% 13% 13% 13% 27% 4%;
   align-items: center;
   grid-gap: 2%;
   border-bottom: 1px solid #83BED3;
-  padding: 0px;
+  padding: .5rem 0px;
 }
 
-.category-list .progress-view {
+.category-list-div .progress-view {
   width: 100%;
   background: none;
   display: flex;
 }
 
-.category-list .progress-bar-container {
-  width: 90%;
+.category-list-div .progress-bar-container {
+  width: 80%;
+  overflow: hidden;
+  margin-right: 1rem;
+  border-radius: 13px;
+  border: 1px solid rgba(0,0,0,.3);
 }
 
-.category-list .progress-bar {
-  border-radius: 8px;
-  height: 100%;
+.category-list-div .progress-grow {
+  border-radius: 12px;
+  height: 24px;
 }
 
 .category-list .category-arrow {
@@ -35,6 +39,7 @@
   border: 1px solid transparent;
   border-radius: 5px;
   background-color: transparent;
+  width: 80%;
 }
 
 .category-list-div .bud-field:hover,
@@ -45,15 +50,31 @@
 }
 
 .category-transaction-view {
-  transition-duration: 2s;
+  transition-duration: 1.2s;
   overflow: hidden;
   max-height: 0px;
-  padding: 0 30px;
+  padding: 0 0;
   margin: 0px 0;
 }
 
 .category-transaction-view.display {
-  max-height: 1000px;
-  padding: 40px 30px 80px;
   border-bottom: 1px solid #83BED3;
+}
+
+.category-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.category-arrow i {
+  transform-duration: .5;
+  transform: rotate(0deg);
+}
+
+
+.category-arrow.turned i {
+  transform: rotate(180deg);
 }

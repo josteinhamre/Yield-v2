@@ -1,14 +1,11 @@
-<div class="transaction-list">
+<div class="transaction-list container">
   <div class="transaction-list-div">
     <h4>Category</h4>
     <h4>Date</h4>
     <h4>Info</h4>
-    <h4>Spent</h4>
     <%= render 'components/month_selector' %>
   </div>
-  <% current_user.accounts.each do |account| %>
-    <% account.transactions.each do |trans| %>
-      <%= render 'components/transaction_list', trans: trans, index: trans.id %>
+    <% @transactions.each do |trans| %>
+     <%= render 'components/transaction', trans: trans, index: trans.id %>
     <% end %>
-  <% end %>
 </div>

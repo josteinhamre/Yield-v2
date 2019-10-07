@@ -73,4 +73,10 @@ margin-bottom: 0;
 
 p {
   margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #4f4f4f;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
