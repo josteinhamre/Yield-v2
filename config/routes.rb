@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get '/testpage', to: 'pages#testpage', as: 'testpage'
   patch '/trans_next_month', to: 'transactions#next_month', as: 'trans_next_month'
   patch '/trans_prev_month', to: 'transactions#prev_month', as: 'trans_prev_month'
+  get '/spent_data', to: 'pages#spent_data', as: 'spent_data'
 
 end
