@@ -20,7 +20,7 @@
   <% cat_trans = [] %>
   <% cat_trans_sum = 0 %>
 <% end %>
-<h6><%= cat_trans_sum / 100.00 %></h6>
+<h6><%= (cat_trans_sum / 100.00).abs %></h6>
 <!-- transactions end -->
 <!-- remaining end -->
 <% remaining = cat_trans_sum > 0 ? budget.amount_cents + cat_trans_sum : budget.amount_cents - cat_trans_sum.abs  %>
@@ -37,9 +37,7 @@
     percentage = 100
   else
     percentage = ((cat_trans_sum.abs / prev_and_budgeted.to_f) * 100).to_i
-  end
-  if percentage > 100 && budget = 0
-    percentage = 100
+    percentage = 100 if percentage > 100 && budget.amount == 0
   end
  %>
 
@@ -50,8 +48,10 @@
   </div>
   <h6><%= percentage %>%</h6>
 </div>
+<% if cat_trans.count.nonzero? %>
 <div class="category-arrow row-arrow" data-row-id="row-selector-<%= category.id %>">
   <%= icon('fas', 'chevron-down') %>
 </div>
+<% end %>
 
 

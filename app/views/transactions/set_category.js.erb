@@ -10,6 +10,7 @@ function updateCurrent() {
 
 function closeSelector() {
   document.getElementById("row-selector-<%= @transaction.id %>").classList.remove('display');
+  document.getElementById("chevron-<%= @transaction.id %>").classList.toggle('turned')
 }
 
 updateCategory();

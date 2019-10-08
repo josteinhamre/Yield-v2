@@ -2,7 +2,7 @@
 <% income = transactions.where(category: income_cat).sum(:amount_cents) %>
 <% budgets ? budgeted = ((budgets.sum(:amount_cents))) / 100 : budgeted = 0 %>
 <% available = income - (budgeted * 100) %>
-<div class="budget-info-card">
+<div class="budget-info-card trans-cat" data-row-id="row-selector-income">
   <h4>Income</h4>
   <h5><%= income / 100 %></h5>
 </div>
@@ -10,7 +10,7 @@
   <h4>Budgeted</h4>
   <h5><%= budgeted %></h5>
 </div>
-<div class="budget-info-card <%= 'negative' if available < 0 %>">
+<div class="budget-info-card">
   <h4>Available</h4>
   <h5><%= available / 100 %></h5>
 </div>

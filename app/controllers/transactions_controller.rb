@@ -10,7 +10,8 @@ class TransactionsController < ApplicationController
   end
 
   def inbox
-    @transactions = current_user.transactions.where(approved_at: nil)
+    unsorted = current_user.transactions.where(approved_at: nil)
+    @transactions = (unsorted.sort_by &:datetime).reverse
   end
 
   def set_category
@@ -33,3 +34,5 @@ class TransactionsController < ApplicationController
     get_transactions
   end
 end
+
+

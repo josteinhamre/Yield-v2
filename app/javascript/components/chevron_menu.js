@@ -11,11 +11,13 @@ const listOpen = () => {
   const transCats = document.querySelectorAll(".trans-cat");
   transCats.forEach((transCat) => {
     transCat.addEventListener("click", (event) => {
+    console.log(event.currentTarget.dataset.rowId)
     transCat.parentElement.querySelector('.transaction-arrow').classList.toggle('turned')
     const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
     categoryDropdown.classList.toggle("display")
     });
   })
+
 };
 
 export {listOpen}
