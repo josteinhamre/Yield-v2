@@ -24,19 +24,27 @@
 <!-- transactions end -->
 <!-- remaining end -->
 <% remaining = cat_trans_sum > 0 ? budget.amount_cents + cat_trans_sum : budget.amount_cents - cat_trans_sum.abs  %>
-<h6><%= remaining / 100.00 %></h6>
+<h6><%= category.balance(selected_month) / 100 %></h6>
 <!-- remaining end -->
 <!-- progress end -->
 <%
-  if budget.amount_cents <= 0
+    prev_and_budgeted = category.balance(prev_month) + budget.amount_cents
+  if prev_and_budgeted < 0
+    percentage = 100
+    p '1'
+  elsif prev_and_budgeted == 0 && cat_trans_sum == 0
     percentage = 0
-  elsif cat_trans_sum >= 0
-    percentage = 0
+    p '2'
+  elsif prev_and_budgeted == 0 && cat_trans_sum < 0
+    percentage = 100
+    p '3'
   else
-    percentage = ((cat_trans_sum.to_f / budget.amount_cents) * 100).abs.to_i
+    percentage = ((cat_trans_sum.abs / prev_and_budgeted.to_f) * 100).to_i
+    p '4'
   end
  %>
-<div class="progress-view" data-percentage="<%= percentage %>">
+
+ <div class="progress-view" data-percentage="<%= percentage %>">
   <div class="progress-bar-container">
     <div class="progress-grow" style="width: <%= percentage %>%;">
     </div>

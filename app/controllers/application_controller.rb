@@ -21,13 +21,13 @@ class ApplicationController < ActionController::Base
   private
 
   def define_month
-      # @selected_month = Date.today.strftime("%B %y")
-      # session[:selected_month] = Date.today.strftime("%B %y")
     if session[:selected_month]
       @selected_month = session[:selected_month]
+      @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
     else
       @selected_month = Date.today.strftime("%B %y")
       session[:selected_month] = @selected_month
+      @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
     end
   end
 
