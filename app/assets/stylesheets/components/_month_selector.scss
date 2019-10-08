@@ -3,12 +3,22 @@
   justify-content: space-between;
   align-items: center;
   place-self: stretch;
-  padding-left: 10px;
-  padding-right: 10px;
+  align-self: end;
+  max-width: 300px;
 }
 
 .month-selector h4 {
   white-space: nowrap;
+}
+
+.month-selector a {
+  flex-grow:1;
+  text-align: left;
+}
+
+.month-selector a:last-child {
+  flex-grow:1;
+  text-align: right;
 }
 
 .month-selector .fas {
@@ -17,10 +27,6 @@
   color: #8FBDD1;
 }
 
-.category-list-div .month-selector {
-  grid-column: span 2;
-}
-
-.transaction-list .month-selector {
+.transaction-list-div .month-selector {
   grid-column: span 2;
 }
