@@ -43,6 +43,19 @@ visual representation of rebudgeting gifts -> travel etc  -->
 </div>
     <% end %>
   </div>
+<h1 class= form-title>Add a categoryt</h1>
+
+<div class="container">
+ <%= simple_form_for @category do |f| %>
+  <%= f.input :name %>
+  <%= f.input :icon %>
+  <%= f.input :color %>
+
+   <%= f.submit "add a category", class: "btn btn-primary" %>
+</div>
+<% end %>
+
+
 
 
 
