@@ -31,16 +31,15 @@
     prev_and_budgeted = category.balance(prev_month) + budget.amount_cents
   if prev_and_budgeted < 0
     percentage = 100
-    p '1'
   elsif prev_and_budgeted == 0 && cat_trans_sum == 0
     percentage = 0
-    p '2'
   elsif prev_and_budgeted == 0 && cat_trans_sum < 0
     percentage = 100
-    p '3'
   else
     percentage = ((cat_trans_sum.abs / prev_and_budgeted.to_f) * 100).to_i
-    p '4'
+  end
+  if percentage > 100 && budget = 0
+    percentage = 100
   end
  %>
 

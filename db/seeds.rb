@@ -17,7 +17,7 @@ if Icon.count.zero?
   Icon.create(name: 'Home & Interior', photo: 'yield-resources/icons/home_gzvxtt.png')
   Icon.create(name: 'Gadgets', photo: 'yield-resources/icons/gadgets_c2c9yg.png')
   Icon.create(name: 'Income', photo: 'yield-resources/icons/income_iuru1x.png')
-  Icon.create(name: 'No Category', photo: 'yield-resources/icons/no-cat-red_qaea5q.png')
+  Icon.create(name: 'No Category', photo: 'yield-resources/icons/no-cat-qmb_npqck7.png')
 end
 
 user = User.new
