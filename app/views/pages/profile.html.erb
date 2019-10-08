@@ -18,59 +18,44 @@ visual representation of rebudgeting gifts -> travel etc  -->
 
 <div class="profile-container">
   <div class="profile-information">
-  <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt="">
+    <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt="">
   </div>
-<div class="info-card-month"><h5> blblblb</h5></div>
+  <div class="info-card-month"><h5> blblblb</h5></div>
 
-<div class="tabs-container">
-  <div id="profile-tab" class="nav">
-    <h3 class="tabs" class="active" data-id="categories">Categories</h3>
-    <h3 class="tabs" data-id="accounts">Accounts</h3>
-    <h3 class="tabs" data-id="goals">Goals</h3>
+  <div class="tabs-container">
+    <div id="profile-tab" class="nav">
+      <h3 class="tabs" class="active" data-id="categories">Categories</h3>
+      <h3 class="tabs" data-id="accounts">Accounts</h3>
+      <h3 class="tabs" data-id="goals">Goals</h3>
+    </div>
+    <!-- Tab panels -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="categories">
+
+        <p class="define-category">My categories:</p>
+
+        <% current_user.categories.each do |category| %>
+        <%= render 'components/category', category: category %>
+        <% end %>
+      </div>
+      <h1 class= form-title>Add a category</h1>
+
+      <div class="container">
+       <%= render "categories/form", category: @category %>
+      </div>
+
+
+    </div>
   </div>
-<!-- Tab panels -->
-  <div class="tab-content">
-    <div class="tab-pane active" id="categories">
+  <div class="tab-pane" id="goals">
 
-      <p class="define-category">My categories:</p>
-
-      <% current_user.categories.each do |category| %>
-      <div class="category" style="border-color: <%= category.color %>">
-  <div class="icon-container" style="background-color: <%= category.color %>">
-    <%= cl_image_tag category.icon.photo %>
+    <p>Hey. Here you can define your goals</p>
   </div>
-  <p><%= category.name %></p>
+  <div class="tab-pane" id="accounts">
+    <p>Hey. Here you can edit your accounts</p>
+
+  </div>
 </div>
-    <% end %>
-  </div>
-<h1 class= form-title>Add a categoryt</h1>
-
-<div class="container">
- <%= simple_form_for @category do |f| %>
-  <%= f.input :name %>
-  <%= f.input :icon %>
-  <%= f.input :color %>
-
-   <%= f.submit "add a category", class: "btn btn-primary" %>
-</div>
-<% end %>
-
-
-
-
-
-  </div>
-
-    </div>
-    <div class="tab-pane" id="goals">
-
-      <p>Hey. Here you can define your goals</p>
-    </div>
-    <div class="tab-pane" id="accounts">
-      <p>Hey. Here you can edit your accounts</p>
-
-    </div>
-  </div>
 </div>
 
 <%= javascript_pack_tag "profile" %>

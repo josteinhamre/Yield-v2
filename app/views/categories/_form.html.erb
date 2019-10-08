@@ -1,0 +1,12 @@
+<%= simple_form_for category, remote: true  do |f| %>
+  <%= f.input_field :name, placeholder: 'Name' %>
+  <%= f.input :icon_id, :as => :hidden, :input_html => { :value => "some value" } %>
+  <%= f.input_field :color, placeholder: 'Pick a color' %>
+  <div class="icons">
+    <p> Chose an icon for your category <p>
+    <% Icon.all.each do |icon| %>
+      <%= render 'components/icon', color: 'black', icon: icon %>
+    <% end %>
+  </div>
+  <%= f.submit "Add a category", class: "btn btn-primary" %>
+<% end %>

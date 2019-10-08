@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   root to: 'pages#home'
   resources :transactions, only: [ :index ]
-  resources :categories, only: [ :index ]
+  resources :categories, only: [ :index, :new, :create ]
   resources :budgets, only: [ :create, :update ]
   get '/profile', to: 'pages#profile', as: 'profile'
   get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
