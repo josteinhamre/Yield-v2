@@ -1,19 +1,19 @@
 <div class="container list-container budget-container">
   <div class="fixed-header">
     <div class="budget-info-cards">
-      <%= render 'components/budget_info', budgets: @budgets %>
+      <%= render 'components/budget_info', budgets: @budgets, transactions: @transactions %>
     </div>
     <div class="category-list-div list-header">
       <h4>Category</h4>
       <h4>Budgeted</h4>
       <h4>Spent</h4>
-      <h4>Remaining</h4>
+      <h4>Remaining<!-- (from <%= @prev_month %>) --></h4>
       <h4></h4>
       <%= render 'components/month_selector' %>
     </div>
   </div>
   <div id="categoryListContainer">
-    <%= render 'components/category_list', budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>
+    <%= render 'components/category_list', budgets: @budgets, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month %>
   </div>
 </div>
 
