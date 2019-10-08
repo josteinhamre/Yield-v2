@@ -37,8 +37,8 @@ ul {
 }
 
 .info-card-graph {
-  height: 80px;
-  display: flex;
+  height: 130px;
+  // display: flex;
   justify-content: space-around;
   background: white;
   width: 250px;
@@ -46,6 +46,14 @@ ul {
   border-radius: 8px;
   text-align: center;
   align-items: center;
+  padding-top: 7px;
+  padding-right: 1rem;
+}
+
+.info-card-graph-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 7px;
 }
 
 .chart-container {
