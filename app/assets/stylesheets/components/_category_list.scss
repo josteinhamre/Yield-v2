@@ -85,6 +85,11 @@
   border-bottom: 1px solid #83BED3;
 }
 
+.category-transaction-view.income-trans.display {
+  border-bottom: 0px solid #83BED3;
+  margin: 2rem 0;
+}
+
 .budget-cat-transaction {
   display: grid;
   grid-template-columns: 30% 56% 10%;

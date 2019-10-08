@@ -56,6 +56,10 @@
   align-items: center;
 }
 
+.budget-info-card.trans-cat {
+  cursor: pointer;
+}
+
 .budget-info-card.negative {
   border: 2px solid rgba(255,0,0,.6);
 }
