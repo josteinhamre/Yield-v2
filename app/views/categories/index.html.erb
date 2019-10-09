@@ -8,12 +8,11 @@
       <%= render 'components/category_list_dropdown', category: current_user.categories.find_by(name: 'Income'), transactions: @transactions %>
     </div>
     <div class="category-list-div list-header">
-      <h4>Category</h4>
+      <%= render 'components/month_selector' %>
       <h4>Overflow</h4>
       <h4>Budgeted</h4>
       <h4>Spent</h4>
       <h4>Remaining<!-- (from <%= @prev_month %>) --></h4>
-      <%= render 'components/month_selector' %>
     </div>
   </div>
   <div id="categoryListContainer">

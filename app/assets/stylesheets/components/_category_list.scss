@@ -15,17 +15,30 @@
   margin: 50px;
 }
 
+.budget-info {
+  display: none;
+  color: rgba(0,0,0,.3);
+}
+
+.category-list-div:hover .budget-info {
+  display: inline;
+}
+
 .category-list-div {
   display: grid;
-  grid-template-columns: 20% 13% 13% 13% 27% 4%;
+  grid-template-columns: 25% 16% 16% 16% 11% 6%;
   align-items: center;
   grid-gap: 2%;
   // border-bottom: 1px solid #83BED3;
   padding: .5rem 5px;
 }
 
+// .category-list-div h6 {
+//   text-align: right;
+// }
+
 .category-list-div.list-header {
-  grid-template-columns: 20% 13% 13% 13% 10% 21%;
+  grid-template-columns: 25% 16% 16% 16% 17%;
 }
 
 .category-list-div .progress-view {
@@ -83,7 +96,7 @@
 }
 
 .category-transaction-view.display {
-  border-bottom: 1px solid #83BED3;
+  // border-bottom: 1px solid #83BED3;
 }
 
 .category-transaction-view.income-trans.display {

@@ -2,9 +2,6 @@
   <div class="header">
     <!-- <h3 class="page-title">Transactions</h3> -->
     <div class="transaction-list-div list-header">
-      <h4>Category</h4>
-      <h4>Date</h4>
-      <h4>Info</h4>
       <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
         <%= link_to trans_prev_month_path, method: :patch, remote: true do %>
           <%= icon('fas', 'chevron-left', id: "prevMonth") %>
@@ -14,6 +11,9 @@
           <%= icon('fas', 'chevron-right', id: "nextMonth") %>
         <% end %>
       </div>
+      <h4>Date</h4>
+      <h4>Info</h4>
+      <h4>Amount</h4>
     </div>
   </div>
   <div id="transactionsListContainer">
