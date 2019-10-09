@@ -50,9 +50,16 @@ class User < ApplicationRecord
         AND extract(year from datetime) <= ? \
       "
     date = Date.parse("1 #{month_year}")
-    income_cat = categories.where(name: 'Income')
     income_trans = transactions.where(category: income_cat)
     income_trans.where(sql_query, date.month, date.year)
+  end
+
+  def income_cat
+    categories.find_by(name: 'Income')
+  end
+
+  def no_cat
+    categories.find_by(name: 'No Category')
   end
 
   private
