@@ -3,8 +3,7 @@ class DashboardController < ApplicationController
   respond_to :json
 
   def balance_data
-    get_transactions
-    @chart_balance_per_day = []
+    @balance_data = current_user.balance_for_month(@selected_month)
 
     respond_to do |format|
       format.html { render "balance_data.json" }

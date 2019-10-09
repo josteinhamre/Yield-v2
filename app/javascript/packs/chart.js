@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
       spentChart("spent-chart", data);
     })
     .catch(response => {
+      console.log(response)
       alert('Something went wrong');
     });
 

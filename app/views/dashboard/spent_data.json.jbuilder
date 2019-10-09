@@ -4,7 +4,7 @@ datasets = [{
   fill: false
 }]
 
-json.labels(1..@chart_spent_per_day.count).to_a
+json.labels (1..@chart_spent_per_day.count).to_a
 json.datasets datasets do |dataset|
   json.data dataset[:data]
   json.borderColor dataset[:border_color]
