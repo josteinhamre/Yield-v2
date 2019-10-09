@@ -1,0 +1,4 @@
+<%= simple_form_for :transactions, url: transactions_path do |f| %>
+  <%= f.input :file, as: :file %>
+  <%= f.submit 'upload' %>
+<% end %>

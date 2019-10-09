@@ -39,7 +39,6 @@ CATEGORIES = ['Groceries', 'Food & Drinks', 'Travel', 'Rent & Loans', 'Sports & 
 
 file = 'db/seed_helper.csv'
 csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
-  p row
   if row[1].match?(/(Varekjøp)(.*)(Dato .*)/)
     match = row[1].match(/(Varekjøp)(.*)(Dato .*)/)
     trans = Transaction.new
@@ -47,11 +46,8 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     trans.datetime = Time.strptime(row[0][6, 9] + '.' + match[3][5, 15], "%Y.%d.%m kl. %H.%M")
     trans.account = account
     trans.category = user.categories.find_by(name: row[5])
-    if row[3] == ""
-      trans.amount = row[4]
-    else
-      trans.amount = "-#{row[3]}"
-    end
+    trans.address = row
+    row[3] == "" ? trans.amount = row[4] : trans.amount = "-#{row[3]}"
     trans.approved_at = Time.now
     p trans
     trans.save!
@@ -62,11 +58,8 @@ csv = CSV.foreach(file, headers: true, col_sep: ';') do |row|
     trans.datetime = Time.strptime("#{row[0]}.12.00", "%d.%m.%Y.%H.%M")
     trans.account = account
     trans.category = user.categories.find_by(name: row[5])
-    if row[3] == ""
-      trans.amount = row[4]
-    else
-      trans.amount = "-#{row[3]}"
-    end
+    trans.address = row
+    row[3] == "" ? trans.amount = row[4] : trans.amount = "-#{row[3]}"
     trans.approved_at = Time.now
     p trans
     trans.save!

@@ -33,6 +33,13 @@ class TransactionsController < ApplicationController
     get_budgets
     get_transactions
   end
-end
+
+  def create
+    # raise
+    Transaction.import_dnb(params['transactions']['file'], current_user)
+     # flash[:notice] = "Countries uploaded successfully"
+    redirect_to inbox_path
+  end
+ end
 
 
