@@ -11,7 +11,6 @@ gem 'puma'
 gem 'rails', '5.2.3'
 gem 'redis'
 gem 'money-rails'
-gem 'jquery-minicolors-rails'
 
 gem "active_link_to"
 gem 'autoprefixer-rails'

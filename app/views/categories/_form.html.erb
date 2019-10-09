@@ -1,7 +1,13 @@
 <%= simple_form_for category, remote: true  do |f| %>
   <%= f.input_field :name, placeholder: 'Name', :input_html => {:rows => 15}%>
   <%= f.input :icon_id, :as => :hidden %>
-  <%= f.input_field :color, as: :minicolors, placeholder: 'Pick a color' %>
+  <%= f.input_field :color, :as => :hidden, :value => "hotpink" %>
+
+  <div id="color-picker" class="d-flex align-items-center">
+
+    <p>Click to pick a color</p>
+    <div id='color-picker-square'></div>
+  </div>
   <p> Chose an icon for your category <p>
   <div class="icons">
     <% Icon.all.each do |icon| %>
@@ -10,5 +16,7 @@
   </div>
   <%= f.submit "Save", class: "form-buttons btn profile" %>
 <% end %>
+
+
 
 
