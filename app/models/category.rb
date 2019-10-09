@@ -3,6 +3,7 @@ class Category < ApplicationRecord
   belongs_to :icon
   has_many :transactions
   has_many :budgets
+  validates :name, :color, presence: true
 
   def balance(month_year)
     trans = transactions_to_date(month_year).sum(:amount_cents)
