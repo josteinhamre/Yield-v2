@@ -68,3 +68,12 @@
 .transaction-arrow.turned i {
   transform: rotate(180deg);
 }
+.empty-inbox {
+  display: flex;
+  align-items: center;
+  img {
+    height: 80vh;
+    margin-top: 150px;
+  ;
+  }
+}

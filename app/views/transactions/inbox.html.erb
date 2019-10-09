@@ -1,17 +1,30 @@
-<div class="inbox-container list-container container">
-  <div class="header">
-    <!-- <h3 class="page-title">Your Inbox</h3> -->
-    <div class="inbox-list-div list-header">
-      <h4>Category</h4>
-      <h4>Date</h4>
-      <h4>Info</h4>
-      <h4>Amount</h4>
-      <h4></h4>
+<% unless @transactions.empty? %>
+  <div class="inbox-container list-container container">
+    <div class="header">
+      <!-- <h3 class="page-title">Your Inbox</h3> -->
+      <div class="inbox-list-div list-header">
+        <h4>Category</h4>
+        <h4>Date</h4>
+        <h4>Info</h4>
+        <h4>Amount</h4>
+        <h4></h4>
+      </div>
+    </div>
+    <div id="inboxListContainer" class="inbox-list-elements">
+    <% @transactions.each do |trans| %>
+      <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
+    <% end %>
     </div>
   </div>
-  <div id="inboxListContainer" class="inbox-list-elements">
-  <% @transactions.each do |trans| %>
-    <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
-  <% end %>
+  <div id='empty-inbox-image' class="empty-inbox d-none">
+
+    <%= image_tag "empty_inbox.svg" %>
   </div>
-</div>
+<% else %>
+  <div class="empty-inbox">
+
+    <%= image_tag "empty_inbox.svg" %>
+  </div>
+<% end %>
+
+
