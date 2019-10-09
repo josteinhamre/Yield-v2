@@ -1,17 +1,16 @@
 <% income_cat = current_user.categories.find_by(name: 'Income') %>
-<% income_bud = budgets.find_by(category: income_cat) if budgets %>
-<% income_bud ? income = income_bud.amount_cents.abs : income = 0 %>
-<% budgets ? budgeted = ((budgets.sum(:amount_cents)) + income) / 100 : budgeted = 0 %>
+<% income = transactions.where(category: income_cat).sum(:amount_cents) %>
+<% budgets ? budgeted = ((budgets.sum(:amount_cents))) / 100 : budgeted = 0 %>
 <% available = income - (budgeted * 100) %>
-<div class="budget-info-card">
+<div class="budget-info-card trans-cat" data-row-id="row-selector-<%= current_user.categories.find_by(name: 'Income').id %>">
   <h4>Income</h4>
   <h5><%= income / 100 %></h5>
-</div>
-<div class="budget-info-card <%= 'negative' if available < 0 %>">
-  <h4>Available</h4>
-  <h5><%= available / 100 %></h5>
 </div>
 <div class="budget-info-card">
   <h4>Budgeted</h4>
   <h5><%= budgeted %></h5>
+</div>
+<div class="budget-info-card">
+  <h4>Available</h4>
+  <h5><%= available / 100 %></h5>
 </div>

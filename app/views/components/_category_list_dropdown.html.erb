@@ -1,5 +1,7 @@
 <% if transactions %>
   <% cat_trans = transactions.where(category: category) %>
+  <% puts 'Im here!' %>
+  <% puts cat_trans %>
   <style>
     #row-selector-<%= category.id %>.display {
       max-height: <%= ((cat_trans.count) * 65) + 120  %>px;

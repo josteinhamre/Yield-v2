@@ -35,7 +35,7 @@ function submitOn() {
 function getColor(value) {
     //value from 0 to 1
     const hue=((1-value)*120).toString(10);
-    return ["hsl(",hue,",100%,50%)"].join("");
+    return ["hsl(",hue,",90%,60%)"].join("");
 }
 
 function setColors(value) {
@@ -54,14 +54,14 @@ function setColors(value) {
 function replaceInfo() {
   const info = document.querySelector('.budget-info-cards');
   console.log(info)
-  info.innerHTML = "<%= j render 'components/budget_info', budgets: @budgets %>";
+  info.innerHTML = "<%= j render 'components/budget_info', budgets: @budgets, transactions: @transactions %>";
 }
 
 
 
 document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>";
 
-replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions %>');
+replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month %>');
 
 setColors();
 listOpen();

@@ -4,7 +4,7 @@
   align-items: center;
   place-self: stretch;
   align-self: end;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .month-selector h4 {
@@ -29,4 +29,9 @@
 
 .transaction-list-div .month-selector {
   grid-column: span 2;
+}
+
+
+.info-card .month-selector {
+  align-self: unset;
 }
