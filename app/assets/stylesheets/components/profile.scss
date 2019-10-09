@@ -121,6 +121,9 @@
 .simple_form.new_category {
   input {
     width: 100%;
+    &:focus {
+      outline: none;
+    }
   }
 }
 .adding-category {
