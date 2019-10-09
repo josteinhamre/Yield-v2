@@ -9,16 +9,15 @@ csv = CSV.foreach(file2, headers: true, col_sep: ';') do |row|
   if row[1].match?(/(Varekjøp)(.*)(Dato .*)/)
     match = row[1].match(/(Varekjøp)(.*)(Dato .*)/)
     trans = Transaction.new
-    trans.store = match[2].strip
+    trans.info = match[2].strip
     trans.datetime = Time.strptime(row[0][6, 9] + '.' + match[3][5, 15], "%Y.%d.%m kl. %H.%M")
     trans.account = account
-    trans.category = user.categories.find_by(name: 'No Category')
-    if row[3] == ""
-      trans.amount = row[4]
-    else
-      trans.amount = "-#{row[3]}"
-    end
+    trans.csv_row_id = row
+    trans.category = user.no_cat
+    row[3] == "" ? trans.amount = row[4] : trans.amount = "-#{row[3]}"
+    trans.approved_at = Time.now
     p trans
-    trans.save!
+    trans.save
+    p trans
   end
 end
