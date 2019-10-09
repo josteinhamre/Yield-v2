@@ -54,7 +54,7 @@ function setColors(value) {
 function replaceInfo() {
   const info = document.querySelector('.budget-info-cards');
   console.log(info)
-  info.innerHTML = "<%= j render 'components/budget_info', budgets: @budgets, transactions: @transactions %>";
+  info.innerHTML = "<%= j render 'components/budget_info', budgets: @budgets, transactions: @transactions, selected_month: @selected_month %>";
 }
 
 

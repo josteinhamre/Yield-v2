@@ -1,7 +1,7 @@
 <% income_cat = current_user.categories.find_by(name: 'Income') %>
 <% income = transactions.where(category: income_cat).sum(:amount_cents) %>
 <% budgets ? budgeted = ((budgets.sum(:amount_cents))) / 100 : budgeted = 0 %>
-<% available = income - (budgeted * 100) %>
+<% available = current_user.available_balance(selected_month) %>
 <div class="budget-info-card trans-cat" data-row-id="row-selector-<%= current_user.categories.find_by(name: 'Income').id %>">
   <h4>Income</h4>
   <h5><%= income / 100 %></h5>
