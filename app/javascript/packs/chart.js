@@ -46,8 +46,8 @@ const budgetedChart = (elementId, data, isThumbnail = false) => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  // spent data
+const loadCharts = () => {
+    // spent data
   fetch('/spent_data')
     .then(response => response.json())
     .then(data => {
@@ -80,7 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(response => {
       alert('Something went wrong3')
     });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadCharts();
 });
+
+window.loadCharts = loadCharts;
 
 tabClick();
 

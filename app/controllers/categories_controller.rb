@@ -20,6 +20,4 @@ class CategoriesController < ApplicationController
     get_budgets
     get_transactions
   end
-
-
 end

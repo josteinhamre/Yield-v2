@@ -30,7 +30,6 @@ class DashboardController < ApplicationController
         extract(month from month_from) = ? \
         AND extract(year from month_from) = ? \
       "
-
     month_as_date = Date.parse("1 #{@selected_month}")
     current_user.budgets.where(sql_query, month_as_date.month, month_as_date.year)
   end
@@ -52,6 +51,19 @@ class DashboardController < ApplicationController
       format.html { render "budgeted_data.json" }
       format.js
     end
+  end
+
+  def next_month
+    @selected_month = (Date.parse("1 #{@selected_month}") >> 1).strftime("%B %y")
+    session[:selected_month] = @selected_month
+    @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
+  end
+
+  def prev_month
+    @selected_month = (Date.parse("1 #{@selected_month}") << 1).strftime("%B %y")
+    session[:selected_month] = @selected_month
+    @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
+    render action: :next_month
   end
 
   protected

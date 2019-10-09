@@ -9,7 +9,8 @@ function tabClick() {
 
     // activate new tab and panel
     event.target.parentElement.classList.add('active');
-    document.getElementById(event.target.dataset.id).classList.toggle('active');
+    const id = event.target.closest('.info-card-graph').dataset.id;
+    document.getElementById(id).classList.toggle('active');
   };
 
   const element = document.getElementById('dashboard-tab');

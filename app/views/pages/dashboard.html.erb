@@ -1,55 +1,67 @@
 <div class="chart-view">
-<div class="container-left nav" id="dashboard-tab">
+<div class="container-left nav">
 <!--     <ul id="dashboard-tab" class="nav info-card-div"> -->
 
+    <div class="info-card month">
+      <%#= render 'components/month_selector' %>
+      <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
+        <%= link_to dash_prev_month_path, method: :patch, remote: true do %>
+          <%= icon('fas', 'chevron-left', id: "prevMonth") %>
+        <% end %>
+        <h4 id="monthSelector"><%= @selected_month %></h4>
+        <%= link_to dash_next_month_path, method: :patch, remote: true do %>
+          <%= icon('fas', 'chevron-right', id: "nextMonth") %>
+        <% end %>
+      </div>
+
+    </div>
     <div class="info-card">
       <h5>Money in:</h5>
     </div>
     <div class="info-card">
       <h5>Money out:</h5>
     </div>
-    <div class="info-card">
-      <%= render 'components/month_selector' %>
-    </div>
 
   <!-- Tabs -->
-      <div class="info-card-graph active">
+  <div id="dashboard-tab">
+      <div class="info-card-graph active" data-id="balance">
         <div class="info-card-graph-header">
           <h5>Balance</h5>
           <h5>13 123 kr</h5>
         </div>
-        <canvas id="tab-balance-chart" width="200%" height="75%" data-id="balance"></canvas>
+        <canvas id="tab-balance-chart" width="200%" height="75%"></canvas>
       </div>
-      <div class="info-card-graph">
+      <div class="info-card-graph" data-id="spent">
         <div class="info-card-graph-header">
           <h5>Spent</h5>
           <h5>8342 kr</h5>
         </div>
-        <canvas id="tab-spent-chart" width="200%" height="75%" data-id="spent"></canvas>
+        <canvas id="tab-spent-chart" width="200%" height="75%"></canvas>
       </div>
-      <div class="info-card-graph">
+      <div class="info-card-graph" data-id="budgeted">
         <div class="info-card-graph-header">
           <h5>Budgeted</h5>
           <h5>11 357 kr</h5>
         </div>
-        <canvas id="tab-budgeted-chart" width="200%" height="75%" data-id="budgeted"></canvas>
+        <canvas id="tab-budgeted-chart" width="200%" height="75%"></canvas>
       </div>
    <!--  </ul> -->
+  </div>
 </div>
 
     <!-- Tab panels -->
 <div class="chart-container">
     <div class="tab-content">
       <div class="tab-pane active" id="balance">
-        <h4>Balance Panel Content</h4>
+        <h4 class="mt-2 mb-4">Balance Panel Content</h4>
         <canvas id="balance-chart" width="400" height="240"></canvas>
       </div>
       <div class="tab-pane" id="spent">
-        <h4>Spent Panel</h4>
+        <h4 class="mt-2 mb-4">Spent Panel</h4>
         <canvas id="spent-chart" width="400" height="240"></canvas>
       </div>
       <div class="tab-pane" id="budgeted">
-        <h4>budgeted Panel</h4>
+        <h4 class="mt-2 mb-4">Budgeted Panel</h4>
         <canvas id="budgeted-chart" width="400" height="240"></canvas>
       </div>
     </div>

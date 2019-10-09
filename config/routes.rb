@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get '/spent_data', to: 'dashboard#spent_data', as: 'spent_data'
   get '/balance_data', to: 'dashboard#balance_data', as: 'balance_data'
   get '/budgeted_data', to: 'dashboard#budgeted_data', as: 'budgeted_data'
+  patch '/dash_next_month', to: 'dashboard#next_month', as: 'dash_next_month'
+  patch '/dash_prev_month', to: 'dashboard#prev_month', as: 'dash_prev_month'
 
 end
