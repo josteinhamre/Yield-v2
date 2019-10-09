@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :budgets, through: :categories
   has_many :transactions, through: :accounts
   after_save :create_categories
+  validates :first_name, :last_name, presence: true
 
   def balance_on_date(date)
     sql_query = "datetime <= ?"
