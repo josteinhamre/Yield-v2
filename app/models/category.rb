@@ -5,6 +5,10 @@ class Category < ApplicationRecord
   has_many :budgets
   validates :name, :color, presence: true
 
+  def self.income
+
+  end
+
   def balance(month_year)
     trans = transactions_to_date(month_year).sum(:amount_cents)
     budg = budgets_to_date(month_year).sum(:amount_cents)
