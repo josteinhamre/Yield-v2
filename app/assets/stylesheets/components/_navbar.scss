@@ -44,25 +44,20 @@
   font-weight: 500;
   font-family: "Montserrat", sans-serif;
   letter-spacing: .5px;
-
 }
-.navbar-light .navbar-nav .nav-link :hover {
-  font-weight: bold;
+.navbar-light .navbar-nav .nav-link.active {
+  // color: black;
+  font-weight: 700;
+  color: gray;
+  border-bottom: solid 3px $yield;
+  // text-transform: uppercase;
+
+
+
 }
 
 .navbar-lewagon .dropdown-toggle::after {
   display: none;
 }
 
-.navbar-light .navbar-nav .nav-link.active {
-  // color: black;
-  font-weight: 700;
-  color: gray;
-  border-bottom: solid 3px;
-  border-color: $yield;
-  // text-transform: uppercase;
-
-
-
-}
 
