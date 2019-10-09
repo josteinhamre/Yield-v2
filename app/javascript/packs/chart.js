@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(response => {
       console.log(response)
-      alert('Something went wrong1');
+      alert('Something went wrong');
     });
 
   // balance data
