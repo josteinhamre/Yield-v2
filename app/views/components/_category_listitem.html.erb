@@ -1,4 +1,7 @@
 <%= render 'components/category', category: category %>
+<!-- overflow start -->
+<h6><%= category.balance(@prev_month) / 100 %></h6>
+<!-- overflow end -->
 <!-- budget start -->
 <% if defined? budgets %>
 <% budget = budgets.find_by(category: category) %>
@@ -20,7 +23,7 @@
 <% cat_trans = [] %>
 <% cat_trans_sum = 0 %>
 <% end %>
-<h6><%= (cat_trans_sum / 100.00).abs %></h6>
+<h6><%= (cat_trans_sum / 100.0).abs %></h6>
 <!-- transactions end -->
 <!-- remaining end -->
 <% remaining = cat_trans_sum > 0 ? budget.amount_cents + cat_trans_sum : budget.amount_cents - cat_trans_sum.abs  %>
@@ -43,7 +46,7 @@ end
 
 
 
-<h6><%= percentage %>%</h6>
+<!-- <h6><%= percentage %>%</h6> -->
 
 <% if cat_trans.count.nonzero? %>
 <div class="category-arrow row-arrow" data-row-id="row-selector-<%= category.id %>">
