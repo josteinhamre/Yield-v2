@@ -15,20 +15,12 @@ class DashboardController < ApplicationController
   def spent_data
     get_transactions
     @chart_spent_per_day = []
-
     date = Date.parse("1 #{@selected_month}")
-    # puts date
     end_of_month = (date >> 1) - date.day
-    # puts end_of_month
     num_days = end_of_month.day
-    # puts num_days
     (1..num_days).each do |day|
-      # puts day
-      # puts get_day_spent_amount(day)
       @chart_spent_per_day << get_day_spent_amount(day)
-      # puts @chart_spent_per_day
     end
-
     respond_to do |format|
       format.html { render "spent_data.json" }
       format.js
