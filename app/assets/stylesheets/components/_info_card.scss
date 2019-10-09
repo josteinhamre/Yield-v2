@@ -58,12 +58,18 @@ text-shaddow: 0px 0px 15px rgba(0, 0, 0, 0.25);
 }
 
 .budget-info-card {
-  background-color: #B9E5DA;
+  background-color: #dddddd;
   border-radius: 8px;
-  padding: .5rem 1rem;
+  padding: .3rem .6rem;
+  // border-bottom: 2px solid #8FBDD1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.budget-info-card h4,
+.budget-info-card h5 {
+  color: black;
 }
 
 .budget-info-card.trans-cat {
