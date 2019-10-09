@@ -31,4 +31,12 @@ class Category < ApplicationRecord
     date = Date.parse("1 #{month_year}")
     transactions.where(sql_query, date.month, date.year)
   end
+
+  def income?
+    name == 'Income'
+  end
+
+  def no_cat?
+    name == 'No Category'
+  end
 end
