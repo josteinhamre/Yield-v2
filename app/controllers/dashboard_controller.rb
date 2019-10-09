@@ -4,7 +4,6 @@ class DashboardController < ApplicationController
 
   def balance_data
     @balance_data = current_user.balance_for_month(@selected_month)
-
     respond_to do |format|
       format.html { render "balance_data.json" }
       format.js
@@ -26,8 +25,33 @@ class DashboardController < ApplicationController
     end
   end
 
-  def budgeted_data
+  def current_budgets_month
+    sql_query = " \
+        extract(month from month_from) = ? \
+        AND extract(year from month_from) = ? \
+      "
 
+    month_as_date = Date.parse("1 #{@selected_month}")
+    current_user.budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  end
+
+  def budgeted_data
+    current_budgets = current_budgets_month
+    @budgeted_data = []
+    @budget_cats = []
+    current_user.categories.each do |category|
+      budget = current_budgets.find_by(category: category)
+      if budget
+        @budgeted_data << budget.amount_cents
+      else
+        @budgeted_data << 0
+      end
+      @budget_cats << category.name
+    end
+    respond_to do |format|
+      format.html { render "budgeted_data.json" }
+      format.js
+    end
   end
 
   protected
@@ -41,8 +65,3 @@ class DashboardController < ApplicationController
     amount
   end
 end
-
-# step1: Controller with 3 actions for each charts that responds in json format
-# step2: parameter will be month and year (what controller will require)
-# step3: make sure returning json and test
-# setp4:
