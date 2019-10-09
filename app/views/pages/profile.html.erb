@@ -18,7 +18,7 @@ visual representation of rebudgeting gifts -> travel etc  -->
 
 <div class="profile-container">
   <div class="profile-information">
-    <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt="">
+    <!-- <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt=""> -->
   </div>
   <div class="tabs-container">
     <div id="profile-tab" class="nav">
@@ -30,20 +30,31 @@ visual representation of rebudgeting gifts -> travel etc  -->
     <div class="tab-content">
       <div class="tab-pane active" id="categories">
         <div class="tab-container">
-        <div class="my-categories">
-        <p class="define-category">My categories:</p>
-        <% current_user.categories.each do |category| %>
-          <%= render 'components/category', category: category %>
-        <% end %>
-      </div>
-      <div class="adding-category">
-      <p class= form-title>Add a category</p>
-      <div class="container">
-        <%= render "categories/form", category: @category %>
+
+          <div class="">
+
+            <p class="define-category">My categories:</p>
+            <div class="my-categories">
+              <% current_user.categories.each do |category| %>
+                <%= render 'components/category', category: category %>
+              <% end %>
+            </div>
+          </div>
+          <div class="adding-category">
+            <p class= form-title>Add a category</p>
+            <div class="category-container">
+              <%= render "categories/form", category: @category %>
+
+
+              <!-- TO DO: add validation for Category model (name, color, icon) -->
+
+
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-  </div>
   <div class="tab-pane" id="goals">
     <p>Hey. Here you can define your goals</p>
   </div>
