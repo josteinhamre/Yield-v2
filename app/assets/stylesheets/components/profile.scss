@@ -28,17 +28,16 @@
   &:hover {
     color: #83bed3;
     border-bottom: solid 4px;
-    }
+  }
 }
 
-  .tab {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-    transition: all .3s ease-in-out;
-    border-bottom: 1px solid transparent;
+.tab {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  transition: all .3s ease-in-out;
+  border-bottom: 1px solid transparent;
 }
-
 
 .tabs.active {
   color: #83bed3;
@@ -49,20 +48,32 @@
 }
 
 .tab-pane {
-   display: none;
+  display: none;
 }
 
 .tab-pane .active {
-   display: block;
-
+  display: block;
 }
 
 .define-category {
-   padding-top: 25px;
-   padding-left: 20px;
-   margin-bottom: 25px;
+  padding-top: 0px;
+  padding-left: 20px;
+  margin-bottom: 25px;
 }
-.category-profile {
 
+.tab-container {
+  display: flex;
+  justify: space-between;
+  margin: 40px 40px 40px 80px;
 
 }
+
+.form-buttons .btn {
+  border: solid 2.5px;
+  border-color: #83BED4;
+  border-radius: 40px;
+  color: #71A4B7;
+  font-size: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  right: 0;
+  }

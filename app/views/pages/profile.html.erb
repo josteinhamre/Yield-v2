@@ -20,8 +20,6 @@ visual representation of rebudgeting gifts -> travel etc  -->
   <div class="profile-information">
     <img class="profile-img" src="https://res.cloudinary.com/lightglance/image/upload/v1569595370/n34ytdjiyn4zr5wll6fp.jpg" alt="">
   </div>
-  <div class="info-card-month"><h5> blblblb</h5></div>
-
   <div class="tabs-container">
     <div id="profile-tab" class="nav">
       <h3 class="tabs" class="active" data-id="categories">Categories</h3>
@@ -31,32 +29,29 @@ visual representation of rebudgeting gifts -> travel etc  -->
     <!-- Tab panels -->
     <div class="tab-content">
       <div class="tab-pane active" id="categories">
-
+        <div class="tab-container">
+        <div class="my-categories">
         <p class="define-category">My categories:</p>
-
         <% current_user.categories.each do |category| %>
-        <%= render 'components/category', category: category %>
+          <%= render 'components/category', category: category %>
         <% end %>
       </div>
-      <h1 class= form-title>Add a category</h1>
-
+      <div class="adding-category">
+      <p class= form-title>Add a category</p>
       <div class="container">
-       <%= render "categories/form", category: @category %>
+        <%= render "categories/form", category: @category %>
       </div>
-
-
+    </div>
     </div>
   </div>
   <div class="tab-pane" id="goals">
-
     <p>Hey. Here you can define your goals</p>
   </div>
   <div class="tab-pane" id="accounts">
     <p>Hey. Here you can edit your accounts</p>
-
   </div>
 </div>
-</div>
+
 
 <%= javascript_pack_tag "profile" %>
 

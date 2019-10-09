@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def index
     get_budgets
     get_transactions
@@ -29,7 +28,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-    private
+  private
 
   def category_params
     params.require(:category).permit(:name, :color, :icon_id)
