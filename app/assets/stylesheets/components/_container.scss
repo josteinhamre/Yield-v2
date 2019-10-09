@@ -14,7 +14,7 @@
 
 .container-left {
   padding-left: 5px;
-  width: 18vw;
+  width: 22vw;
   display: flex;
   flex-direction: column;
 }
@@ -22,9 +22,13 @@
 .chart-view {
   margin: 100px auto;
   display: flex;
-  width: 90vw;
+  width: 85vw;
+  padding-top: 2rem;
 }
 
 .chart-container {
-  padding-top: 2rem;
+  margin-top: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
 }
