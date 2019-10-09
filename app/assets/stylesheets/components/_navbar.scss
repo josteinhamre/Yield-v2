@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-  height: 100px;
+  height: 80px;
   position: fixed;
   z-index: 1000;
   top: 0;
@@ -44,21 +44,20 @@
   font-weight: 500;
   font-family: "Montserrat", sans-serif;
   letter-spacing: .5px;
-
 }
-.navbar-light .navbar-nav .nav-link :hover {
-  font-weight: bold;
+.navbar-light .navbar-nav .nav-link.active {
+  // color: black;
+  font-weight: 700;
+  color: gray;
+  border-bottom: solid 3px $yield;
+  // text-transform: uppercase;
+
+
+
 }
 
 .navbar-lewagon .dropdown-toggle::after {
   display: none;
 }
 
-.active {
-  // color: black;
-  font-weight: bold;
-  // text-transform: uppercase;
-
-
-}
 
