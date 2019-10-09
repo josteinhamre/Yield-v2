@@ -38,19 +38,11 @@ const balanceChart = (elementId, isThumbnail = false) => {
   });
 };
 
-const spentChart = (elementId, isThumbnail = false) => {
+const spentChart = (elementId, data, isThumbnail = false) => {
     const element = document.getElementById(elementId);
-
     new Chart(element, {
       type: 'line',
-        data: {
-          labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-          datasets: [{
-            data: [3500, 2800, 1720, 1460, 1400, 1470, 897, 542, 145, 366, 2566, 345, 2352, 133, 670, 236, 2245, 654, 256, 657, 732, 357, 572, 572, 257, 786, 856, 454, 370, 734, 363, 635, 2233, 525, 736, 1214,],
-            borderColor: "#83BED3",
-            fill: false
-          }]
-        },
+        data: data,
         options: isThumbnail ? SMALL_CHART_OPTIONS : BIG_CHART_OPTIONS
     });
 };
@@ -75,10 +67,20 @@ const budgetedChart = (elementId, isThumbnail = false) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // spent data
+  fetch('/spent_data')
+    .then(response => response.json())
+    .then(data => {
+      console.log('loading spent data');
+      spentChart("tab-spent-chart", data, true);
+      spentChart("spent-chart", data);
+    })
+    .catch(response => {
+      alert('Something went wrong');
+    });
+
   balanceChart("tab-balance-chart", true);
   balanceChart("balance-chart");
-  spentChart("tab-spent-chart", true);
-  spentChart("spent-chart");
   budgetedChart("tab-budgeted-chart", true);
   budgetedChart("budgeted-chart");
 });
