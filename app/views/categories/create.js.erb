@@ -1,0 +1,13 @@
+function refreshForm(innerHTML) {
+  const newCategoryForm = document.getElementById('new_category');
+  newCategoryForm.innerHTML = innerHTML;
+  loadColorPicker();
+}
+
+function addCategory(categoryHTML) {
+  const categories = document.querySelector('.my-categories');
+  categories.insertAdjacentHTML('beforeend', categoryHTML);
+}
+
+refreshForm("<%= j render 'categories/form', category: Category.new %>");
+addCategory("<%= j render 'components/category', category: @category %>");

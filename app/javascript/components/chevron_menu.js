@@ -25,4 +25,4 @@ const listOpen = () => {
 
 };
 
-export {listOpen}
+export {listOpen};

@@ -18,6 +18,7 @@
 
 .info-card h5 {
 text-shaddow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+
 }
 
 .info-card-month {
@@ -32,6 +33,12 @@ text-shaddow: 0px 0px 15px rgba(0, 0, 0, 0.25);
   align-items: center;
 }
 
+
+.info-card-month {
+  padding: 15px;
+  font-size: 18px;
+}
+
 .account-card {
   display: flex;
   justify-content: space-evenly;
@@ -41,6 +48,7 @@ text-shaddow: 0px 0px 15px rgba(0, 0, 0, 0.25);
   // box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 }
+
 
 .info-card-div {
   display: grid;
@@ -80,3 +88,4 @@ text-shaddow: 0px 0px 15px rgba(0, 0, 0, 0.25);
 .budget-info-card.negative {
   border: 2px solid rgba(255,0,0,.6);
 }
+

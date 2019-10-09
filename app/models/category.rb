@@ -3,6 +3,7 @@ class Category < ApplicationRecord
   belongs_to :icon
   has_many :transactions
   has_many :budgets
+  validates :name, :color, presence: true
 
   def self.income
 
