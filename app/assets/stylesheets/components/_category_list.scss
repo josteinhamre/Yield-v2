@@ -20,7 +20,7 @@
   grid-template-columns: 20% 13% 13% 13% 27% 4%;
   align-items: center;
   grid-gap: 2%;
-  border-bottom: 1px solid #83BED3;
+  // border-bottom: 1px solid #83BED3;
   padding: .5rem 5px;
 }
 
@@ -30,23 +30,24 @@
 
 .category-list-div .progress-view {
   width: 100%;
-  background: none;
+  // background: none;
   display: flex;
   align-items: center;
+  grid-column: span 6;
 }
 
 .category-list-div .progress-bar-container {
-  width: 80%;
+  width: 100%;
   overflow: hidden;
   margin-right: 1rem;
-  border-radius: 5px;
-  height: 10px;
+  border-radius: 3px;
+  height: 6px;
   border: 1px solid rgba(0,0,0,.2);
 }
 
 .category-list-div .progress-grow {
-  border-radius: 4px;
-  height: 8px;
+  border-radius: 2px;
+  height: 4px;
 }
 
 .category-list .category-arrow {
@@ -126,7 +127,6 @@
   transform-duration: .5;
   transform: rotate(0deg);
 }
-
 
 .category-arrow.turned i {
   transform: rotate(180deg);
