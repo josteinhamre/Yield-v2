@@ -1,7 +1,11 @@
 <div class="container list-container budget-container">
-  <div class="fixed-header">
+  <div class="header">
+ <!--  <h3 class="page-title">Budget</h3> -->
     <div class="budget-info-cards">
       <%= render 'components/budget_info', budgets: @budgets, transactions: @transactions %>
+    </div>
+    <div class="category-transaction-view income-trans" id="row-selector-<%= current_user.categories.find_by(name: 'Income').id %>">
+      <%= render 'components/category_list_dropdown', category: current_user.categories.find_by(name: 'Income'), transactions: @transactions %>
     </div>
     <div class="category-list-div list-header">
       <h4>Category</h4>

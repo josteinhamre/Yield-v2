@@ -1,16 +1,7 @@
-<div class="container">
-  <div class="info-card-div">
-    <div class="info-card">
-      <h5></h5>
-    </div>
-    <div class="info-card">
-      <h5>Account balance:</h5>
-    </div>
-    <div class="info-card">
-      <%= render 'components/month_selector' %>
-    </div>
-  </div>
-  <div class="info-card-div">
+<div class="chart-view">
+<div class="container-left nav" id="dashboard-tab">
+<!--     <ul id="dashboard-tab" class="nav info-card-div"> -->
+
     <div class="info-card">
       <h5>Money in:</h5>
     </div>
@@ -18,13 +9,11 @@
       <h5>Money out:</h5>
     </div>
     <div class="info-card">
-      <h5>Total budgeted:</h5>
+      <%= render 'components/month_selector' %>
     </div>
-  </div>
 
-<!-- Tabs -->
-<div class="-chart-container">
-    <ul id="dashboard-tab" class="nav info-card-div">
+
+  <!-- Tabs -->
       <div class="info-card-graph active">
         <div class="info-card-graph-header">
           <h5>Balance</h5>
@@ -46,29 +35,31 @@
         </div>
         <canvas id="tab-budgeted-chart" width="200%" height="75%" data-id="budgeted"></canvas>
       </div>
-    </ul>
-<!-- Tab panels -->
-  <div class="tab-content">
-    <div class="tab-pane active" id="balance">
-      <h4>Balance Panel Content</h4>
-      <canvas id="balance-chart" width="500" height="250"></canvas>
+   <!--  </ul> -->
+</div>
+    <!-- Tab panels -->
+<div class="chart-container">
+    <div class="tab-content">
+      <div class="tab-pane active" id="balance">
+        <h4>Balance Panel Content</h4>
+        <canvas id="balance-chart" width="400" height="240"></canvas>
+      </div>
+      <div class="tab-pane" id="spent">
+        <h4>Spent Panel</h4>
+        <canvas id="spent-chart" width="400" height="240"></canvas>
+      </div>
+      <div class="tab-pane" id="budgeted">
+        <h4>budgeted Panel</h4>
+        <canvas id="budgeted-chart" width="400" height="240"></canvas>
+      </div>
     </div>
-    <div class="tab-pane" id="spent">
-      <h4>Spent Panel</h4>
-      <canvas id="spent-chart" width="500" height="250"></canvas>
-    </div>
-    <div class="tab-pane" id="budgeted">
-      <h4>budgeted Panel</h4>
-      <canvas id="budgeted-chart" width="500" height="250"></canvas>
-    </div>
-  </div>
+
+</div>
 </div>
 
-    <div class="chart-header">
-      <h5>Account balance</h5>
-    </div>
+
   <!-- <canvas id="line-chart" width="500" height="250"></canvas> -->
   <!-- <canvas id="tab-balance-chart" width="500" height="250"></canvas> -->
-</div>
+
 
 <%= javascript_pack_tag 'chart' %>

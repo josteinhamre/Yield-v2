@@ -5,17 +5,24 @@ const listOpen = () => {
     categoryArrow.classList.toggle('turned')
     const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
     categoryDropdown.classList.toggle("display")
+    // if (categoryDropdown.classList.contains('display')) {
+    //   setTimeout(categoryDropdown.scrollIntoView(true), 1000)
+    // }
     });
   })
 
   const transCats = document.querySelectorAll(".trans-cat");
   transCats.forEach((transCat) => {
     transCat.addEventListener("click", (event) => {
-    transCat.parentElement.querySelector('.transaction-arrow').classList.toggle('turned')
     const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
     categoryDropdown.classList.toggle("display")
+    transCat.parentElement.querySelector('.transaction-arrow').classList.toggle('turned')
+    // if (categoryDropdown.classList.contains('display')) {
+    //   setTimeout(categoryDropdown.scrollIntoView(true), 1000)
+    // }
     });
   })
+
 };
 
 export {listOpen}

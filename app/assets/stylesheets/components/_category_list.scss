@@ -1,15 +1,15 @@
-#categoryListContainer {
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: inline-block;
-  margin-top: 150px;
-  height: 85%;
-  width: 100%;
-}
+// #categoryListContainer {
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   display: inline-block;
+//   margin-top: 150px;
+//   height: 85%;
+//   width: 100%;
+// }
 
-#categoryListContainer::-webkit-scrollbar {
-    display: none;
-}
+// #categoryListContainer::-webkit-scrollbar {
+//     display: none;
+// }
 
 .category-list {
   margin: 50px;
@@ -25,26 +25,28 @@
 }
 
 .category-list-div.list-header {
-  grid-template-columns: 20% 13% 13% 13% 5% 27%;
+  grid-template-columns: 20% 13% 13% 13% 8% 27%;
 }
 
 .category-list-div .progress-view {
   width: 100%;
   background: none;
   display: flex;
+  align-items: center;
 }
 
 .category-list-div .progress-bar-container {
   width: 80%;
   overflow: hidden;
   margin-right: 1rem;
-  border-radius: 13px;
-  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 5px;
+  height: 10px;
+  border: 1px solid rgba(0,0,0,.2);
 }
 
 .category-list-div .progress-grow {
-  border-radius: 12px;
-  height: 24px;
+  border-radius: 4px;
+  height: 8px;
 }
 
 .category-list .category-arrow {
@@ -81,6 +83,11 @@
 
 .category-transaction-view.display {
   border-bottom: 1px solid #83BED3;
+}
+
+.category-transaction-view.income-trans.display {
+  border-bottom: 0px solid #83BED3;
+  margin: 2rem 0;
 }
 
 .budget-cat-transaction {

@@ -1,7 +1,3 @@
-.inbox-list {
-  margin: 140px auto;
-}
-
 .inbox-list-div {
   display: grid;
   grid-template-columns: 17% 17% 35% 12% 4% 4% ;
@@ -14,16 +10,24 @@
   max-height: 70px;
 }
 
-.inbox-list .inbox-arrow {
-  display: flex;
-  justify-content: center;
-}
+// #inboxListContainer {
+//   overflow-y: auto;
+//   overflow-x: hidden;
+//   display: inline-block;
+//   margin-top: 150px;
+//   height: 85%;
+//   width: 100%;
+// }
+
+// #inboxListContainer::-webkit-scrollbar {
+//     display: none;
+// }
 
 .inbox-list-div .confirm-trans {
   color: gray;
   font-size: 2rem;
   place-self: center;
- transition-duration: 1;
+  transition-duration: 1;
 }
 
 .inbox-list-div .trans-cat {
