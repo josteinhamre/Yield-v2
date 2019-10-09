@@ -3,9 +3,7 @@ class DashboardController < ApplicationController
   respond_to :json
 
   def balance_data
-    get_transactions
-    @chart_balance_per_day = []
-
+    @balance_data = current_user.balance_for_month(@selected_month)
     respond_to do |format|
       format.html { render "balance_data.json" }
       format.js
@@ -15,28 +13,45 @@ class DashboardController < ApplicationController
   def spent_data
     get_transactions
     @chart_spent_per_day = []
-
     date = Date.parse("1 #{@selected_month}")
-    # puts date
     end_of_month = (date >> 1) - date.day
-    # puts end_of_month
     num_days = end_of_month.day
-    # puts num_days
     (1..num_days).each do |day|
-      # puts day
-      # puts get_day_spent_amount(day)
       @chart_spent_per_day << get_day_spent_amount(day)
-      # puts @chart_spent_per_day
     end
-
     respond_to do |format|
       format.html { render "spent_data.json" }
       format.js
     end
   end
 
-  def budgeted_data
+  def current_budgets_month
+    sql_query = " \
+        extract(month from month_from) = ? \
+        AND extract(year from month_from) = ? \
+      "
 
+    month_as_date = Date.parse("1 #{@selected_month}")
+    current_user.budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  end
+
+  def budgeted_data
+    current_budgets = current_budgets_month
+    @budgeted_data = []
+    @budget_cats = []
+    current_user.categories.each do |category|
+      budget = current_budgets.find_by(category: category)
+      if budget
+        @budgeted_data << budget.amount_cents
+      else
+        @budgeted_data << 0
+      end
+      @budget_cats << category.name
+    end
+    respond_to do |format|
+      format.html { render "budgeted_data.json" }
+      format.js
+    end
   end
 
   protected
@@ -50,8 +65,3 @@ class DashboardController < ApplicationController
     amount
   end
 end
-
-# step1: Controller with 3 actions for each charts that responds in json format
-# step2: parameter will be month and year (what controller will require)
-# step3: make sure returning json and test
-# setp4:

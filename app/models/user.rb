@@ -9,6 +9,59 @@ class User < ApplicationRecord
   has_many :transactions, through: :accounts
   after_save :create_categories
 
+  def balance_on_date(date)
+    sql_query = "datetime <= ?"
+    transactions.where(sql_query, date).sum(:amount_cents)
+  end
+
+  def balance_today
+    balance_on_date(Date.today)
+  end
+
+  def balance_for_month(month_year)
+    month_as_date = Date.parse("1 #{month_year}")
+    end_of_month = (month_as_date >> 1) - month_as_date.day
+    array_of_month = (month_as_date..end_of_month).to_a
+    array_of_balances = []
+    array_of_month.each do |date|
+      array_of_balances << balance_on_date(date)
+    end
+    array_of_balances
+  end
+
+  def available_balance(month_year)
+    income = income_to_date(month_year).sum(:amount_cents)
+    budg = budgets_to_date(month_year).sum(:amount_cents)
+    (income - budg)
+  end
+
+  def budgets_to_date(month_year)
+    sql_query = " \
+        extract(month from month_from) <= ? \
+        AND extract(year from month_from) <= ? \
+      "
+    month_as_date = Date.parse("1 #{month_year}")
+    budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  end
+
+  def income_to_date(month_year)
+    sql_query = " \
+        extract(month from datetime) <= ? \
+        AND extract(year from datetime) <= ? \
+      "
+    date = Date.parse("1 #{month_year}")
+    income_trans = transactions.where(category: income_cat)
+    income_trans.where(sql_query, date.month, date.year)
+  end
+
+  def income_cat
+    categories.find_by(name: 'Income')
+  end
+
+  def no_cat
+    categories.find_by(name: 'No Category')
+  end
+
   private
 
   def create_categories
