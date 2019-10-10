@@ -9,7 +9,7 @@
     <div id='color-picker-square'></div>
   </div>
   <p> Chose an icon for your category <p>
-  <div class="icons">
+  <div class="icons" class="chosen-icons">
     <% Icon.all.each do |icon| %>
       <%= render 'components/icon', color: 'black', icon: icon%>
     <% end %>
