@@ -2,7 +2,7 @@
   <%= link_to cat_prev_month_path, method: :patch, remote: true do %>
     <%= icon('fas', 'chevron-left', id: "prevMonth") %>
   <% end %>
-  <h4 id="monthSelector"><%= @selected_month %></h4>
+  <h6 id="monthSelector"><%= @selected_month %></h6>
   <%= link_to cat_next_month_path, method: :patch, remote: true do %>
     <%= icon('fas', 'chevron-right', id: "nextMonth") %>
   <% end %>

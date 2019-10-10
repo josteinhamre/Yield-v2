@@ -3,14 +3,14 @@
 <% budgets ? budgeted = ((budgets.sum(:amount_cents))) / 100 : budgeted = 0 %>
 <% available = current_user.available_balance(selected_month) %>
 <div class="budget-info-card trans-cat" data-row-id="row-selector-<%= current_user.income_cat.id %>">
-  <h4>Income</h4>
-  <h5><%= income / 100 %></h5>
+  <h5>Income</h5>
+  <h6><%= income / 100 %></h6>
 </div>
 <div class="budget-info-card">
-  <h4>Budgeted</h4>
-  <h5><%= budgeted %></h5>
+  <h5>Budgeted</h5>
+  <h6><%= budgeted %></h6>
 </div>
 <div class="budget-info-card">
-  <h4>Available</h4>
-  <h5><%= available / 100 %></h5>
+  <h5>Available</h5>
+  <h6><%= available / 100 %></h6>
 </div>

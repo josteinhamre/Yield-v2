@@ -31,13 +31,15 @@
 </style>
 <div class="category-selector-div" id="row-selector-<%= index %>">
   <% current_user.categories.each do |category| %>
-    <% if category == trans.category %>
-      <%= link_to set_category_path(trans, category), method: :patch, remote: true, class: "current", id: "cat-#{trans.id}-#{category.id}" do %>
-        <%= render 'components/category', category: category %>
-      <% end %>
-    <% else %>
-      <%= link_to set_category_path(trans, category), method: :patch, remote: true, id: "cat-#{trans.id}-#{category.id}" do %>
-        <%= render 'components/category', category: category %>
+    <% unless category.no_cat? || category.income? %>
+      <% if category == trans.category %>
+        <%= link_to set_category_path(trans, category), method: :patch, remote: true, class: "current", id: "cat-#{trans.id}-#{category.id}" do %>
+          <%= render 'components/category', category: category %>
+        <% end %>
+      <% else %>
+        <%= link_to set_category_path(trans, category), method: :patch, remote: true, id: "cat-#{trans.id}-#{category.id}" do %>
+          <%= render 'components/category', category: category %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

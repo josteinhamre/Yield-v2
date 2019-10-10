@@ -1,8 +1,7 @@
-<% unless @transactions.empty? %>
-  <div class="inbox-container list-container container">
+<div class="inbox-container list-container container">
+  <% unless @transactions.empty? %>
     <div class="header">
-      <!-- <h3 class="page-title">Your Inbox</h3> -->
-      <div class="inbox-list-div list-header">
+      <div id="inboxListHeader" class="inbox-list-div list-header">
         <h4>Category</h4>
         <h4>Date</h4>
         <h4>Info</h4>
@@ -11,23 +10,24 @@
       </div>
     </div>
     <div id="inboxListContainer" class="inbox-list-elements">
-    <% @transactions.each do |trans| %>
-      <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
-    <% end %>
+      <% @transactions.each do |trans| %>
+        <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-inbox">
+      <h1>Your inbox is empty!</h1>
+    </div>
+  <% end %>
+  <div class="empty-inbox hidden" id="empty-inbox">
+    <h1>Good job! Your inbox is empty!</h1>
+      <%= image_tag "empty_inbox.svg" %>
+    <p>Upload more transactions or check how you are doing in the budget.<p>
+    </div>
+    <div class="flex-container">
+      <div class="import-container">
+        <%= render 'components/csv_upload' %>
+      </div>
     </div>
   </div>
-  <div id='empty-inbox-image' class="empty-inbox d-none">
-
-    <%= image_tag "empty_inbox.svg" %>
-  </div>
-<% else %>
-<div class="hooray">
-  <h1>Good job! Your inbox is empty!</h1>
-  <p> Go to overview to see how you're doing with your budget. <p>
-</div>
-  <div class="empty-inbox">
-
-    <%= image_tag "empty_inbox.svg" %>
-  </div>
-<% end %>
-
+  <%= javascript_pack_tag 'inbox' %>

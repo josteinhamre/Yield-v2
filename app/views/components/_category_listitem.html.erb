@@ -43,7 +43,12 @@ else
   percentage = 100 if percentage > 100 && budget.amount == 0
 end
 %>
-
+<div class="progress-view" data-percentage="<%= percentage %>">
+  <div class="progress-bar-container">
+    <div class="progress-grow" style="width: <%= percentage %>%">
+    </div>
+  </div>
+</div>
 
 
 <!-- <h6><%= percentage %>%</h6> -->
@@ -53,11 +58,5 @@ end
   <%= icon('fas', 'chevron-down') %>
 </div>
 <% end %>
-<div class="progress-view" data-percentage="<%= percentage %>">
-  <div class="progress-bar-container">
-    <div class="progress-grow" style="width: <%= percentage %>%">
-    </div>
-  </div>
-</div>
 
 
