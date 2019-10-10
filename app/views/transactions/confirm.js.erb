@@ -3,12 +3,14 @@
 function confirmTrans() {
   document.getElementById("transaction-<%= @transaction.id %>").classList.add('confirmed')
   document.getElementById("row-selector-<%= @transaction.id %>").classList.remove('display')
+  document.getElementById("row-selector-<%= @transaction.id %>").classList.add('hidden')
 
   if (document.querySelectorAll('.confirmed').length === document.querySelectorAll('.category-selector-div').length) {
-    document.getElementById('empty-inbox-image').classList.remove('d-none')
-    document.querySelector('.inbox-container').classList.add('d-none')
+    document.getElementById('empty-inbox').classList.remove('hidden')
+    document.getElementById('inboxListHeader').classList.add('hidden')
   }
 
 }
+
 
 confirmTrans();

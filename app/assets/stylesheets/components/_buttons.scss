@@ -7,3 +7,46 @@
   font-family: "Montserrat", sans-serif;
   right: 0;
   }
+
+.form-button-small {
+    border: solid 2.5px;
+    border-color: #83BED4;
+    border-radius: 20px;
+    color: #71A4B7;
+    font-size: 1.25rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    right: 0;
+    place-self: center;
+    padding: 0.2rem .5rem;
+    height: 74%;
+  }
+
+.upload-btn-wrapper {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-upload {
+  cursor: pointer;
+  background-color: white;
+  padding: 8px 20px;
+  border: solid 2.5px;
+  border-color: #83BED4;
+  border-radius: 40px;
+  color: #71A4B7;
+  font-size: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  right: 0;
+}
+
+.upload-btn-wrapper input[type=file] {
+  cursor: pointer;
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}

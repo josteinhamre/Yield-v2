@@ -1,12 +1,13 @@
 .category-selector-div {
   display: flex;
   flex-wrap: wrap;
+  // justify-content: ;
   transition-duration: .8s;
   overflow: hidden;
   max-height: 0px;
   padding: 0 -5px;
   margin: 0px 0;
-  border-bottom: 1px solid rgba(131,190,211,0);
+  border-bottom: 0px solid rgba(131,190,211,0);
 }
 
 .category-selector-div.display {
@@ -26,7 +27,7 @@
   // background-color: rgba(0,0,0,.2);
 }
 
-.category-selector-div .current .category p {
-  font-weight: bold;
+.category-selector-div a.current .category h6 {
+  font-weight: 600;
   // font-size: 1rem;
 }

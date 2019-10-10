@@ -36,17 +36,31 @@
 }
 
 .import-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 6rem;
-  background-color: white;
   border-radius: 10px;
   padding: 1rem;
-  width: 100%
+  background-color: white;
+  flex-shrink: 1;
 }
 
 .import-container .simple_form.transactions {
   display: flex;
   justify-content: space-between;
-  width: 100%
+  overflow: hidden;
+  flex-shrink: 1;
 }
 
+.import-container h4,
+.import-container h6 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
 

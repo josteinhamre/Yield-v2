@@ -17,4 +17,10 @@ const submitOn = () => {
   })
 };
 
-export { submitOn }
+const submitUpload = () => {
+  document.getElementById('upload').addEventListener("change", (event) => {
+      event.target.parentElement.parentElement.submit()
+    });
+};
+
+export { submitOn, submitUpload }
