@@ -9,10 +9,14 @@
 
   <h6><%= trans.amount %></h6>
 
-  <div>
-    <% unless trans.approved_at %>
+  <div class="confirm-trans-container">
+    <% unless trans.category.no_cat? %>
       <%= link_to confirm_path(trans), method: :patch, remote: true do %>
         <%= icon('fas', 'check-circle', class: "confirm-trans") %>
+      <% end %>
+    <% else %>
+      <%= link_to confirm_path(trans), method: :patch, remote: true do %>
+        <%= icon('fas', 'check-circle', class: "confirm-trans hidden") %>
       <% end %>
     <% end %>
   </div>

@@ -1,6 +1,8 @@
 function updateCategory() {
   const transaction = document.getElementById("category-<%= @transaction.id %>");
   transaction.innerHTML = '<%= j render "components/category", category: @transaction.category %>';
+  transaction.parentElement.querySelector(".confirm-trans").classList.remove('hidden')
+  innerHTML = '<%= j render "components/category", category: @transaction.category %>';
 }
 
 function updateCurrent() {

@@ -71,7 +71,20 @@ const clearChart = (elementId) => {
 
   const newCanvas = document.createElement('canvas');
   newCanvas.id = elementId;
-  newCanvas.height = 60;
+  newCanvas.height = 50;
+  newCanvas.width = 100;
+
+  parentElement.appendChild(newCanvas);
+}
+
+const clearTabChart = (elementId) => {
+  const element = document.getElementById(elementId);
+  const parentElement = element.parentElement;
+  parentElement.innerHTML = ''
+
+  const newCanvas = document.createElement('canvas');
+  newCanvas.id = elementId;
+  newCanvas.height = 40;
   newCanvas.width = 100;
 
   parentElement.appendChild(newCanvas);
@@ -80,7 +93,7 @@ const clearChart = (elementId) => {
 
 const loadCharts = () => {
 
-  clearChart("tab-spent-chart");
+  clearTabChart("tab-spent-chart");
   clearChart("spent-chart");
   // spent data
   fetch('/spent_data')
@@ -94,7 +107,7 @@ const loadCharts = () => {
       alert('Something went wrong');
     });
 
-  clearChart("tab-balance-chart");
+  clearTabChart("tab-balance-chart");
   clearChart("balance-chart");
   // balance data
   fetch('/balance_data')
@@ -107,7 +120,7 @@ const loadCharts = () => {
       alert('Something went wrong2');
     });
 
-  clearChart("tab-budgeted-chart");
+  clearTabChart("tab-budgeted-chart");
   clearChart("budgeted-chart");
   // budgeted data
   fetch('/budgeted_data')
