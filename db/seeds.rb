@@ -46,6 +46,7 @@ user.email = "test#{users}@yield.no"
 user.password = 'password'
 user.first_name = 'Agnieszka'
 user.last_name = 'Stec'
+user.photo = 'n34ytdjiyn4zr5wll6fp.jpg'
 user.save!
 account = Account.new
 account.name = 'Main account'
