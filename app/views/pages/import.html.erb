@@ -1,4 +1,6 @@
+<div class="container import-container">
 <%= simple_form_for :transactions, url: transactions_path do |f| %>
   <%= f.input_field :file, as: :file %>
   <%= f.submit 'upload' %>
 <% end %>
+</div>

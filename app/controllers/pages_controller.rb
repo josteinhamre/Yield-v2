@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @transaction = Transaction.new
   end
 
+  def import
+  end
+
   def home
   end
 
