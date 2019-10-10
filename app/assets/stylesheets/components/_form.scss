@@ -34,7 +34,7 @@
 
 .form-buttons.btn {
   border: solid 2.5px;
-  border-color: #83BED4;
+  border-color: #71A4B7;
   border-radius: 40px;
   color: #71A4B7;
   font-size: 1.25rem;
@@ -52,14 +52,16 @@
 }
   .form-buttons.btn:hover {
   background-color: #A1CFE0;
-  border: solid 3px;
+  border: solid 0px;
   border-radius: 40px;
   color: white;
-  color-weight:medium;
+  font-weight: bold;
+  border-color: #71A4B7;;
 
 }
 .btn:hover {
   color: white;
+  border-color: #71A4B7;
 }
 
 .form-buttons-container {

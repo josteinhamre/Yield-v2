@@ -107,17 +107,19 @@
 
 }
 .icon-container {
+  .chosen-icons {
   &:hover {
     box-shadow: 0 0 3pt 2pt $yield;
   }
+}
   &.selected {
     box-shadow: 0 0 3pt 2pt $yield;
   }
   .img {
     margin: 10px 10px;
-
-  }
 }
+  }
+
 .simple_form.new_category {
   input {
     width: 100%;
