@@ -38,9 +38,12 @@
   transform: scale(1.03);
 }
 
+.confirm-trans.hidden {
+  display:none
+}
 
 .confirm-trans:hover {
-  color: #15B515;
+  color: #10ac84;
   border-radius: 50%;
   transform: scale(1.3);
 }

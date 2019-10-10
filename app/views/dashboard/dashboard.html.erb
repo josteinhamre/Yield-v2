@@ -1,84 +1,84 @@
 <div class="chart-view">
-<div class="container-left nav">
-<!--     <ul id="dashboard-tab" class="nav info-card-div"> -->
+  <div class="container-left nav">
+    <!--     <ul id="dashboard-tab" class="nav info-card-div"> -->
 
-    <div class="info-card month">
-      <%#= render 'components/month_selector' %>
-      <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
-        <%= link_to dash_prev_month_path, method: :patch, remote: true do %>
+      <div class="info-card month">
+        <%#= render 'components/month_selector' %>
+        <div class="month-selector" id="monthSelectorGroup" data-selected-month="<%= @selected_month %>" >
+          <%= link_to dash_prev_month_path, method: :patch, remote: true do %>
           <%= icon('fas', 'chevron-left', id: "prevMonth") %>
-        <% end %>
-        <h4 id="monthSelector"><%= @selected_month %></h4>
-        <%= link_to dash_next_month_path, method: :patch, remote: true do %>
+          <% end %>
+          <h4 id="monthSelector"><%= @selected_month %></h4>
+          <%= link_to dash_next_month_path, method: :patch, remote: true do %>
           <%= icon('fas', 'chevron-right', id: "nextMonth") %>
-        <% end %>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="info-card" data-id="income">
+        <h5>Income:</h5>
+        <h5 id="income-value"><%= current_user.income_for_month(@selected_month).sum(:amount_cents) / 100 %></h5>
       </div>
 
+      <!-- Tabs -->
+      <div id="dashboard-tab">
+        <div class="info-card-graph" data-id="spent">
+          <div class="info-card-graph-header">
+            <h5>Spent</h5>
+            <h5 id="spent-value"><%= @transactions_no_income.sum(:amount_cents).abs / 100 %></h5>
+          </div>
+          <div>
+            <canvas id="tab-spent-chart" width="100" height="35"></canvas>
+          </div>
+        </div>
+        <div class="info-card-graph" data-id="budgeted">
+          <div class="info-card-graph-header">
+            <h5>Budgeted</h5>
+            <h5 id="budgeted-value"><%= current_user.budgets_for_month(@selected_month).sum(:amount_cents) / 100 %></h5>
+          </div>
+          <div>
+            <canvas id="tab-budgeted-chart" width="100" height="35"></canvas>
+          </div>
+        </div>
+        <div class="info-card-graph active" data-id="balance">
+          <div class="info-card-graph-header">
+            <h5>Balance</h5>
+            <h5  id="balance-value"><%= current_user.balance_for_month(@selected_month).last %></h5>
+          </div>
+          <div>
+            <canvas id="tab-balance-chart" width="100" height="35"></canvas>
+          </div>
+        </div>
+        <!--  </ul> -->
+      </div>
     </div>
-    <div class="info-card" data-id="income">
-      <h5>Income:</h5>
-      <h5 id="income-value"><%= current_user.income_for_month(@selected_month).sum(:amount_cents) / 100 %></h5>
-    </div>
-
-  <!-- Tabs -->
-  <div id="dashboard-tab">
-      <div class="info-card-graph" data-id="spent">
-        <div class="info-card-graph-header">
-          <h5>Spent</h5>
-          <h5 id="spent-value"><%= @transactions_no_income.sum(:amount_cents).abs / 100 %></h5>
-        </div>
-        <div>
-          <canvas id="tab-spent-chart" width="100" height="60">
-        </div>
-      </div>
-      <div class="info-card-graph" data-id="budgeted">
-        <div class="info-card-graph-header">
-          <h5>Budgeted</h5>
-          <h5 id="budgeted-value"><%= current_user.budgets_for_month(@selected_month).sum(:amount_cents) / 100 %></h5>
-        </div>
-        <div>
-          <canvas id="tab-budgeted-chart" width="100" height="60"></canvas>
-        </div>
-      </div>
-      <div class="info-card-graph active" data-id="balance">
-        <div class="info-card-graph-header">
-          <h5>Balance</h5>
-          <h5  id="balance-value"><%= current_user.balance_for_month(@selected_month).last %></h5>
-        </div>
-        <div>
-          <canvas id="tab-balance-chart" width="100" height="60"></canvas>
-        </div>
-      </div>
-   <!--  </ul> -->
-  </div>
-</div>
 
     <!-- Tab panels -->
-<div class="chart-container">
-    <div class="tab-content">
-      <div class="tab-pane" id="balance">
-        <h4 class="mt-2 mb-4">Balence per day</h4>
-        <div>
-        <canvas id="balance-chart" width="100" height="60"></canvas>
-      </div>
-      </div>
-      <div class="tab-pane active" id="spent">
-        <h4 class="mt-2 mb-4">Spent per day</h4>
-        <div>
-        <canvas id="spent-chart" width="100" height="60"></canvas>
+    <div class="chart-container">
+      <div class="tab-content">
+        <div class="tab-pane" id="balance">
+          <h4 class="mt-2 mb-4">Balence per day</h4>
+          <div>
+            <canvas id="balance-chart" width="100" height="45"></canvas>
+          </div>
         </div>
-      </div>
-      <div class="tab-pane" id="budgeted">
-        <h4 class="mt-2 mb-4">Budgeted per category</h4>
-        <div>
-          <canvas id="budgeted-chart" width="100" height="60"></canvas>
+        <div class="tab-pane active" id="spent">
+          <h4 class="mt-2 mb-4">Spent per day</h4>
+          <div>
+            <canvas id="spent-chart" width="100" height="45"></canvas>
+          </div>
+        </div>
+        <div class="tab-pane" id="budgeted">
+          <h4 class="mt-2 mb-4">Budgeted per category</h4>
+          <div>
+            <canvas id="budgeted-chart" width="100" height="45"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
   <!-- <canvas id="line-chart" width="500" height="250"></canvas> -->
   <!-- <canvas id="tab-balance-chart" width="500" height="250"></canvas> -->
 
-<%= javascript_pack_tag 'chart' %>
+  <%= javascript_pack_tag 'chart' %>
