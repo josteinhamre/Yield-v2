@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :categories, only: [ :index, :new, :create ]
   resources :budgets, only: [ :create, :update ]
   get '/profile', to: 'pages#profile', as: 'profile'
-  get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
+  get '/dashboard', to: 'dashboard#dashboard', as: 'dashboard'
   get '/inbox', to: 'transactions#inbox', as: 'inbox'
   patch '/cat_next_month', to: 'categories#next_month', as: 'cat_next_month'
   patch '/cat_prev_month', to: 'categories#prev_month', as: 'cat_prev_month'

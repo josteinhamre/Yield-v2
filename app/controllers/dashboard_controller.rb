@@ -2,6 +2,10 @@ class DashboardController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
   respond_to :json
 
+  def dashboard
+    get_transactions_no_income
+  end
+
   def balance_data
     @balance_data = current_user.balance_for_month(@selected_month)
     respond_to do |format|
@@ -11,13 +15,13 @@ class DashboardController < ApplicationController
   end
 
   def spent_data
-    get_transactions
+    get_transactions_no_income
     @chart_spent_per_day = []
     date = Date.parse("1 #{@selected_month}")
     end_of_month = (date >> 1) - date.day
     num_days = end_of_month.day
     (1..num_days).each do |day|
-      @chart_spent_per_day << get_day_spent_amount(day)
+      @chart_spent_per_day << get_day_spent_amount(day).abs
     end
     respond_to do |format|
       format.html { render "spent_data.json" }
@@ -38,14 +42,16 @@ class DashboardController < ApplicationController
     current_budgets = current_budgets_month
     @budgeted_data = []
     @budget_cats = []
+    @budget_colors = []
     current_user.categories.each do |category|
       budget = current_budgets.find_by(category: category)
       if budget
-        @budgeted_data << budget.amount_cents
+        @budgeted_data << (budget.amount_cents / 100)
       else
         @budgeted_data << 0
       end
       @budget_cats << category.name
+      @budget_colors << category.color
     end
     respond_to do |format|
       format.html { render "budgeted_data.json" }
@@ -57,12 +63,14 @@ class DashboardController < ApplicationController
     @selected_month = (Date.parse("1 #{@selected_month}") >> 1).strftime("%B %y")
     session[:selected_month] = @selected_month
     @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
+    spent_data
   end
 
   def prev_month
     @selected_month = (Date.parse("1 #{@selected_month}") << 1).strftime("%B %y")
     session[:selected_month] = @selected_month
     @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
+    spent_data
     render action: :next_month
   end
 
@@ -70,8 +78,8 @@ class DashboardController < ApplicationController
 
   def get_day_spent_amount(day)
     amount = 0
-    if @transactions.length.positive?
-      day_trans = @transactions.where("extract(day from datetime) = #{day}")
+    if @transactions_no_income.length.positive?
+      day_trans = @transactions_no_income.where("extract(day from datetime) = #{day}")
       amount = day_trans.sum(:amount_cents) / 100 if day_trans.length.positive?
     end
     amount

@@ -1,6 +1,12 @@
 import Chart from 'chart.js';
 import { tabClick } from '../components/tabs';
 
+// const ctx = document.getElementById("balance-chart").getContext("2d");
+
+// const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+//     gradient.addColorStop(0, 'rgba(131, 190, 211, 1)');
+//     gradient.addColorStop(1, 'rgba(131, 190, 211, 0)');
+
 const SMALL_CHART_OPTIONS = {
   tooltips: { enabled: false },
   elements: { point: { radius: 0 } },
@@ -12,6 +18,7 @@ const SMALL_CHART_OPTIONS = {
 };
 
 const BIG_CHART_OPTIONS = {
+  elements: { point: { radius: 0 } },
   title: { display: false, text: 'Account balance (in Norgwegian kroners)' },
   legend: { display: false },
   scales: { xAxes: [{ gridLines: { drawOnChartArea: false } }],
