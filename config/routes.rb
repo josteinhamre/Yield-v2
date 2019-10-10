@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  authenticated :user do
-    root to: "pages#dashboard"
-  end
   root to: 'pages#home'
   resources :transactions, only: [ :index, :create ]
   resources :categories, only: [ :index, :new, :create ]
@@ -10,6 +7,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile', as: 'profile'
   get '/dashboard', to: 'dashboard#dashboard', as: 'dashboard'
   get '/inbox', to: 'transactions#inbox', as: 'inbox'
+  get '/import', to: 'pages#import', as: 'import'
   patch '/cat_next_month', to: 'categories#next_month', as: 'cat_next_month'
   patch '/cat_prev_month', to: 'categories#prev_month', as: 'cat_prev_month'
   patch '/confirm/:id', to: 'transactions#confirm', as: 'confirm'
