@@ -7,13 +7,10 @@
     "chart.js": "^2.8.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
-    "vanilla-picker": "^2.10.0"
+    "vanilla-picker": "^2.10.0",
+    "yarn": "1.19.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.1"
-  },
-  "engines": {
-    "yarn": "1.19.1"
-  },
-  "version": "0.0.0"
+  }
 }
