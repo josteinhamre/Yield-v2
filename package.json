@@ -11,5 +11,9 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.1"
-  }
+  },
+  "engines": {
+    "yarn": "1.19.1"
+  },
+  "version": "0.0.0"
 }
