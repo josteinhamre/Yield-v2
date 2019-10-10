@@ -28,6 +28,7 @@ const BIG_CHART_OPTIONS = {
 
 const balanceChart = (elementId, data, isThumbnail = false) => {
   const element = document.getElementById(elementId);
+
   new Chart(element, {
     type: 'line',
       data: data,
@@ -37,6 +38,7 @@ const balanceChart = (elementId, data, isThumbnail = false) => {
 
 const spentChart = (elementId, data, isThumbnail = false) => {
   const element = document.getElementById(elementId);
+
   new Chart(element, {
     type: 'line',
       data: data,
@@ -46,15 +48,41 @@ const spentChart = (elementId, data, isThumbnail = false) => {
 
 const budgetedChart = (elementId, data, isThumbnail = false) => {
   const element = document.getElementById(elementId);
+
+  let options = isThumbnail ? SMALL_CHART_OPTIONS : BIG_CHART_OPTIONS;
+
+  // set minimum value on y axis to zero for both big and small charts
+  if (!options.scales.yAxes[0].ticks) {
+    options.scales.yAxes[0].ticks = {};
+  }
+  options.scales.yAxes[0].ticks.min = 0;
+
   new Chart(element, {
     type: 'bar',
       data: data,
-      options: isThumbnail ? SMALL_CHART_OPTIONS : BIG_CHART_OPTIONS
+      options: options
   });
 };
 
+const clearChart = (elementId) => {
+  const element = document.getElementById(elementId);
+  const parentElement = element.parentElement;
+  parentElement.innerHTML = ''
+
+  const newCanvas = document.createElement('canvas');
+  newCanvas.id = elementId;
+  newCanvas.height = 60;
+  newCanvas.width = 100;
+
+  parentElement.appendChild(newCanvas);
+}
+
+
 const loadCharts = () => {
-    // spent data
+
+  clearChart("tab-spent-chart");
+  clearChart("spent-chart");
+  // spent data
   fetch('/spent_data')
     .then(response => response.json())
     .then(data => {
@@ -66,6 +94,8 @@ const loadCharts = () => {
       alert('Something went wrong');
     });
 
+  clearChart("tab-balance-chart");
+  clearChart("balance-chart");
   // balance data
   fetch('/balance_data')
     .then(response => response.json())
@@ -77,6 +107,8 @@ const loadCharts = () => {
       alert('Something went wrong2');
     });
 
+  clearChart("tab-budgeted-chart");
+  clearChart("budgeted-chart");
   // budgeted data
   fetch('/budgeted_data')
     .then(response => response.json())

@@ -27,21 +27,27 @@
           <h5>Spent</h5>
           <h5 id="spent-value"><%= @transactions_no_income.sum(:amount_cents).abs / 100 %></h5>
         </div>
-        <canvas id="tab-spent-chart" width="200%" height="75%"></canvas>
+        <div>
+          <canvas id="tab-spent-chart" width="100" height="60">
+        </div>
       </div>
       <div class="info-card-graph" data-id="budgeted">
         <div class="info-card-graph-header">
           <h5>Budgeted</h5>
           <h5 id="budgeted-value"><%= current_user.budgets_for_month(@selected_month).sum(:amount_cents) / 100 %></h5>
         </div>
-        <canvas id="tab-budgeted-chart" width="200%" height="75%"></canvas>
+        <div>
+          <canvas id="tab-budgeted-chart" width="100" height="60"></canvas>
+        </div>
       </div>
       <div class="info-card-graph active" data-id="balance">
         <div class="info-card-graph-header">
           <h5>Balance</h5>
           <h5  id="balance-value"><%= current_user.balance_for_month(@selected_month).last %></h5>
         </div>
-        <canvas id="tab-balance-chart" width="200%" height="75%"></canvas>
+        <div>
+          <canvas id="tab-balance-chart" width="100" height="60"></canvas>
+        </div>
       </div>
    <!--  </ul> -->
   </div>
@@ -51,16 +57,22 @@
 <div class="chart-container">
     <div class="tab-content">
       <div class="tab-pane" id="balance">
-        <h4 class="mt-2 mb-4">Balance Panel Content</h4>
-        <canvas id="balance-chart" width="400" height="240"></canvas>
+        <h4 class="mt-2 mb-4">Balence per day</h4>
+        <div>
+        <canvas id="balance-chart" width="100" height="60"></canvas>
+      </div>
       </div>
       <div class="tab-pane active" id="spent">
-        <h4 class="mt-2 mb-4">Spent Panel</h4>
-        <canvas id="spent-chart" width="400" height="240"></canvas>
+        <h4 class="mt-2 mb-4">Spent per day</h4>
+        <div>
+        <canvas id="spent-chart" width="100" height="60"></canvas>
+        </div>
       </div>
       <div class="tab-pane" id="budgeted">
-        <h4 class="mt-2 mb-4">Budgeted Panel</h4>
-        <canvas id="budgeted-chart" width="400" height="240"></canvas>
+        <h4 class="mt-2 mb-4">Budgeted per category</h4>
+        <div>
+          <canvas id="budgeted-chart" width="100" height="60"></canvas>
+        </div>
       </div>
     </div>
   </div>

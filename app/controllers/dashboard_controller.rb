@@ -44,14 +44,16 @@ class DashboardController < ApplicationController
     @budget_cats = []
     @budget_colors = []
     current_user.categories.each do |category|
-      budget = current_budgets.find_by(category: category)
-      if budget
-        @budgeted_data << (budget.amount_cents / 100)
-      else
-        @budgeted_data << 0
+      unless category.no_cat? || category.income?
+        budget = current_budgets.find_by(category: category)
+        if budget
+          @budgeted_data << (budget.amount_cents / 100)
+        else
+          @budgeted_data << 0
+        end
+        @budget_cats << category.name
+        @budget_colors << category.color
       end
-      @budget_cats << category.name
-      @budget_colors << category.color
     end
     respond_to do |format|
       format.html { render "budgeted_data.json" }
