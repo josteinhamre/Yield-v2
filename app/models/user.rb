@@ -25,7 +25,7 @@ class User < ApplicationRecord
     array_of_month = (month_as_date..end_of_month).to_a
     array_of_balances = []
     array_of_month.each do |date|
-      array_of_balances << balance_on_date(date)
+      array_of_balances << balance_on_date(date) / 100
     end
     array_of_balances
   end
@@ -45,10 +45,29 @@ class User < ApplicationRecord
     budgets.where(sql_query, month_as_date.month, month_as_date.year)
   end
 
+  def budgets_for_month(month_year)
+    sql_query = " \
+        extract(month from month_from) = ? \
+        AND extract(year from month_from) = ? \
+      "
+    month_as_date = Date.parse("1 #{month_year}")
+    budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  end
+
   def income_to_date(month_year)
     sql_query = " \
         extract(month from datetime) <= ? \
         AND extract(year from datetime) <= ? \
+      "
+    date = Date.parse("1 #{month_year}")
+    income_trans = transactions.where(category: income_cat)
+    income_trans.where(sql_query, date.month, date.year)
+  end
+
+   def income_for_month(month_year)
+    sql_query = " \
+        extract(month from datetime) = ? \
+        AND extract(year from datetime) = ? \
       "
     date = Date.parse("1 #{month_year}")
     income_trans = transactions.where(category: income_cat)

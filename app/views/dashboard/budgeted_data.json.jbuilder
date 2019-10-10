@@ -1,7 +1,7 @@
 datasets = [{
   data: @budgeted_data,
   border_color: "#83BED3",
-  background_color: "#83BED3",
+  background_color: @budget_colors,
   fill: false
 }]
 
