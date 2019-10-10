@@ -1,0 +1,19 @@
+document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>";
+
+(() => {
+  let moneyIn = "?";
+  let moneyOut = "?";
+  let balance = "?";
+  let spent = "?";
+  let budgeted = "?";
+
+  // set values for fields on page
+  document.querySelector('[data-id=balance] .info-card-graph-header h5:nth-of-type(2)')
+    .innerText = balance;
+  document.querySelector('[data-id=spent] .info-card-graph-header h5:nth-of-type(2)')
+    .innerText = spent;
+  document.querySelector('[data-id=budgeted] .info-card-graph-header h5:nth-of-type(2)')
+    .innerText = budgeted;
+})();
+
+loadCharts();

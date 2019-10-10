@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     get_budgets
     get_transactions
   end
-
+  
   def create
     @category = Category.new(category_params)
     @category.user = current_user
