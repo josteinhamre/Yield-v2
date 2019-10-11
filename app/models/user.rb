@@ -82,6 +82,15 @@ class User < ApplicationRecord
     categories.find_by(name: 'No Category')
   end
 
+  def categorize_all
+    no_category = no_cat
+    transactions.where(approved_at: nil).each do |transaction|
+      # p trans
+      transaction.auto_categorize
+    end
+    "Done"
+  end
+
   private
 
   def create_categories

@@ -48,6 +48,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
           <%= link_to "Settings", profile_path, class: "dropdown-item" %>
+          <%= link_to "Categorize", categorize_path, class: "dropdown-item" %>
           <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           <% end %>
         </div>

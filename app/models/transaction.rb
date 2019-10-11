@@ -11,17 +11,43 @@ class Transaction < ApplicationRecord
     return unless category.name == 'No Category'
 
     require 'string/similarity'
-    cat_collection = []
-    user.transactions.each do |trans|
+    cat_collection = Hash.new(0)
+    # puts self
+    user.transactions.where.not(approved_at: nil).each do |trans|
       value = String::Similarity.levenshtein_distance(info[0, 15], trans.info[0, 15])
-      cat_collection << trans.category if value < 11
+      cat_collection[trans.category] += (11 - value) if value < 11
     end
-    counts = Hash.new(0)
-    cat_collection.each { |name| counts[name] += 1 }
-    self.category = counts.max_by{ |_key, value| value }.first
-    save if category.name != 'No Category'
+    unless cat_collection.empty?
+      chosen = cat_collection.max_by{ |_key, value| value }.first
+      self.category = chosen
+      p self.info
+      p chosen
+      p cat_collection[chosen]
+      save if category.name != 'No Category' && cat_collection[chosen] > 30
+    end
     category.name
   end
+
+
+  # def auto_categorize
+  #   return unless category.name == 'No Category'
+
+  #   require 'string/similarity'
+  #   cat_collection = []
+  #   puts self
+  #   user.transactions.where.not(approved_at: nil).each do |trans|
+  #     value = String::Similarity.levenshtein_distance(info[0, 15], trans.info[0, 15])
+  #     cat_collection << trans.category if value < 9
+  #   end
+  #   puts cat_collection
+  #   counts = Hash.new(0)
+  #   cat_collection.each { |name| counts[name] += 1 }
+  #   unless counts.empty?
+  #     self.category = counts.max_by{ |_key, value| value }.first
+  #     save if category.name != 'No Category'
+  #   end
+  #   category
+  # end
 
   def self.import_dnb(file, user)
     require 'csv'

@@ -9,7 +9,7 @@
 
   <h6><%= trans.amount %></h6>
 
-  <div class="confirm-trans-container">
+  <div class="confirm-trans-container" id="list-pos-<%= list_pos_id %>">
     <% unless trans.category.no_cat? %>
       <%= link_to confirm_path(trans), method: :patch, remote: true do %>
         <%= icon('fas', 'check-circle', class: "confirm-trans") %>
@@ -21,7 +21,7 @@
     <% end %>
   </div>
 
-  <div class="transaction-arrow row-arrow" data-row-id="row-selector-<%= index %>" id="chevron-<%= index %>">
+  <div class="transaction-arrow row-arrow" data-row-id="row-selector-<%= index %>" id="chevron-<%= index %>" data-next-element-id="list-pos-<%= list_pos_id + 1 %>">
         <%= icon('fas', 'chevron-down') %>
   </div>
 </div>
@@ -43,7 +43,7 @@
 </style>
 <div class="category-selector-div" id="row-selector-<%= index %>">
   <% current_user.categories.each do |category| %>
-    <% unless category.no_cat? || category.income? %>
+    <% unless category.no_cat? %>
       <% if category == trans.category %>
         <%= link_to set_category_path(trans, category), method: :patch, remote: true, class: "current", id: "cat-#{trans.id}-#{category.id}" do %>
           <%= render 'components/category', category: category %>

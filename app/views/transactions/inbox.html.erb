@@ -10,8 +10,8 @@
       </div>
     </div>
     <div id="inboxListContainer" class="inbox-list-elements">
-      <% @transactions.each do |trans| %>
-        <%= render 'components/transaction_inbox', trans: trans, index: trans.id %>
+      <% @transactions.each_with_index do |trans, list_index| %>
+        <%= render 'components/transaction_inbox', trans: trans, index: trans.id, list_pos_id: list_index %>
       <% end %>
     </div>
   <% else %>
