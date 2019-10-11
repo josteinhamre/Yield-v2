@@ -59,9 +59,9 @@ account.save!
 CATEGORIES = ['Groceries', 'Food & Drinks', 'Travel', 'Rent & Loans', 'Sports & Activities',
  'Transport', 'Savings', 'Clothing', 'Bills & Fees', 'Gifts', 'Entertainment',
   'Hygiene & Beauty', 'Home & Interior', 'Gadgets',]
-AUGUST = [3798, 4800, 1000, 15000, 1800, 1500, 1000, 2600, 1100, 1500, 1800, 1620, 3900, 700]
-SEPTEMBER = [4000, 5000, 0, 14900, 1000, 5500, 0, 1000, 2000, 0, 800, 700, 600, 500]
-OCTOBER = [3500, 3500, 618, 15000, 600, 2000, 200, 1000, 1500, 600, 800, 800, 1800, 500]
+AUGUST = [3798, 4800, 1000, 10000, 1800, 1500, 1000, 2600, 1100, 1500, 1800, 1620, 3900, 700]
+SEPTEMBER = [4000, 5000, 0, 10000, 1000, 5500, 0, 1000, 2000, 615, 800, 700, 600, 500]
+OCTOBER = [3500, 3500, 618, 10000, 600, 2000, 200, 1000, 1500, 600, 800, 800, 1800, 500]
 
 CATEGORIES.each_with_index do |cat, i|
 bud = Budget.new
