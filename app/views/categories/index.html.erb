@@ -4,7 +4,7 @@
     <div class="budget-info-cards">
       <%= render 'components/budget_info', budgets: @budgets, transactions: @transactions, selected_month: @selected_month %>
     </div>
-    <div class="category-transaction-view income-trans" id="row-selector-<%= current_user.income_cat.id %>">
+    <div class="category-transaction-view income-trans" id="row-selector-<%= current_user.income_cat.id if current_user.income_cat %>">
       <%= render 'components/category_list_dropdown', category: current_user.income_cat, transactions: @transactions %>
     </div>
     <div class="category-list-div list-header">

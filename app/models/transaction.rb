@@ -73,7 +73,7 @@ class Transaction < ApplicationRecord
     trans.category = user.no_cat
     trans.csv_row_id = row
     row[3] == "" ? trans.amount = row[4] : trans.amount = "-#{row[3]}"
-    trans.save!
+    trans.save
   end
 
   def self.dnb_other(row, user)
@@ -85,6 +85,6 @@ class Transaction < ApplicationRecord
     trans.category = user.no_cat
     trans.csv_row_id = row
     row[3] == "" ? trans.amount = row[4] : trans.amount = "-#{row[3]}"
-    trans.save!
+    trans.save
   end
 end

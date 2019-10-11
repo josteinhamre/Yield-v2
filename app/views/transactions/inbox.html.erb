@@ -17,12 +17,13 @@
   <% else %>
     <div class="empty-inbox">
       <h1>Your inbox is empty!</h1>
+      <%= image_tag "empty_inbox.svg" %>
     </div>
   <% end %>
   <div class="empty-inbox hidden" id="empty-inbox">
     <h1>Good job! Your inbox is empty!</h1>
-      <%= image_tag "empty_inbox.svg" %>
-    <p>Upload more transactions or check how you are doing in the budget.<p>
+      <%= image_tag "empty_inbox_baloons.svg" %>
+    <p>Time to check how you are doing in the budget!<p>
     </div>
     <div class="flex-container">
       <div class="import-container">

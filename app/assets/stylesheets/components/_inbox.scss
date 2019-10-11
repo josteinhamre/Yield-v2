@@ -27,7 +27,7 @@
   color: gray;
   font-size: 2rem;
   place-self: center;
-  transition-duration: 1;
+  transition-duration: 1s;
 }
 
 .inbox-list-div .trans-cat {
@@ -77,10 +77,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  max-height: 70vh;
+  transition-duration: 1s;
 
   img {
     height: 40vh;
-    margin-top: 1rem;
+    margin: 2rem;
     // margin-left: 40px;
     // margin-bottom: 20px;
   }
@@ -96,9 +99,16 @@
   }
 }
 
-.list-header.hidden,
+#inboxListHeader {
+  max-height: 10vh;
+  transition-duration: 1s;
+}
+
+#inboxListHeader.hidden,
 .empty-inbox.hidden {
-  display: none;
+  max-height: 0vh;
+  padding: 0;
+  border-bottom: 1px solid rgba(131, 190, 211,0);
 }
 
 
