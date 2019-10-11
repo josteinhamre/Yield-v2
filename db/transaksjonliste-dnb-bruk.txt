@@ -3,5 +3,4 @@
 "09.10.2019";"Varekjøp Dattera Til Hagen Oslo Dato 09.10 kl. 20.14";"09.10.2019";"72,00";""
 "10.10.2019";"Varekjøp Ikea Furuset Strømsvn 310 Oslo Dato 10.10 kl. 14.57";"10.10.2019";"1.968,00";""
 "10.10.2019";"Varekjøp Kiwi 509 Økernv Økernveien Oslo Dato 10.10 kl. 16.29";"10.10.2019";"272,86";""
-"20.09.2019";"Visa  100121  Ruter AS - App";"24.09.2019";"36,00";""
-"09.10.2019";"Varekjøp Tanum Bokhandel Storo Stors Oslo Dato 10.10 kl. 15.30";"09.10.2019";"299,00";""
+"09.10.2019";"Varekjøp Tanum Bokhandel Storo Stors Oslo Dato 09.10 kl. 15.30";"09.10.2019";"299,00";""

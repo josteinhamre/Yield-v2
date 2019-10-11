@@ -1,9 +1,9 @@
-      <h4>Upload a transactionlist:</h4>
+      <h4>Upload a transaction list:</h4>
 <%= simple_form_for :transactions, url: transactions_path do |f| %>
   <div class="upload-btn-wrapper">
-    <button class="btn-upload">Chose file!</button>
+    <button class="btn-upload">Choose file!</button>
     <%= f.input_field :file, as: :file, id: "upload" %>
   </div>
   <%= f.submit 'upload', type: 'hidden' %>
 <% end %>
-      <h6>We currently support csv as .txt or .csv from DNB</h6>
+      <h6>We currently support csv as .txt from DNB</h6>
