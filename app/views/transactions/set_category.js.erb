@@ -1,13 +1,19 @@
 function updateCategory() {
   const transaction = document.getElementById("category-<%= @transaction.id %>");
   transaction.innerHTML = '<%= j render "components/category", category: @transaction.category %>';
-  transaction.parentElement.querySelector(".confirm-trans").classList.remove('hidden')
+  transaction.parentElement.querySelector(".confirm-trans").parentElement.click()
+
   innerHTML = '<%= j render "components/category", category: @transaction.category %>';
 }
 
 function updateCurrent() {
-  document.querySelector(".current").classList.remove('current');
-  document.getElementById("cat-<%= @transaction.id %>-<%= @transaction.category.id %>").classList.add('current');
+  let selected = document.getElementById("cat-<%= @transaction.id %>-<%= @transaction.category.id %>");
+  current = selected.parentElement.querySelector(".current")
+  if (current) {
+    current.classList.remove('current');
+  }
+
+  selected.classList.add('current')
 }
 
 function closeSelector() {
@@ -18,3 +24,5 @@ function closeSelector() {
 updateCategory();
 updateCurrent();
 closeSelector()
+
+

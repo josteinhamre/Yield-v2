@@ -4,11 +4,11 @@
   <div class="home-left">
     <div class="home-logo">
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "https://res.cloudinary.com/lightglance/image/upload/v1569848358/yield-resources/logo-v1_kpyze4.png" %>
+        <%= cl_image_tag "yield-resources/logo-v1_kpyze4.png" %>
       <% end %>
     <div class="home-text">
-      <h2 class="subtitle"> Follow the money trail. </h2>
-      <h3 class="value-proposition"> Budgeting with Yield is forward-looking and proactive. Newfound awareness of where your money goes will help you gain control over your spendings. </h3>
+      <h3 class="subtitle"> Follow the money trail. </h3>
+      <h4 class="value-proposition"> Budgeting with Yield is forward-looking and proactive. Newfound awareness of where your money goes will help you gain control over your spendings. </h4>
       <div class="text-right">
         <%= link_to "Get started", new_user_registration_path, class: "form-buttons btn home" %>
       </div>
@@ -16,6 +16,6 @@
     </div>
   </div>
   <div class="home-right">
-    <%= cl_image_tag "https://res.cloudinary.com/lightglance/image/upload/v1570097405/yield-resources/landing_screenshot_srptma.png" %>
+    <%= cl_image_tag "yield-resources/landing_screenshot_srptma.png" %>
   </div>
 </div>

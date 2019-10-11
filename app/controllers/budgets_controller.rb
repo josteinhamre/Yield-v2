@@ -2,7 +2,7 @@ class BudgetsController < ApplicationController
   def create
     @budget = Budget.new
     @budget.amount = params['budget']['amount']
-    @budget.month_from = Date.parse("1 + #{params['budget']['month_from']}")
+    @budget.month_from = Date.parse("1 #{@selected_month}")
     @budget.category = Category.find(params['budget']['category'])
     @budget.save!
     get_transactions

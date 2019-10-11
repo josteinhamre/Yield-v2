@@ -40,6 +40,11 @@ class TransactionsController < ApplicationController
      # flash[:notice] = "Countries uploaded successfully"
     redirect_to inbox_path
   end
+
+  def categorize
+    current_user.categorize_all
+    redirect_to inbox_path
+  end
  end
 
 

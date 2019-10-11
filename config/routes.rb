@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   get '/budgeted_data', to: 'dashboard#budgeted_data', as: 'budgeted_data'
   patch '/dash_next_month', to: 'dashboard#next_month', as: 'dash_next_month'
   patch '/dash_prev_month', to: 'dashboard#prev_month', as: 'dash_prev_month'
+  get '/categorize', to: 'transactions#categorize', as: 'categorize'
 
 end
