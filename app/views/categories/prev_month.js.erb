@@ -58,7 +58,7 @@ function replaceInfo() {
 
 document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>";
 
-replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month %>');
+replaceCategories('<%= j render "components/category_list", budgets: @budgets, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month_as_date %>');
 
 setColors();
 listOpen();

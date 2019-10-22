@@ -6,7 +6,6 @@ class BudgetsController < ApplicationController
     @budget.category = Category.find(params['budget']['category'])
     @budget.save!
     get_transactions
-    get_budgets
   end
 
   def update
@@ -14,6 +13,5 @@ class BudgetsController < ApplicationController
     @budget.amount = params['budget']['amount']
     @budget.save!
     get_transactions
-    get_budgets
   end
 end

@@ -9,28 +9,26 @@ class Category < ApplicationRecord
 
   end
 
-  def balance(month_year)
-    trans = transactions_to_date(month_year).sum(:amount_cents)
-    budg = budgets_to_date(month_year).sum(:amount_cents)
-    budg + trans
+  def balance(date)
+    p "balance says:"
+    p date
+    transactions_to_date(date).sum(:amount_cents) + budgets_to_date(date).sum(:amount_cents)
   end
 
-  def budgets_to_date(month_year)
-    sql_query = " \
-        extract(month from month_from) <= ? \
-        AND extract(year from month_from) <= ? \
-      "
-    month_as_date = Date.parse("1 #{month_year}")
-    budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  def budgets_to_date(date)
+    filter_by_date(budgets, date, "month_from", "<=")
   end
 
-  def transactions_to_date(month_year)
-    sql_query = " \
-        extract(month from datetime) <= ? \
-        AND extract(year from datetime) <= ? \
-      "
-    date = Date.parse("1 #{month_year}")
-    transactions.where(sql_query, date.month, date.year)
+  def budget_for_month(date)
+    filter_by_date(budgets, date, "month_from", "=")
+  end
+
+  def transactions_to_date(date)
+    filter_by_date(transactions, date, "datetime", "<=")
+  end
+
+  def transactions_for_month(date)
+    filter_by_date(transactions, date, "datetime", "=")
   end
 
   def income?

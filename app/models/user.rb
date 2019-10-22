@@ -15,6 +15,10 @@ class User < ApplicationRecord
     transactions.where(sql_query, date).sum(:amount_cents)
   end
 
+  def transactions_for_month(date)
+    filter_by_date(transactions, date, "datetime", "=")
+  end
+
   def balance_today
     balance_on_date(Date.today)
   end
@@ -36,42 +40,22 @@ class User < ApplicationRecord
     (income - budg)
   end
 
-  def budgets_to_date(month_year)
-    sql_query = " \
-        extract(month from month_from) <= ? \
-        AND extract(year from month_from) <= ? \
-      "
-    month_as_date = Date.parse("1 #{month_year}")
-    budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  def budgets_to_date(date)
+    filter_by_date(budgets, date, "month_from", "<=")
   end
 
-  def budgets_for_month(month_year)
-    sql_query = " \
-        extract(month from month_from) = ? \
-        AND extract(year from month_from) = ? \
-      "
-    month_as_date = Date.parse("1 #{month_year}")
-    budgets.where(sql_query, month_as_date.month, month_as_date.year)
+  def budgets_for_month(date)
+    filter_by_date(budgets, date, "month_from", "=")
   end
 
-  def income_to_date(month_year)
-    sql_query = " \
-        extract(month from datetime) <= ? \
-        AND extract(year from datetime) <= ? \
-      "
-    date = Date.parse("1 #{month_year}")
-    income_trans = transactions.where(category: income_cat)
-    income_trans.where(sql_query, date.month, date.year)
+  def income_to_date(date)
+    income_transactions = transactions.where(category: income_cat)
+    filter_by_date(income_transactions, date, "datetime", "<=")
   end
 
-   def income_for_month(month_year)
-    sql_query = " \
-        extract(month from datetime) = ? \
-        AND extract(year from datetime) = ? \
-      "
-    date = Date.parse("1 #{month_year}")
-    income_trans = transactions.where(category: income_cat)
-    income_trans.where(sql_query, date.month, date.year)
+   def income_for_month(date)
+    income_transactions = transactions.where(category: income_cat)
+    filter_by_date(income_transactions, date, "datetime", "=")
   end
 
   def income_cat
