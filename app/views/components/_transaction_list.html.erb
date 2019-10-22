@@ -1,3 +1,3 @@
-<% transactions.each do |trans| %>
+<% current_user.transactions_for_month(@selected_month_as_date).each do |trans| %>
   <%= render 'components/transaction', trans: trans, index: trans.id %>
 <% end %>

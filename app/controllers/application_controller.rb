@@ -23,30 +23,33 @@ class ApplicationController < ActionController::Base
   def define_month
     if session[:selected_month]
       @selected_month = session[:selected_month]
-      @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
     else
       @selected_month = Date.today.strftime("%B %y")
       session[:selected_month] = @selected_month
-      @prev_month = (Date.parse("1 #{@selected_month}") - 2).strftime("%B %y")
     end
+    @selected_month_as_date = Date.parse("1 #{@selected_month}")
+    @prev_month_as_date = (@selected_month_as_date << 1)
+    p "define_month says:"
+    p @prev_month_as_date
   end
 
-  def get_budgets
-    sql_query = " \
-        extract(month from month_from) = ? \
-        AND extract(year from month_from) = ? \
-      "
-    month_as_date = Date.parse("1 #{@selected_month}")
-    @budgets = current_user.budgets.where(sql_query, month_as_date.month, month_as_date.year)
+
+  def prev_month
+    session[:selected_month] = (@selected_month_as_date << 1).strftime("%B %y")
+    define_month
   end
 
-  def get_transactions
+  def next_month
+    session[:selected_month] = (@selected_month_as_date >> 1).strftime("%B %y")
+    define_month
+  end
+
+  def filter_by_date(collection, date, table_field_as_string, comparison_operator_as_string)
     sql_query = " \
-        extract(month from datetime) = ? \
-        AND extract(year from datetime) = ? \
-      "
-    date = Date.parse("1 #{@selected_month}")
-    @transactions = current_user.transactions.where(sql_query, date.month, date.year)
+      extract(month from #{table_field_as_string}) #{comparison_operator_as_string} ? \
+      AND extract(year from #{table_field_as_string}) #{comparison_operator_as_string} ? \
+    "
+    collection.where(sql_query, date.month, date.year)
   end
 
   def get_transactions_no_income

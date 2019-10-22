@@ -57,7 +57,7 @@ function replaceInfo() {
 
 
 
-replaceBudget('<%= j render "components/category_listitem",category: @budget.category, index: @budget.category.id, budget: @budget, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month %>', <%= @budget.category.id %>)
+replaceBudget('<%= j render "components/category_listitem",category: @budget.category, index: @budget.category.id, budget: @budget, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month_as_date %>', <%= @budget.category.id %>)
 listOpen(<%= @budget.category.id %>)
 submitOn(<%= @budget.category.id %>)
 setColors(<%= @budget.category.id %>)

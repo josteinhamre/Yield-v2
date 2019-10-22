@@ -1,7 +1,7 @@
 <% current_user.categories.each do |category| %>
   <% unless category.income? %>
     <div class="category-list-div" id="category-<%= category.id %>">
-        <%= render 'components/category_listitem', category: category, budgets: budgets, selected_month: selected_month, transactions: transactions, prev_month: prev_month %>
+        <%= render 'components/category_listitem', category: category %>
     </div>
     <div class="category-transaction-view" id="row-selector-<%= category.id %>">
           <%= render 'components/category_list_dropdown', category: category, transactions: transactions %>
