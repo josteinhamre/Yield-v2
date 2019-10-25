@@ -3,7 +3,6 @@ class DashboardController < ApplicationController
   respond_to :json
 
   def dashboard
-    get_transactions_no_income
   end
 
   def balance_data
@@ -15,10 +14,8 @@ class DashboardController < ApplicationController
   end
 
   def spent_data
-    get_transactions_no_income
     @chart_spent_per_day = []
-    date = Date.parse("1 #{@selected_month}")
-    end_of_month = (date >> 1) - date.day
+    end_of_month = (@selected_month_as_date >> 1) - @selected_month_as_date.day
     num_days = end_of_month.day
     (1..num_days).each do |day|
       @chart_spent_per_day << get_day_spent_amount(day).abs
@@ -29,23 +26,13 @@ class DashboardController < ApplicationController
     end
   end
 
-  def current_budgets_month
-    sql_query = " \
-        extract(month from month_from) = ? \
-        AND extract(year from month_from) = ? \
-      "
-    month_as_date = Date.parse("1 #{@selected_month}")
-    current_user.budgets.where(sql_query, month_as_date.month, month_as_date.year)
-  end
-
   def budgeted_data
-    current_budgets = current_budgets_month
     @budgeted_data = []
     @budget_cats = []
     @budget_colors = []
     current_user.categories.each do |category|
       unless category.no_cat? || category.income?
-        budget = current_budgets.find_by(category: category)
+        budget = current_user.budgets_for_month(@selected_month_as_date).find_by(category: category)
         if budget
           @budgeted_data << (budget.amount_cents / 100)
         else
@@ -61,22 +48,27 @@ class DashboardController < ApplicationController
     end
   end
 
+  def change_month
+  end
+
   def next_month
-    spent_data
+    super
+    render action: :change_month
   end
 
   def prev_month
-    spent_data
-    render action: :next_month
+    super
+    render action: :change_month
   end
 
   protected
 
   def get_day_spent_amount(day)
+    transactions = current_user.transactions_for_month_sans_income(@selected_month_as_date)
     amount = 0
-    if @transactions_no_income.length.positive?
-      day_trans = @transactions_no_income.where("extract(day from datetime) = #{day}")
-      amount = day_trans.sum(:amount_cents) / 100 if day_trans.length.positive?
+    if transactions.length.positive?
+      day_trans = transactions.where("extract(day from datetime) = #{day}")
+      amount = day_trans.sum(:amount_cents) / 100
     end
     amount
   end

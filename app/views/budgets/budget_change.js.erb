@@ -1,0 +1,5 @@
+replaceBudget('<%= j render "components/category_listitem",category: @budget.category %>', <%= @budget.category.id %>);
+listOpen(<%= @budget.category.id %>);
+submitOn(<%= @budget.category.id %>);
+setColors(<%= @budget.category.id %>);
+replaceInfo('<%= j render 'components/budget_info' %>');

@@ -17,7 +17,7 @@ class Transaction < ApplicationRecord
       cat_collection[trans.category] += (11 - value) if value < 11
     end
     unless cat_collection.empty?
-      chosen = cat_collection.max_by{ |_key, value| value }.first
+      chosen = cat_collection.max_by { |_key, value| value }.first
       self.category = chosen
       save if category.name != 'No Category' && cat_collection[chosen] > 30
     end

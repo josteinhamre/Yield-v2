@@ -1,11 +1,10 @@
 <div class="container list-container budget-container">
   <div class="header">
- <!--  <h3 class="page-title">Budget</h3> -->
     <div class="budget-info-cards">
-      <%= render 'components/budget_info', budgets: @budgets, transactions: @transactions, selected_month: @selected_month %>
+      <%= render 'components/budget_info' %>
     </div>
     <div class="category-transaction-view income-trans" id="row-selector-<%= current_user.income_cat.id if current_user.income_cat %>">
-      <%= render 'components/category_list_dropdown', category: current_user.income_cat, transactions: @transactions %>
+      <%= render 'components/category_list_dropdown', category: current_user.income_cat %>
     </div>
     <div class="category-list-div list-header">
       <h6>Category</h6>
@@ -17,9 +16,9 @@
     </div>
   </div>
   <div id="categoryListContainer">
-    <%= render 'components/category_list', budgets: @budgets, selected_month: @selected_month, transactions: @transactions, prev_month: @prev_month_as_date %>
+    <%= render 'components/category_list' %>
   </div>
 </div>
 
 
-<%= javascript_pack_tag 'color' %>
+<%= javascript_pack_tag 'category_budgets' %>

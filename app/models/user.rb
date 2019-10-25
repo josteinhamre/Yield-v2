@@ -16,7 +16,11 @@ class User < ApplicationRecord
   end
 
   def transactions_for_month(date)
-    filter_by_date(transactions, date, "datetime", "=")
+    filter_by_month(transactions, date, "datetime")
+  end
+
+  def transactions_for_month_sans_income(date)
+    transactions_for_month(date).where.not(category: income_cat)
   end
 
   def balance_today
@@ -41,21 +45,21 @@ class User < ApplicationRecord
   end
 
   def budgets_to_date(date)
-    filter_by_date(budgets, date, "month_from", "<=")
+    filter_to_month(budgets, date, "month_from")
   end
 
   def budgets_for_month(date)
-    filter_by_date(budgets, date, "month_from", "=")
+    filter_by_month(budgets, date, "month_from")
   end
 
   def income_to_date(date)
     income_transactions = transactions.where(category: income_cat)
-    filter_by_date(income_transactions, date, "datetime", "<=")
+    filter_to_month(income_transactions, date, "datetime")
   end
 
    def income_for_month(date)
     income_transactions = transactions.where(category: income_cat)
-    filter_by_date(income_transactions, date, "datetime", "=")
+    filter_by_month(income_transactions, date, "datetime")
   end
 
   def income_cat

@@ -8,6 +8,19 @@ class TransactionsController < ApplicationController
   def index
   end
 
+  def next_month
+    super
+    render action: :change_month
+  end
+
+  def prev_month
+    super
+    render action: :change_month
+  end
+
+  def change_month
+  end
+
   def inbox
     unsorted = current_user.transactions.where(approved_at: nil)
     @transactions = (unsorted.sort_by &:datetime).reverse
@@ -30,6 +43,6 @@ class TransactionsController < ApplicationController
     current_user.categorize_all
     redirect_to inbox_path
   end
- end
+end
 
 
