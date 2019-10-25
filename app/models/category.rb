@@ -16,19 +16,19 @@ class Category < ApplicationRecord
   end
 
   def budgets_to_date(date)
-    filter_by_date(budgets, date, "month_from", "<=")
+    filter_to_month(budgets, date, "month_from")
   end
 
   def budget_for_month(date)
-    filter_by_date(budgets, date, "month_from", "=")
+    filter_by_month(budgets, date, "month_from")
   end
 
   def transactions_to_date(date)
-    filter_by_date(transactions, date, "datetime", "<=")
+    filter_to_month(transactions, date, "datetime")
   end
 
   def transactions_for_month(date)
-    filter_by_date(transactions, date, "datetime", "=")
+    filter_by_month(transactions, date, "datetime")
   end
 
   def income?

@@ -2,6 +2,19 @@ class CategoriesController < ApplicationController
   def index
   end
 
+  def change_month
+  end
+
+  def prev_month
+    super
+    render action: :change_month
+  end
+
+  def next_month
+    super
+    render action: :change_month
+  end
+
   def create
     @category = Category.new(category_params)
     @category.user = current_user

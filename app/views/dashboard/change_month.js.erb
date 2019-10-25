@@ -1,0 +1,16 @@
+document.getElementById("monthSelector").innerHTML = "<%= j @selected_month %>";
+
+(() => {
+  let income = "<%= current_user.income_for_month(@selected_month_as_date).sum(:amount_cents) / 100 %>";
+  let spent = "<%= current_user.transactions_for_month_sans_income(@selected_month_as_date).sum(:amount_cents).abs / 100 %>";
+  let budgeted = "<%= current_user.budgets_for_month(@selected_month_as_date).sum(:amount_cents) / 100 %>";
+  let balance = "<%= current_user.balance_for_month(@selected_month_as_date).last %>";
+
+  // set values for fields on page
+  document.getElementById('income-value').innerText = income;
+  document.getElementById('spent-value').innerText = spent;
+  document.getElementById('budgeted-value').innerText = budgeted;
+  document.getElementById('balance-value').innerText = balance;
+})();
+
+loadCharts();

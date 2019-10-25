@@ -5,9 +5,6 @@ const listOpen = () => {
     categoryArrow.classList.toggle('turned')
     const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
     categoryDropdown.classList.toggle("display")
-    // if (categoryDropdown.classList.contains('display')) {
-    //   setTimeout(categoryDropdown.scrollIntoView(true), 1000)
-    // }
     });
   })
 
@@ -17,12 +14,23 @@ const listOpen = () => {
     const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
     categoryDropdown.classList.toggle("display")
     transCat.parentElement.querySelector('.transaction-arrow').classList.toggle('turned')
-    // if (categoryDropdown.classList.contains('display')) {
-    //   setTimeout(categoryDropdown.scrollIntoView(true), 1000)
-    // }
     });
   })
 
 };
 
-export {listOpen};
+const listOpenThis = (id) => {
+  const BudgetCategory = document.getElementById(`category-${id}`);
+  const categoryArrow = BudgetCategory.querySelector(".row-arrow");
+  if (categoryArrow != null) {
+    categoryArrow.addEventListener("click", (event) => {
+    const categoryDropdown = document.getElementById(event.currentTarget.dataset.rowId)
+    categoryDropdown.classList.toggle("display")
+    });
+  }
+};
+
+
+export {listOpen, listOpenThis};
+
+

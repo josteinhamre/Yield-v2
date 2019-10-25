@@ -1,10 +1,10 @@
-<% cat_trans = category.transactions_for_month(@selected_month_as_date) %>
+<% category_transactions = category.transactions_for_month(@selected_month_as_date) %>
 <style>
   #row-selector-<%= category.id if category %>.display {
-    max-height: <%= ((cat_trans.count) * 65) + 120  %>px;
-    padding: <%= cat_trans.count > 0 ? "10px 15% 50px" : "0" %>;
+    max-height: <%= ((category_transactions.count) * 65) + 120  %>px;
+    padding: <%= category_transactions.count > 0 ? "10px 15% 50px" : "0" %>;
   }
 </style>
-<% cat_trans.each do |trans| %>
+<% category_transactions.each do |trans| %>
   <%= render 'components/transaction_budget', trans: trans, index: trans.id %>
 <% end %>

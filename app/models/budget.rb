@@ -8,12 +8,7 @@ class Budget < ApplicationRecord
 
   def unique_budget
     if new_record?
-      sql_query = " \
-        extract(month from month_from) = ? \
-        AND extract(year from month_from) = ? \
-      "
-      @budgets = category.budgets.where(sql_query, month_from.month, month_from.year)
-      errors.add(:budget, "excists") unless @budgets.empty?
+      errors.add(:budget, "excists") unless filter_by_month(category.budgets, month_from, "month_from").empty?
     end
   end
 end

@@ -25,7 +25,7 @@
         <div class="info-card-graph" data-id="spent">
           <div class="info-card-graph-header">
             <h5>Spent</h5>
-            <h5 id="spent-value"><%= @transactions_no_income.sum(:amount_cents).abs / 100 %></h5>
+            <h5 id="spent-value"><%= current_user.transactions_for_month_sans_income(@selected_month_as_date).sum(:amount_cents).abs / 100 %></h5>
           </div>
           <div>
             <canvas id="tab-spent-chart" width="100" height="35"></canvas>

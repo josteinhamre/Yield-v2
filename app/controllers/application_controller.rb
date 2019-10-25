@@ -29,8 +29,6 @@ class ApplicationController < ActionController::Base
     end
     @selected_month_as_date = Date.parse("1 #{@selected_month}")
     @prev_month_as_date = (@selected_month_as_date << 1)
-    p "define_month says:"
-    p @prev_month_as_date
   end
 
 
@@ -42,23 +40,6 @@ class ApplicationController < ActionController::Base
   def next_month
     session[:selected_month] = (@selected_month_as_date >> 1).strftime("%B %y")
     define_month
-  end
-
-  def filter_by_date(collection, date, table_field_as_string, comparison_operator_as_string)
-    sql_query = " \
-      extract(month from #{table_field_as_string}) #{comparison_operator_as_string} ? \
-      AND extract(year from #{table_field_as_string}) #{comparison_operator_as_string} ? \
-    "
-    collection.where(sql_query, date.month, date.year)
-  end
-
-  def get_transactions_no_income
-    sql_query = " \
-        extract(month from datetime) = ? \
-        AND extract(year from datetime) = ? \
-      "
-    date = Date.parse("1 #{@selected_month}")
-    @transactions_no_income = current_user.transactions.where(sql_query, date.month, date.year).where.not(category: current_user.income_cat)
   end
 end
 
